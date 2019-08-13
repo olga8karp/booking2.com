@@ -1,0 +1,26 @@
+form {
+    margin: 0;
+}
+
+.typesel-container {
+    color: #fff;
+    font-size: 0.4rem;
+    font-weight: bold;
+    margin: 1em;
+}
+
+.typesel-container * {
+    justify-content: left !important;
+    font-size: inherit;
+    
+}
+
+label {
+    display: flex !important;
+    margin: 0.35rem;
+}
+
+.submit {
+    margin-left: 0.7rem;
+    font-size: 0.7rem;
+}
