@@ -4,7 +4,7 @@ form {
 
 .typesel-container {
     color: #fff;
-    font-size: 0.4rem;
+    font-size: 0.8rem;
     font-weight: bold;
     margin: 1em;
 }
@@ -15,12 +15,10 @@ form {
     
 }
 
-label {
-    display: flex !important;
-    margin: 0.35rem;
+.search-text-input, .submit {
+    font-size: 1.6rem;
 }
 
 .submit {
-    margin-left: 0.7rem;
-    font-size: 0.7rem;
+    margin-left: 1rem;
 }
