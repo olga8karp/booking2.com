@@ -1,0 +1,24 @@
+.container {
+    padding-top: 1em;
+}
+
+.jumbotron {
+    text-align: center;
+    padding-top: 0.7rem;
+}
+
+.carousel{
+    background: #2f4357;
+    margin-top: 20px;
+}
+
+.carousel-item{
+    text-align: center;
+    height: 500px;
+    min-height: 500px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+}
+
+.bs-example{
+    margin: 1rem auto;
+    width: 90%;
+}

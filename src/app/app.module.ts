@@ -8,6 +8,8 @@ import { SearchComponent } from './header/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { FooterComponent } from './footer/footer.component';
+import { PropertyComponent } from './property/property.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     SearchComponent,
     SearchResultsComponent,
-    FooterComponent
+    FooterComponent,
+    PropertyComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

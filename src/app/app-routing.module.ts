@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PropertyComponent } from './property/property.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'listings', component: SearchResultsComponent },
+  { path: 'details', component: PropertyComponent },
+  { path: '', redirectTo: '/listings', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
