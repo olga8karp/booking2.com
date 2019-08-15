@@ -10,6 +10,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { FooterComponent } from './footer/footer.component';
 import { PropertyComponent } from './property/property.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SearchPanelComponent } from './search-panel/search-panel.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     SearchResultsComponent,
     FooterComponent,
     PropertyComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SearchPanelComponent
   ],
   imports: [
     BrowserModule,

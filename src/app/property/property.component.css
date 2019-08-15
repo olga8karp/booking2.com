@@ -1,3 +1,7 @@
+.wrapper {
+    padding: 1rem;
+}
+
 .container {
     padding-top: 1em;
 }
@@ -15,10 +19,33 @@
 .carousel-item{
     text-align: center;
     height: 500px;
-    min-height: 500px; /* Prevent carousel from being distorted if for some reason image doesn't load */
+    min-height: 500px;
+    max-height: 500px;
 }
 
 .bs-example{
     margin: 1rem auto;
     width: 90%;
+}
+
+.list-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-group * {
+    margin: 5px;
+    width: fit-content;
+}
+
+@media only screen and (max-width: 700px) {
+    .list-group-container {
+        display: inline-block;
+    }
+
+    .list-group {
+        flex-direction: column;
+    }
 }
