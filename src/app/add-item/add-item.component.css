@@ -1,0 +1,10 @@
+.wrapper {
+    min-height: 81vh;
+    text-align: center;
+    min-width: 90vw;
+    width: 100%;
+}
+
+.input-wrapper {
+    margin: 1rem;
+}
