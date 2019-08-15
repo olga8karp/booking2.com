@@ -1,3 +1,7 @@
+label {
+    display: block;
+}
+
 .wrapper {
     min-height: 81vh;
     text-align: center;
@@ -5,6 +9,6 @@
     width: 100%;
 }
 
-.input-wrapper {
+.input-item {
     margin: 1rem;
 }
