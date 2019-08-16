@@ -12,6 +12,7 @@ import { PropertyComponent } from './property/property.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { AddItemComponent } from './add-item/add-item.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddItemComponent } from './add-item/add-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    GooglePlaceModule
   ],
   providers: [],
   bootstrap: [AppComponent]
