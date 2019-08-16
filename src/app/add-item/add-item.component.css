@@ -7,10 +7,10 @@ input:hover {
 }
 
 .wrapper {
+  display: block;
     min-height: 81vh;
     text-align: center;
-    min-width: 90vw;
-    width: 100%;
+    
 }
 
 .list-group {

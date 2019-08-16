@@ -1,124 +1,125 @@
 <form class="form-inline">
-    <div class="typesel-container">
-        <input class="form-control search-text-input" type="search" placeholder="Destination/Property"
-            aria-label="Search" style="font-size: 1.2rem">
+  <div class="typesel-container">
+    <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+      (onAddressChange)="handleAddressChange($event)" class="form-control search-text-input" type="search"
+      placeholder="Search" size="32" aria-label="Search" />
+  </div>
+  <div class="typesel-container">
+    <select class="form-control" id="sel1" value="2">
+      <option>1 guest</option>
+      <option selected>2 guests</option>
+      <option>3 guests</option>
+      <option>4 guests</option>
+      <option>5 guests</option>
+      <option>6 guests</option>
+      <option>7 guests</option>
+      <option>8 guests</option>
+      <option>9 guests</option>
+      <option>10 guests</option>
+      <option>11 guests</option>
+      <option>12 guests</option>
+      <option>13 guests</option>
+      <option>14 guests</option>
+      <option>15 guests</option>
+      <option>16 guests</option>
+      <option>17 guests</option>
+      <option>18 guests</option>
+      <option>19 guests</option>
+      <option>20 guests</option>
+    </select>
+  </div>
+  <div class="typesel-container">
+    <div class="checkbox">
+      <label><input type="checkbox" value="hotels">US$0 - US$56 per night</label>
     </div>
-    <div class="typesel-container">
-        <select class="form-control" id="sel1" value="2">
-            <option>1 guest</option>
-            <option selected>2 guests</option>
-            <option>3 guests</option>
-            <option>4 guests</option>
-            <option>5 guests</option>
-            <option>6 guests</option>
-            <option>7 guests</option>
-            <option>8 guests</option>
-            <option>9 guests</option>
-            <option>10 guests</option>
-            <option>11 guests</option>
-            <option>12 guests</option>
-            <option>13 guests</option>
-            <option>14 guests</option>
-            <option>15 guests</option>
-            <option>16 guests</option>
-            <option>17 guests</option>
-            <option>18 guests</option>
-            <option>19 guests</option>
-            <option>20 guests</option>
-        </select>
+    <div class="checkbox">
+      <label><input type="checkbox" value="villas">US$56 - US$110 per night</label>
     </div>
-    <div class="typesel-container">
-        <div class="checkbox">
-            <label><input type="checkbox" value="hotels">US$0 - US$56 per night</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="villas">US$56 - US$110 per night</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">US$110 - US$160 per night</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">US$160 - US$220 per night</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">US$220 + per night</label>
-        </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">US$110 - US$160 per night</label>
     </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">US$160 - US$220 per night</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">US$220 + per night</label>
+    </div>
+  </div>
 
+  <div class="typesel-container">
+    <div class="checkbox">
+      <label><input type="checkbox" value="hotels">Hotels</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="villas">Villas</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Appartments</label>
+    </div>
+  </div>
+  <div class="typesel-container">
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Unrated</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="hotels">1 star</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="villas">2 stars</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">3 stars</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">4 stars</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">5 stars</label>
+    </div>
+  </div>
+  <div class="typesel-container">
+    <div class="checkbox">
+      <label><input type="checkbox" value="hotels">Restaurant</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="villas">Parking</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Pet friendly</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Fitness center</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Swimming pool</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Electric vehicle charging station</label>
+    </div>
+  </div>
+  <div class="typesel-container">
+    <div class="checkbox">
+      <label><input type="checkbox" value="hotels">Breakfast Included</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="villas">Breakfast & lunch included</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Breakfast & dinner included</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="appartments">Kitchen facilities</label>
+    </div>
+  </div>
+  <div style="width: 100%; text-align: center">
     <div class="typesel-container">
-        <div class="checkbox">
-            <label><input type="checkbox" value="hotels">Hotels</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="villas">Villas</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Appartments</label>
-        </div>
+      <input type="date" name="dateofbirth" id="dateofbirth" style="font-size: initial; width: 9em; color: #444">
     </div>
     <div class="typesel-container">
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Unrated</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="hotels">1 star</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="villas">2 stars</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">3 stars</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">4 stars</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">5 stars</label>
-        </div>
+      <input type="date" name="dateofbirth" id="dateofbirth" style="font-size: initial; width: 9rem; color: #444">
     </div>
-    <div class="typesel-container">
-        <div class="checkbox">
-            <label><input type="checkbox" value="hotels">Restaurant</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="villas">Parking</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Pet friendly</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Fitness center</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Swimming pool</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Electric vehicle charging station</label>
-        </div>
-    </div>
-    <div class="typesel-container">
-        <div class="checkbox">
-            <label><input type="checkbox" value="hotels">Breakfast Included</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="villas">Breakfast & lunch included</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Breakfast & dinner included</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="appartments">Kitchen facilities</label>
-        </div>
-    </div>
-    <div style="width: 100%; text-align: center">
-        <div class="typesel-container">
-            <input type="date" name="dateofbirth" id="dateofbirth" style="font-size: initial; width: 9em; color: #444">
-        </div>
-        <div class="typesel-container">
-            <input type="date" name="dateofbirth" id="dateofbirth" style="font-size: initial; width: 9rem; color: #444">
-        </div>
-    </div>
-    <div style="width: 100%; text-align: center; margin-top: 1rem;">
-        <button class="btn bg-warning submit" type="submit" style="margin: 1rem auto">Search</button>
-    </div>
+  </div>
+  <div style="width: 100%; text-align: center; margin-top: 1rem;">
+    <button class="btn btn-primary submit" type="submit" style="margin: 1rem auto">Search</button>
+  </div>
 </form>

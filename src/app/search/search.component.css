@@ -3,7 +3,6 @@ label {
   }
 
 .typesel-container {
-    color: #fff;
     font-size: 0.8rem;
     font-weight: bold;
     margin: 1em;
@@ -12,7 +11,7 @@ label {
 .typesel-container * {
     justify-content: left !important;
     font-size: inherit;
-    
+
 }
 
 .search-text-input, .submit {
