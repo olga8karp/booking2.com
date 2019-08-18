@@ -2,8 +2,16 @@
   <div class="typesel-container">
     <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
       (onAddressChange)="handleAddressChange($event)" class="form-control search-text-input" type="search"
-      placeholder="Search" size="32" aria-label="Search" />
+      placeholder="Search" size="25" />
   </div>
+
+    <div class="typesel-container">
+      <input type="date" name="dateofbirth" id="dateofbirth" style="color: #444;">
+    </div>
+    <div class="typesel-container">
+      <input type="date" name="dateofbirth" id="dateofbirth" style="color: #444;">
+    </div>
+
   <div class="typesel-container">
     <select class="form-control" id="sel1" value="2">
       <option>1 guest</option>
@@ -111,15 +119,7 @@
       <label><input type="checkbox" value="appartments">Kitchen facilities</label>
     </div>
   </div>
-  <div style="width: 100%; text-align: center">
-    <div class="typesel-container">
-      <input type="date" name="dateofbirth" id="dateofbirth" style="font-size: initial; width: 9em; color: #444">
-    </div>
-    <div class="typesel-container">
-      <input type="date" name="dateofbirth" id="dateofbirth" style="font-size: initial; width: 9rem; color: #444">
-    </div>
-  </div>
-  <div style="width: 100%; text-align: center; margin-top: 1rem;">
+  <div style="width: 100%; text-align: center;">
     <button class="btn btn-primary submit" type="submit" style="margin: 1rem auto">Search</button>
   </div>
 </form>

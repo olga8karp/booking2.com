@@ -10,7 +10,5 @@ export class SearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {}
-    onAddressChange(event) {
-      console.log(event);
-    }
 }
+
