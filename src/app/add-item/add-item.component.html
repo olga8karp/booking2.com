@@ -1,4 +1,4 @@
-<div class="jumbotron bg-white wrapper">
+<div class="jumbotron bg-white">
   <h1 class="font-weight-bold">Property details</h1>
   <p class="text-primary font-weight-bold">Please provide detailed information about your property</p>
   <br>
@@ -59,7 +59,7 @@
         <label for="country" class="font-weight-bold"> Address </label>
         <small>Do not forget to indicate your building/appartment number </small>
         <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-          (onAddressChange)="handleAddressChange($event)" size="50" />
+          (onAddressChange)="handleAddressChange($event)" size="45" />
         <ul *ngIf="address.length" class="list-group">
           <li *ngFor="let item of address" class="list-group-item">{{ item.long_name }}</li>
         </ul>

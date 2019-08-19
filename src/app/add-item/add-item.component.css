@@ -6,12 +6,10 @@ input:hover {
     cursor: pointer;
 }
 
-.wrapper {
-  display: block;
+.jumbotron {
     min-height: 81vh;
-    text-align: center;
-    
-}
+    text-align: center; 
+  }
 
 .list-group {
     width: 20rem;

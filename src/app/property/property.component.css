@@ -22,9 +22,11 @@
     margin: 5px;
     width: fit-content;
 }
-
-.picsum-img-wrapper {
+.carousel-container, .picsum-img-wrapper  {
     height: 30rem;
+    width: 60rem;
+    margin: 0 auto;
+
 }
 
 @media only screen and (max-width: 700px) {
@@ -34,5 +36,9 @@
 
     .list-group {
         flex-direction: column;
+    }
+
+    .carousel-container, .picsum-img-wrapper {
+        width: 100%;
     }
 }
