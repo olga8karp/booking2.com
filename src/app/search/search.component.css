@@ -2,20 +2,20 @@ label {
     display: block;
   }
 
-.typesel-container {
+.input-wrapper {
     font-size: 0.8rem;
     font-weight: bold;
     margin: 1em;
 }
 
-.typesel-container * {
+.input-wrapper * {
     justify-content: left !important;
     font-size: inherit;
 
 }
 
 .submit {
-    margin-left: 1rem;
+    margin: 1rem auto;
 }
 
 .custom-day {

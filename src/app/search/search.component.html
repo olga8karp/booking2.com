@@ -1,133 +1,131 @@
-<form class="form-inline">
-  <div class="typesel-container">
+<form class="form-inline" (ngSubmit)="search($event)" #f="ngForm">
+  <div class="input-wrapper">
     <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-      (onAddressChange)="handleAddressChange($event)" class="form-control search-text-input" type="search"
-      placeholder="Search" size="28"/>
+      class="form-control search-text-input" type="search"
+      placeholder="Search" size="28" name="location" ngModel required/>
   </div>
 
-    <div class="typesel-container">
-        <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t" outsideDays="visible" style="background-color: #fff">
-          </ngb-datepicker>
-          
-          <ng-template #t let-date let-focused="focused">
-            <span class="custom-day"
-                  [class.focused]="focused"
-                  [class.range]="isRange(date)"
-                  [class.faded]="isHovered(date) || isInside(date)"
-                  (mouseenter)="hoveredDate = date"
-                  (mouseleave)="hoveredDate = null">
-              {{ date.day }}
-            </span>
-          </ng-template>
-    </div>
-  <div class="typesel-container">
-    <select class="form-control" id="sel1" value="2">
-      <option>1 guest</option>
-      <option selected>2 guests</option>
-      <option>3 guests</option>
-      <option>4 guests</option>
-      <option>5 guests</option>
-      <option>6 guests</option>
-      <option>7 guests</option>
-      <option>8 guests</option>
-      <option>9 guests</option>
-      <option>10 guests</option>
-      <option>11 guests</option>
-      <option>12 guests</option>
-      <option>13 guests</option>
-      <option>14 guests</option>
-      <option>15 guests</option>
-      <option>16 guests</option>
-      <option>17 guests</option>
-      <option>18 guests</option>
-      <option>19 guests</option>
-      <option>20 guests</option>
+  <div class="input-wrapper">
+    <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t" outsideDays="visible"
+      style="background-color: #fff" name="date" ngModel>
+    </ngb-datepicker>
+
+    <ng-template #t let-date let-focused="focused">
+      <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+        {{ date.day }}
+      </span>
+    </ng-template>
+  </div>
+  <div class="input-wrapper">
+    <select class="form-control" name="numberOfGuests" [(ngModel)]="numberOfGuests">
+      <option value="1 guest">1 guest</option>
+      <option value="2 guests">2 guests</option>
+      <option value="3 guests">3 guests</option>
+      <option value="4 guests">4 guests</option>
+      <option value="5 guests">5 guests</option>
+      <option value="6 guests">6 guests</option>
+      <option value="7 guests">7 guests</option>
+      <option value="8 guests">8 guests</option>
+      <option value="9 guests">9 guests</option>
+      <option value="10 guests">10 guests</option>
+      <option value="11 guests">11 guests</option>
+      <option value="12 guests">12 guests</option>
+      <option value="13 guests">13 guests</option>
+      <option value="14 guests">14 guests</option>
+      <option value="15 guests">15 guests</option>
+      <option value="16 guests">16 guests</option>
+      <option value="17 guests">17 guests</option>
+      <option value="18 guests">18 guests</option>
+      <option value="19 guests">19 guests</option>
+      <option value="20 guests">20 guests</option>
     </select>
   </div>
-  <div class="typesel-container">
+  <div class="input-wrapper">
     <div class="checkbox">
-      <label><input type="checkbox" value="hotels">US$0 - US$56 per night</label>
+      <label><input type="checkbox" value="price:0-56" name="price:0-56" ngModel>US$0 - US$56 per night</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="villas">US$56 - US$110 per night</label>
+      <label><input type="checkbox" value="price:56-110" name="price:56-110" ngModel>US$56 - US$110 per night</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">US$110 - US$160 per night</label>
+      <label><input type="checkbox" value="price:110-160" name="price:110-160" ngModel>US$110 - US$160 per night</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">US$160 - US$220 per night</label>
+      <label><input type="checkbox" value="price:160-220" name="price:160-220" ngModel>US$160 - US$220 per night</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">US$220 + per night</label>
+      <label><input type="checkbox" value="price:220+" name="price:220+" ngModel>US$220 + per night</label>
     </div>
   </div>
 
-  <div class="typesel-container">
+  <div class="input-wrapper">
     <div class="checkbox">
-      <label><input type="checkbox" value="hotels">Hotels</label>
+      <label><input type="checkbox" value="hotels" name="hotels" ngModel>Hotels</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="villas">Villas</label>
+      <label><input type="checkbox" value="villas" name="villas" ngModel>Villas</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Appartments</label>
-    </div>
-  </div>
-  <div class="typesel-container">
-    <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Unrated</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="hotels">1 star</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="villas">2 stars</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="appartments">3 stars</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="appartments">4 stars</label>
-    </div>
-    <div class="checkbox">
-      <label><input type="checkbox" value="appartments">5 stars</label>
+      <label><input type="checkbox" value="appartments" name="appartments" ngModel>Appartments</label>
     </div>
   </div>
-  <div class="typesel-container">
+  <div class="input-wrapper">
     <div class="checkbox">
-      <label><input type="checkbox" value="hotels">Restaurant</label>
+      <label><input type="checkbox" value="unrated" name="unrated" ngModel>Unrated</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="villas">Parking</label>
+      <label><input type="checkbox" value="1star" name="1star" ngModel>1 star</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Pet friendly</label>
+      <label><input type="checkbox" value="2stars" name="2stars" ngModel>2 stars</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Fitness center</label>
+      <label><input type="checkbox" value="3stars" name="3stars" ngModel>3 stars</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Swimming pool</label>
+      <label><input type="checkbox" value="4stars" name="4stars" ngModel>4 stars</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Electric vehicle charging station</label>
+      <label><input type="checkbox" value="5stars" name="5stars" ngModel>5 stars</label>
     </div>
   </div>
-  <div class="typesel-container">
+  <div class="input-wrapper">
     <div class="checkbox">
-      <label><input type="checkbox" value="hotels">Breakfast Included</label>
+      <label><input type="checkbox" value="restaurant" name="restaurant" ngModel>Restaurant</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="villas">Breakfast & lunch included</label>
+      <label><input type="checkbox" value="parking" name="parking" ngModel>Parking</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Breakfast & dinner included</label>
+      <label><input type="checkbox" value="pet-friendly" name="pet-friendly" ngModel>Pet friendly</label>
     </div>
     <div class="checkbox">
-      <label><input type="checkbox" value="appartments">Kitchen facilities</label>
+      <label><input type="checkbox" value="fitness-center" name="fitness-center" ngModel>Fitness center</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="swimming-pool" name="swimming-pool" ngModel>Swimming pool</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="electric-vehicle-charging-station" name="electric-vehicle-charging-station" ngModel>Electric vehicle charging station</label>
+    </div>
+  </div>
+  <div class="input-wrapper">
+    <div class="checkbox">
+      <label><input type="checkbox" value="hotels" name="hotels" ngModel>Breakfast Included</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="breakfast&lunch" name="breakfast&lunch" ngModel>Breakfast & lunch included</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="breakfast&dinner" name="breakfast&dinner" ngModel>Breakfast & dinner included</label>
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox" value="kitchen" name="kitchen" ngModel>Kitchen facilities</label>
     </div>
   </div>
   <div style="width: 100%; text-align: center;">
-    <button class="btn btn-primary submit" type="submit" style="margin: 1rem auto">Search</button>
+    <button class="btn btn-primary submit" type="submit">Search</button>
   </div>
 </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,8 +8,8 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 })
 export class SearchComponent {
 
+  numberOfGuests = '2 guests';
   hoveredDate: NgbDate;
-
   fromDate: NgbDate;
   toDate: NgbDate;
 
@@ -42,6 +42,10 @@ export class SearchComponent {
 
   isRange(date: NgbDate) {
     return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
+  }
+
+  search($event) {
+    console.log($event);
   }
 }
 
