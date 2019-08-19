@@ -27,8 +27,9 @@ export class SearchComponent {
       this.toDate = null;
       this.fromDate = date;
     }
-
-    console.log(date);
+    if (this.fromDate && this.toDate) {
+      console.log(JSON.stringify(this.fromDate) + ' ' + JSON.stringify(this.toDate));
+    }
   }
 
   isHovered(date: NgbDate) {
