@@ -11,23 +11,6 @@
     padding-top: 0.7rem;
 }
 
-.carousel{
-    background: #2f4357;
-    margin-top: 20px;
-}
-
-.carousel-item{
-    text-align: center;
-    height: 500px;
-    min-height: 500px;
-    max-height: 500px;
-}
-
-.bs-example{
-    margin: 1rem auto;
-    width: 90%;
-}
-
 .list-group {
     display: flex;
     flex-direction: row;
@@ -38,6 +21,10 @@
 .list-group * {
     margin: 5px;
     width: fit-content;
+}
+
+.picsum-img-wrapper {
+    height: 30rem;
 }
 
 @media only screen and (max-width: 700px) {

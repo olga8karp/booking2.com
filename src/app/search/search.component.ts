@@ -12,3 +12,4 @@ export class SearchComponent implements OnInit {
   ngOnInit() {}
   onAddressChange() {}
 }
+
