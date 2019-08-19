@@ -1,7 +1,8 @@
 <form class="form-inline">
     <div class="typesel-container">
         <input class="form-control search-text-input" type="search" placeholder="Destination/Property"
-            aria-label="Search" style="font-size: 1.2rem">
+            aria-label="Search" style="font-size: 1.2rem" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+            (onAddressChange)="handleAddressChange($event)">
     </div>
     <div class="typesel-container">
         <select class="form-control" id="sel1" value="2">
