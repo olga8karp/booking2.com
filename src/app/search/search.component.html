@@ -2,10 +2,10 @@
   <div class="typesel-container">
     <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
       (onAddressChange)="handleAddressChange($event)" class="form-control search-text-input" type="search"
-      placeholder="Search" size="26"/>
+      placeholder="Search" size="28"/>
   </div>
 
-    <div class="typesel-container calendar">
+    <div class="typesel-container">
         <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t" outsideDays="visible" style="background-color: #fff">
           </ngb-datepicker>
           
@@ -20,7 +20,6 @@
             </span>
           </ng-template>
     </div>
-
   <div class="typesel-container">
     <select class="form-control" id="sel1" value="2">
       <option>1 guest</option>
