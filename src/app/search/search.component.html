@@ -2,14 +2,23 @@
   <div class="typesel-container">
     <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
       (onAddressChange)="handleAddressChange($event)" class="form-control search-text-input" type="search"
-      placeholder="Search" size="25" />
+      placeholder="Search" size="26"/>
   </div>
 
-    <div class="typesel-container">
-      <input type="date" name="dateofbirth" id="dateofbirth" style="color: #444;">
-    </div>
-    <div class="typesel-container">
-      <input type="date" name="dateofbirth" id="dateofbirth" style="color: #444;">
+    <div class="typesel-container calendar">
+        <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t" outsideDays="visible" style="background-color: #fff">
+          </ngb-datepicker>
+          
+          <ng-template #t let-date let-focused="focused">
+            <span class="custom-day"
+                  [class.focused]="focused"
+                  [class.range]="isRange(date)"
+                  [class.faded]="isHovered(date) || isInside(date)"
+                  (mouseenter)="hoveredDate = date"
+                  (mouseleave)="hoveredDate = null">
+              {{ date.day }}
+            </span>
+          </ng-template>
     </div>
 
   <div class="typesel-container">
