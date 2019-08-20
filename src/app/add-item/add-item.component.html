@@ -4,7 +4,6 @@
   <br>
 
   <form (ngSubmit)="formSubmit($event)">
-
     <fieldset class="form-group">
       <legend> Property type </legend>
       <div class="form-check form-check-inline">
@@ -80,7 +79,8 @@
 
     <fieldset class="form-group">
       <label for="number-of-guests" class="font-weight-bold"> How many people can stay?</label>
-      <select class="form-control" name="numberOfGuests" [(ngModel)]="numberOfGuests" class="number-of-guests-input" id="number-of-guests">
+      <select class="form-control" name="numberOfGuests" [(ngModel)]="numberOfGuests" class="number-of-guests-input"
+        id="number-of-guests">
         <option value="1">1 guest</option>
         <option value="2">2 guests</option>
         <option value="3">3 guests</option>
@@ -159,18 +159,17 @@
     </fieldset>
 
     <fieldset class="form-group">
-        <legend>Please upload good quality pictures of your property </legend>
-        <input type="file" class="form-control-file file-input">
-        <input type="file" class="form-control-file file-input">
-        <input type="file" class="form-control-file file-input">
-        <input type="file" class="form-control-file file-input">
-        <input type="file" class="form-control-file file-input">
+      <legend>Please upload good quality pictures of your property </legend>
+      <input type="file" class="form-control-file file-input">
+      <input type="file" class="form-control-file file-input">
+      <input type="file" class="form-control-file file-input">
+      <input type="file" class="form-control-file file-input">
+      <input type="file" class="form-control-file file-input">
     </fieldset>
 
     <fieldset class="form-group">
       <label for="price" class="font-weight-bold"> Price per night (USD) </label>
-      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control"
-        style="width: 6em; margin: 0 auto" />
+      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input" />
     </fieldset>
 
     <button type="submit" class="btn btn-primary font-weight-bold">Submit</button>
