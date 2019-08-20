@@ -11,6 +11,11 @@ declare var google: any;
 
 export class AddItemComponent implements OnInit {
   address = [];
+  // setting default values
+  propertyType = 'hotel';
+  propertyRating = 'unrated';
+  numberOfGuests = '2';
+  price = '0';
 
   constructor() { }
 
@@ -19,5 +24,9 @@ export class AddItemComponent implements OnInit {
   handleAddressChange($event) {
     this.address = $event.address_components;
     console.log(this.address);
+  }
+
+  formSubmit($event) {
+    console.log($event);
   }
 }

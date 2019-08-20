@@ -2,124 +2,177 @@
   <h1 class="font-weight-bold">Property details</h1>
   <p class="text-primary font-weight-bold">Please provide detailed information about your property</p>
   <br>
-  <form>
-    <div>
-      <div class="input-item">
-        <label for="meals" class="font-weight-bold"> Property type </label>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio1">
-            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Hotel
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio2">
-            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Villa
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio2">
-            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">Appartment
-          </label>
-        </div>
-      </div>
-      <div class="input-item">
-        <label for="meals" class="font-weight-bold"> Rating </label>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio1">
-            <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>Unrated
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio2">
-            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">1 star
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio2">
-            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">2 stars
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio2">
-            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">3 stars
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio2">
-            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">4 stars
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <label class="form-check-label" for="radio2">
-            <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">5 stars
-          </label>
-        </div>
-      </div>
-      <div class="input-item">
-        <label for="country" class="font-weight-bold"> Address </label>
-        <small>Do not forget to indicate your building/appartment number </small>
-        <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-          (onAddressChange)="handleAddressChange($event)" size="45" />
-        <ul *ngIf="address.length" class="list-group">
-          <li *ngFor="let item of address" class="list-group-item">{{ item.long_name }}</li>
-        </ul>
-      </div>
-      <div class="input-item">
-          <label for="guests-number" class="font-weight-bold"> How many people can stay?</label>
-          <input type="number" min="1" max="30" value="2" size="2" />
-        </div>
-      <div class="input-item">
-        <label for="meals" class="font-weight-bold"> Do you provide meals for your guests? </label>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Breakfast included</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Breakfast & lunch included </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Breakfast & dinner included</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Kitchen facilities</label>
-        </div>
-      </div>
-      <div class="input-item">
-        <label for="facilities" class="font-weight-bold"> What else can guests expect at your place? </label>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-          <label class="form-check-label" for="inlineCheckbox1">Restaurant</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Parking</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Pet friendly</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Fitness center</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Swimming pool</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-          <label class="form-check-label" for="inlineCheckbox2">Electric vehicle charging station</label>
-        </div>
-      </div>
-      <div class="input-item">
-        <label for="guests-number" class="font-weight-bold"> Price per night (USD)</label>
-        <input type="number" min="1" />
-      </div>
 
-    </div>
+  <form (ngSubmit)="formSubmit($event)">
+
+    <fieldset class="form-group">
+      <legend> Property type </legend>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="hotel">
+          <input type="radio" class="form-check-input" id="hotel" name="propertyType" value="hotel"
+            [(ngModel)]="propertyType">Hotel
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="villa">
+          <input type="radio" class="form-check-input" id="villa" name="propertyType" value="villa"
+            [(ngModel)]="propertyType">Villa
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="appartment">
+          <input type="radio" class="form-check-input" id="appartment" name="propertyType" value="appartment"
+            [(ngModel)]="propertyType">Appartment
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <legend> Rating </legend>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="unrated">
+          <input type="radio" class="form-check-input" id="unrated" name="propertyRating" value="unrated"
+            [(ngModel)]="propertyRating">Unrated
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="1-star">
+          <input type="radio" class="form-check-input" id="1-star" name="propertyRating" value="1star"
+            [(ngModel)]="propertyRating">1 star
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="2-stars">
+          <input type="radio" class="form-check-input" id="2-stars" name="propertyRating" value="2stars"
+            [(ngModel)]="propertyRating">2 stars
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="3-stars">
+          <input type="radio" class="form-check-input" id="3-stars" name="propertyRating" value="3stars"
+            [(ngModel)]="propertyRating">3 stars
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="4-stars">
+          <input type="radio" class="form-check-input" id="4-stars" name="propertyRating" value="4stars"
+            [(ngModel)]="propertyRating">4 stars
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label" for="5-stars">
+          <input type="radio" class="form-check-input" id="5-stars" name="propertyRating" value="5stars"
+            [(ngModel)]="propertyRating">5 stars
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="address" class="font-weight-bold"> Address </label>
+      <small>Do not forget to indicate your building/appartment number </small>
+      <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
+        (onAddressChange)="handleAddressChange($event)" name="address" id="address"
+        class="form-control search-text-input" ngModel required />
+      <ul *ngIf="address.length" class="list-group">
+        <li *ngFor="let item of address" class="list-group-item">{{ item.long_name }}</li>
+      </ul>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="number-of-guests" class="font-weight-bold"> How many people can stay?</label>
+      <select class="form-control" name="numberOfGuests" [(ngModel)]="numberOfGuests" class="number-of-guests-input" id="number-of-guests">
+        <option value="1">1 guest</option>
+        <option value="2">2 guests</option>
+        <option value="3">3 guests</option>
+        <option value="4">4 guests</option>
+        <option value="5">5 guests</option>
+        <option value="6">6 guests</option>
+        <option value="7">7 guests</option>
+        <option value="8">8 guests</option>
+        <option value="9">9 guests</option>
+        <option value="10">10 guests</option>
+        <option value="11">11 guests</option>
+        <option value="12">12 guests</option>
+        <option value="13">13 guests</option>
+        <option value="14">14 guests</option>
+        <option value="15">15 guests</option>
+        <option value="16">16 guests</option>
+        <option value="17">17 guests</option>
+        <option value="18">18 guests</option>
+        <option value="19">19 guests</option>
+        <option value="20">20 guests</option>
+      </select>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <legend> Do you provide meals for your guests? </legend>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="breakfast" value="breakfast" name="meals" ngModel>
+        <label class="form-check-label" for="breakfast">Breakfast included</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="breakfast-and-lunch" value="breakfast&lunch" name="meals"
+          ngModel>
+        <label class="form-check-label" for="breakfast-and-lunch">Breakfast & lunch included </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="breakfast-and-dinner" value="breakfast&dinner" name="meals"
+          ngModel>
+        <label class="form-check-label" for="breakfast-and-dinner">Breakfast & dinner included</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="kitchen" value="kitchen" name="meals" ngModel>
+        <label class="form-check-label" for="kitchen">Kitchen facilities</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <legend> What else can guests expect at your place? </legend>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="restaurant" name="restaurant" value="restaurant" ngModel>
+        <label class="form-check-label" for="restaurant">Restaurant</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="parking" name="parking" value="parking" ngModel>
+        <label class="form-check-label" for="parking">Parking</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="pet-friendly" name="petFriendly" value="petFriendly"
+          ngModel>
+        <label class="form-check-label" for="pet-friendly">Pet friendly</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="fitness-center" name="fitnessCenter" value="fitnessCenter"
+          ngModel>
+        <label class="form-check-label" for="fitness-center">Fitness center</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="swimming-pool" name="swimmingPool" value="swimmingPool"
+          ngModel>
+        <label class="form-check-label" for="swimming-pool">Swimming pool</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="charging-station" name="chargingStation"
+          value="chargingStation" ngModel>
+        <label class="form-check-label" for="charging-station">Electric vehicle charging station</label>
+      </div>
+    </fieldset>
+
+    <fieldset class="form-group">
+        <legend>Please upload good quality pictures of your property </legend>
+        <input type="file" class="form-control-file file-input">
+        <input type="file" class="form-control-file file-input">
+        <input type="file" class="form-control-file file-input">
+        <input type="file" class="form-control-file file-input">
+        <input type="file" class="form-control-file file-input">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="price" class="font-weight-bold"> Price per night (USD) </label>
+      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control"
+        style="width: 6em; margin: 0 auto" />
+    </fieldset>
+
     <button type="submit" class="btn btn-primary font-weight-bold">Submit</button>
   </form>
 </div>

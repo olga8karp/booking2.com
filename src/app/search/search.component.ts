@@ -8,7 +8,7 @@ import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 })
 export class SearchComponent {
 
-  numberOfGuests = '2 guests';
+  numberOfGuests = '2';
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;

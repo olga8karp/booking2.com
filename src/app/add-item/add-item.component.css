@@ -2,8 +2,9 @@ label, small {
     display: block;
 }
 
-input:hover {
-    cursor: pointer;
+legend {
+    font-weight: bold;
+    font-size: 1rem;
 }
 
 .jumbotron {
@@ -18,4 +19,25 @@ input:hover {
 
 .input-item {
     margin-bottom: 2rem;
+}
+
+.search-text-input {
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.form-control-file {
+    width: 30rem; 
+    margin: 0 auto; 
+    margin-bottom: 5px;
+}
+
+.number-of-guests-input {
+    width: fit-content; 
+    margin: 0 auto;
+}
+
+.price-input {
+    width: 6rem; 
+    margin: 0 auto;
 }
