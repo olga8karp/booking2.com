@@ -1,114 +1,46 @@
-<div class="card-columns p-3">
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
+<div class="card-columns">
+    <div class="card" *ngFor="let property of properties">
+        <div class="card">
+            <img class="card-img-top" [src]="property.file1" alt="property picture">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{ property.name }}</h5>
+                <p> <img src="../assets/images/location.png"> <span class="address"
+                        *ngFor="let name of property.address"> {{ name.long_name }} </span></p>
+                <div class="wrapper">
+                    <div class="list-group-container">
+                        <ul class="list-group">
+                            <li class="list-group-item bg-warning" *ngIf="property.breakfast">breakfast included</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.lunch">lunch included</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.dinner">dinner included</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.kitchen">kitchen facilities</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.chargingStation">electric vehicle charging station</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.fitnessCenter">fitness center</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.parking">parking included</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.petFriendly">pet friendly</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.restaurant">restaurant</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.restaurant">swimming pool</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary font-weight-bold card-body-button"
+                        routerLink="/details">More info</button>
+                </div>
 
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg"
-            alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title that wraps to a new line</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
-            <button type="button" class="btn btn-primary font-weight-bold" routerLink="/details">More info</button>
-
+            </div>
         </div>
     </div>
 </div>
 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end" style="margin-right: 1rem">
-      <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-      </li>
-  </ul>
+    <ul class="pagination justify-content-end" style="margin-right: 1rem">
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
 </nav>

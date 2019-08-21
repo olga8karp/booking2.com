@@ -4,6 +4,13 @@
   <br>
 
   <form (ngSubmit)="formSubmit(addPropertyForm)" #addPropertyForm="ngForm">
+
+    <fieldset class="form-group">
+      <label for="name" class="font-weight-bold"> Name </label>
+      <small> Please give your property an attractive name </small>
+      <input placeholder="Enter a name" name="name" id="name" class="form-control search-text-input" ngModel required />
+    </fieldset>
+
     <fieldset class="form-group">
       <legend> Property type </legend>
       <div class="form-check form-check-inline">
@@ -167,7 +174,8 @@
 
     <fieldset class="form-group">
       <label for="price" class="font-weight-bold" required> Price per night (USD) </label>
-      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input" pattern="^[1-9]+[0-9]*$" />
+      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input"
+        pattern="^[1-9]+[0-9]*$" />
     </fieldset>
 
     <button type="submit" class="btn btn-primary font-weight-bold" [disabled]="!addPropertyForm.valid">Submit</button>

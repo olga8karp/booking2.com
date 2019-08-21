@@ -1,0 +1,31 @@
+.card-columns {
+    padding: 1rem;
+}
+
+.card {
+    height: 33rem;
+    font-size: 0.8rem;
+}
+
+.card-img-top {
+    max-height: 15rem;
+}
+
+.list-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-group * {
+    margin: 5px;
+    width: fit-content;
+    padding: 3px;
+}
+
+.card-body-button {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
