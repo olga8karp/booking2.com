@@ -17,6 +17,7 @@ export class AddItemComponent implements OnInit {
   propertyRating = 'unrated';
   numberOfGuests = '2';
   price = '0';
+  meals = '';
 
   constructor() { }
 

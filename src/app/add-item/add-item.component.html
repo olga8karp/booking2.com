@@ -27,7 +27,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-      <legend> Rating </legend>
+      <legend> Rating (if any) </legend>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="unrated">
           <input type="radio" class="form-check-input" id="unrated" name="propertyRating" value="unrated"
@@ -36,31 +36,31 @@
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="1-star">
-          <input type="radio" class="form-check-input" id="1-star" name="propertyRating" value="1star"
+          <input type="radio" class="form-check-input" id="1-star" name="propertyRating" value="1"
             [(ngModel)]="propertyRating">1 star
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="2-stars">
-          <input type="radio" class="form-check-input" id="2-stars" name="propertyRating" value="2stars"
+          <input type="radio" class="form-check-input" id="2-stars" name="propertyRating" value="2"
             [(ngModel)]="propertyRating">2 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="3-stars">
-          <input type="radio" class="form-check-input" id="3-stars" name="propertyRating" value="3stars"
+          <input type="radio" class="form-check-input" id="3-stars" name="propertyRating" value="3"
             [(ngModel)]="propertyRating">3 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="4-stars">
-          <input type="radio" class="form-check-input" id="4-stars" name="propertyRating" value="4stars"
+          <input type="radio" class="form-check-input" id="4-stars" name="propertyRating" value="4"
             [(ngModel)]="propertyRating">4 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="5-stars">
-          <input type="radio" class="form-check-input" id="5-stars" name="propertyRating" value="5stars"
+          <input type="radio" class="form-check-input" id="5-stars" name="propertyRating" value="5"
             [(ngModel)]="propertyRating">5 stars
         </label>
       </div>
@@ -107,21 +107,19 @@
     <fieldset class="form-group">
       <legend> Do you provide meals for your guests? </legend>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="breakfast" value="breakfast" name="meals" ngModel>
+        <input class="form-check-input" type="checkbox" id="breakfast" value="breakfast" name="breakfast" ngModel>
         <label class="form-check-label" for="breakfast">Breakfast included</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="breakfast-and-lunch" value="breakfast&lunch" name="meals"
-          ngModel>
-        <label class="form-check-label" for="breakfast-and-lunch">Breakfast & lunch included </label>
+        <input class="form-check-input" type="checkbox" id="lunch" value="lunch" name="lunch" ngModel>
+        <label class="form-check-label" for="lunch">Lunch included </label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="breakfast-and-dinner" value="breakfast&dinner" name="meals"
-          ngModel>
-        <label class="form-check-label" for="breakfast-and-dinner">Breakfast & dinner included</label>
+        <input class="form-check-input" type="checkbox" id="dinner" value="dinner" name="dinner" ngModel>
+        <label class="form-check-label" for="dinner">Dinner included</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="kitchen" value="kitchen" name="meals" ngModel>
+        <input class="form-check-input" type="checkbox" id="kitchen" value="kitchen" name="kitchen" ngModel>
         <label class="form-check-label" for="kitchen">Kitchen facilities</label>
       </div>
     </fieldset>
@@ -159,8 +157,8 @@
     </fieldset>
 
     <fieldset class="form-group">
-      <legend>Please upload good quality pictures of your property </legend>
-      <input type="file" name="file1" class="form-control-file file-input" ngModel>
+      <legend>Please upload good quality pictures of your property (at least 1) </legend>
+      <input type="file" name="file1" class="form-control-file file-input" ngModel required>
       <input type="file" name="file2" class="form-control-file file-input" ngModel>
       <input type="file" name="file3" class="form-control-file file-input" ngModel>
       <input type="file" name="file4" class="form-control-file file-input" ngModel>
@@ -168,10 +166,10 @@
     </fieldset>
 
     <fieldset class="form-group">
-      <label for="price" class="font-weight-bold"> Price per night (USD) </label>
-      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input" />
+      <label for="price" class="font-weight-bold" required> Price per night (USD) </label>
+      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input" pattern="^[1-9]+[0-9]*$" />
     </fieldset>
 
-    <button type="submit" class="btn btn-primary font-weight-bold">Submit</button>
+    <button type="submit" class="btn btn-primary font-weight-bold" [disabled]="!addPropertyForm.valid">Submit</button>
   </form>
 </div>
