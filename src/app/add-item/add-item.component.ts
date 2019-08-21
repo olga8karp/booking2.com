@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 
 declare var google: any;
@@ -23,10 +24,10 @@ export class AddItemComponent implements OnInit {
 
   handleAddressChange($event) {
     this.address = $event.address_components;
-    console.log(this.address);
   }
 
-  formSubmit($event) {
-    console.log($event);
+  formSubmit(form: NgForm) {
+    form.value.address = this.address;
+    console.log(form.value);
   }
 }

@@ -3,7 +3,7 @@
   <p class="text-primary font-weight-bold">Please provide detailed information about your property</p>
   <br>
 
-  <form (ngSubmit)="formSubmit($event)">
+  <form (ngSubmit)="formSubmit(addPropertyForm)" #addPropertyForm="ngForm">
     <fieldset class="form-group">
       <legend> Property type </legend>
       <div class="form-check form-check-inline">
