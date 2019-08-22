@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Property } from '../property.model';
-import { PropertiesService } from '../properties.service';
+
+import { Property } from '../shared/property.model';
+import { DataStorageService } from '../shared/data-storage.service';
+
 
 @Component({
   selector: 'app-search-results',
@@ -10,10 +12,10 @@ import { PropertiesService } from '../properties.service';
 export class SearchResultsComponent implements OnInit {
   properties: Property[] = [];
 
-  constructor(private propertiesService: PropertiesService) { }
+  constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
-    this.properties = this.propertiesService.getProperties();
+    this.dataStorageService.getProperties().subscribe(properties => this.properties = properties);
   }
 
 }

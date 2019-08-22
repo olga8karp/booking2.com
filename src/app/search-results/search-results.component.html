@@ -1,7 +1,7 @@
 <div class="card-columns">
     <div class="card" *ngFor="let property of properties">
         <div class="card">
-            <img class="card-img-top" [src]="property.file1" alt="property picture">
+            <img class="card-img-top" [src]="property.file1 ? property.file1 : '../assets/images/no-image-available.jpg'" alt="property picture">
             <div class="card-body">
                 <h5 class="card-title text-center">{{ property.name }}</h5>
                 <p> <img src="../assets/images/location.png"> <span class="address"

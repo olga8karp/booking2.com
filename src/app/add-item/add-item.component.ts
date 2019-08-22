@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DataStorageService } from '../shared/data-storage.service';
+import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
+import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 declare var google: any;
@@ -18,10 +22,26 @@ export class AddItemComponent implements OnInit {
   numberOfGuests = '2';
   price = '0';
   meals = '';
+  ref: AngularFireStorageReference;
+  downloadURL: Observable<string>;
+  task: any;
+  uploadState: any;
 
-  constructor() { }
+  constructor(private dataStorageService: DataStorageService, private afStorage: AngularFireStorage) { }
+  upload(event) {
+    const id = Math.random().toString(36).substring(2);
+    this.ref = this.afStorage.ref(id);
+    this.task = this.ref.put(event.target.files[0]);
+    this.task.snapshotChanges().pipe(
+      finalize(() => {
+        this.ref.getDownloadURL().subscribe(url => {
+          this.downloadURL = url;
+        });
+      })
+    ).subscribe();
+  }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   handleAddressChange($event) {
     this.address = $event.address_components;
@@ -29,6 +49,7 @@ export class AddItemComponent implements OnInit {
 
   formSubmit(form: NgForm) {
     form.value.address = this.address;
-    console.log(form.value);
+    form.value.file1 = this.downloadURL;
+    this.dataStorageService.addProperty(form.value);
   }
 }

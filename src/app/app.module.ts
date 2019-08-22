@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +17,6 @@ import { PropertyComponent } from './property/property.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SearchPanelComponent } from './search-panel/search-panel.component';
 import { AddItemComponent } from './add-item/add-item.component';
-import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     GooglePlaceModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyAsSV524BTbeHlm5VYiFhcRgBPtNtTSOmQ',
+      authDomain: 'booking2project.firebaseapp.com',
+      storageBucket: 'booking2project.appspot.com',
+      projectId: 'booking2project'
+    }),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
