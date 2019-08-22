@@ -3,27 +3,24 @@ import { NgForm } from '@angular/forms';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
 import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-
 
 declare var google: any;
 
 @Component({
-  selector: 'app-add-item',
+  selector: 'b2-add-item',
   templateUrl: './add-item.component.html',
   styleUrls: ['./add-item.component.css']
 })
 
 export class AddItemComponent implements OnInit {
   address = [];
-  // setting default values
   propertyType = 'hotel';
   propertyRating = 'unrated';
   numberOfGuests = '2';
   price = '0';
   meals = '';
   ref: AngularFireStorageReference;
-  downloadURL: Observable<string>;
+  downloadURLs: string[] = [];
   task: any;
   uploadState: any;
 
@@ -35,7 +32,7 @@ export class AddItemComponent implements OnInit {
     this.task.snapshotChanges().pipe(
       finalize(() => {
         this.ref.getDownloadURL().subscribe(url => {
-          this.downloadURL = url;
+          this.downloadURLs.push(url);
         });
       })
     ).subscribe();
@@ -49,7 +46,11 @@ export class AddItemComponent implements OnInit {
 
   formSubmit(form: NgForm) {
     form.value.address = this.address;
-    form.value.file1 = this.downloadURL;
+    form.value.file1 = this.downloadURLs[0];
+    form.value.file2 = this.downloadURLs[1];
+    form.value.file3 = this.downloadURLs[2];
+    form.value.file4 = this.downloadURLs[3];
+    form.value.file5 = this.downloadURLs[4];
     this.dataStorageService.addProperty(form.value);
   }
 }

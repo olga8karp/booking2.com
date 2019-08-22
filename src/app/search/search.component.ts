@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-search',
+  selector: 'b2-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })

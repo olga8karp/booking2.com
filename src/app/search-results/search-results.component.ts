@@ -5,7 +5,7 @@ import { DataStorageService } from '../shared/data-storage.service';
 
 
 @Component({
-  selector: 'app-search-results',
+  selector: 'b2-search-results',
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })

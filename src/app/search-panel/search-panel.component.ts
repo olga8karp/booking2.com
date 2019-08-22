@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-search-panel',
+  selector: 'b2-search-panel',
   templateUrl: './search-panel.component.html',
   styleUrls: ['./search-panel.component.css']
 })

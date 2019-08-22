@@ -14,7 +14,8 @@ export class DataStorageService {
   constructor(private http: HttpClient) {}
 
   addProperty(property: Property) {
-    this.getProperties().pipe(switchMap((properties: Property[]) => {
+    this.getProperties().pipe(switchMap((properties: Property[] = []) => {
+      properties = properties || [];
       properties.push(property);
       return this.http.put<Property[]>('https://booking2project.firebaseio.com/properties.json', properties);
     })).subscribe(response => console.log(response));
