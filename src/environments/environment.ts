@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  realTimeDatabasePropertiesLink: 'https://booking2project.firebaseio.com/properties.json',
   production: false
 };
 
