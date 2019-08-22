@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Property } from './property.model';
+import { Property } from '../shared/property.model';
 import { pipe } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 

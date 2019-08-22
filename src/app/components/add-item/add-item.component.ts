@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DataStorageService } from '../shared/data-storage.service';
+import { DataStorageService } from '../../services/data-storage.service';
 import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
 import { finalize } from 'rxjs/operators';
 

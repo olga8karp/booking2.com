@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Property } from '../shared/property.model';
-import { DataStorageService } from '../shared/data-storage.service';
+import { Property } from '../../shared/property.model';
+import { DataStorageService } from '../../services/data-storage.service';
 
 
 @Component({

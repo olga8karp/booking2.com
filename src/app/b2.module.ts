@@ -7,16 +7,16 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 
 import { AppRoutingModule } from './b2-routing.module';
-import { AppComponent } from './b2.component';
-import { HeaderComponent } from './header/header.component';
-import { SearchComponent } from './search/search.component';
+import { AppComponent } from './components/b2.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
-import { SearchResultsComponent } from './search-results/search-results.component';
-import { FooterComponent } from './footer/footer.component';
-import { PropertyComponent } from './property/property.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SearchPanelComponent } from './search-panel/search-panel.component';
-import { AddItemComponent } from './add-item/add-item.component';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PropertyComponent } from './components/property/property.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { SearchPanelComponent } from './components/search-panel/search-panel.component';
+import { AddItemComponent } from './components/add-item/add-item.component';
 
 @NgModule({
   declarations: [
