@@ -5,6 +5,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './b2-routing.module';
 import { AppComponent } from './components/b2.component';
@@ -17,6 +19,9 @@ import { PropertyComponent } from './components/property/property.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
+import { DropzoneDirective } from './directives/dropzone/dropzone.directive';
+import { UploaderComponent } from './components/add-item/uploader/uploader.component';
+import { UploadTaskComponent } from './components/add-item/uploader/upload-task/upload-task.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,10 @@ import { AddItemComponent } from './components/add-item/add-item.component';
     PropertyComponent,
     PageNotFoundComponent,
     SearchPanelComponent,
-    AddItemComponent
+    AddItemComponent,
+    DropzoneDirective,
+    UploaderComponent,
+    UploadTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -40,10 +48,15 @@ import { AddItemComponent } from './components/add-item/add-item.component';
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyAsSV524BTbeHlm5VYiFhcRgBPtNtTSOmQ',
       authDomain: 'booking2project.firebaseapp.com',
+      databaseURL: 'https://booking2project.firebaseio.com',
+      projectId: 'booking2project',
       storageBucket: 'booking2project.appspot.com',
-      projectId: 'booking2project'
+      messagingSenderId: '186972044950',
+      appId: '1:186972044950:web:2b7699158f0780ff'
     }),
-    AngularFireStorageModule
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

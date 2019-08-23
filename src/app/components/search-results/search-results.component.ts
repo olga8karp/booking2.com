@@ -10,12 +10,11 @@ import { DataStorageService } from '../../services/data-storage.service';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  properties: Property[] = [];
+  properties = this.dataStorageService.properties;
 
   constructor(private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
-    this.dataStorageService.getProperties().subscribe(properties => this.properties = properties);
   }
 
 }

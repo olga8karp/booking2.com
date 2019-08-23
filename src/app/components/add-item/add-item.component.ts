@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataStorageService } from '../../services/data-storage.service';
 import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { finalize } from 'rxjs/operators';
-
-declare var google: any;
 
 @Component({
   selector: 'b2-add-item',
@@ -24,18 +23,19 @@ export class AddItemComponent implements OnInit {
   task: any;
   uploadState: any;
 
-  constructor(private dataStorageService: DataStorageService, private afStorage: AngularFireStorage) { }
+  constructor(private afStorage: AngularFireStorage, private db: AngularFirestore) { }
   upload(event) {
-    const id = Math.random().toString(36).substring(2);
-    this.ref = this.afStorage.ref(id);
-    this.task = this.ref.put(event.target.files[0]);
-    this.task.snapshotChanges().pipe(
-      finalize(() => {
-        this.ref.getDownloadURL().subscribe(url => {
-          this.downloadURLs.push(url);
-        });
-      })
-    ).subscribe();
+    const path = ``;
+    // const id = Math.random().toString(36).substring(2);
+    // this.ref = this.afStorage.ref(id);
+    // this.task = this.ref.put(event.target.files[0]);
+    // this.task.snapshotChanges().pipe(
+    //   finalize(() => {
+    //     this.ref.getDownloadURL().subscribe(url => {
+    //       this.downloadURLs.push(url);
+    //     });
+    //   })
+    // ).subscribe();
   }
 
   ngOnInit() { }
@@ -51,6 +51,6 @@ export class AddItemComponent implements OnInit {
     form.value.file3 = this.downloadURLs[2];
     form.value.file4 = this.downloadURLs[3];
     form.value.file5 = this.downloadURLs[4];
-    this.dataStorageService.addProperty(form.value);
+    //this.dataStorageService.addProperty(form.value);
   }
 }

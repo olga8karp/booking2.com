@@ -1,5 +1,5 @@
 <div class="card-columns">
-    <div class="card" *ngFor="let property of properties">
+    <div class="card" *ngFor="let property of properties | async">
         <div class="card">
             <img class="card-img-top" [src]="property.file1 ? property.file1 : '../assets/images/no-image-available.jpg'" alt="property picture">
             <div class="card-body">

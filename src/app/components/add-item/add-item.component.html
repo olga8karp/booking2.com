@@ -173,6 +173,10 @@
     </fieldset>
 
     <fieldset class="form-group">
+       <b2-uploader></b2-uploader>
+    </fieldset>
+
+    <fieldset class="form-group">
       <label for="price" class="font-weight-bold" required> Price per night (USD) </label>
       <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input"
         pattern="^[1-9]+[0-9]*$" />
