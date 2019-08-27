@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AngularFireUploadTask, AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs';
-import { AngularFirestore, SnapshotOptions } from 'angularfire2/firestore';
-import { tap, finalize } from 'rxjs/operators';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'b2-upload-task',
@@ -11,9 +11,10 @@ import { tap, finalize } from 'rxjs/operators';
 })
 export class UploadTaskComponent implements OnInit {
   @Input() file: File;
-  @Output() deleted = new EventEmitter<File>();
-  task: AngularFireUploadTask;
+  @Output() uploadAdded = new EventEmitter<string>();
+  @Output() uploadRemoved = new EventEmitter<{ file: File, url: string }>();
 
+  task: AngularFireUploadTask;
   percentage: Observable<number>;
   snapshot: Observable<any>;
   downloadURL: string;
@@ -30,12 +31,12 @@ export class UploadTaskComponent implements OnInit {
     this.task = this.storage.upload(path, this.file);
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges().pipe(
-      tap(console.log),
       finalize(async() => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         this.db.collection('files').add({
           downloadURL: this.downloadURL, path
         });
+        this.uploadAdded.emit(this.downloadURL);
       }),
     );
   }
@@ -46,6 +47,6 @@ export class UploadTaskComponent implements OnInit {
 
   delete(downloadURL) {
     this.storage.storage.refFromURL(downloadURL).delete();
-    this.deleted.emit(this.file);
+    this.uploadRemoved.emit({ file: this.file, url: this.downloadURL });
   }
 }

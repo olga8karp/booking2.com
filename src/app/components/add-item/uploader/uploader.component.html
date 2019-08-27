@@ -12,5 +12,5 @@
 </div>
 
 <div *ngFor="let file of files" class="uploaded-item">
-    <b2-upload-task [file]="file" (deleted)="removeImage($event)"></b2-upload-task>
+    <b2-upload-task [file]="file" (uploadAdded)="addUpload($event)" (uploadRemoved)="removeUpload($event)"></b2-upload-task>
 </div>

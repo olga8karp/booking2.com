@@ -164,16 +164,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-      <legend>Please upload good quality pictures of your property (at least 1) </legend>
-      <input type="file" name="file1" class="form-control-file file-input" ngModel required (change)="upload($event)" accept=".png,.jpg">
-      <input type="file" name="file2" class="form-control-file file-input" ngModel (change)="upload($event)" accept=".png,.jpg">
-      <input type="file" name="file3" class="form-control-file file-input" ngModel (change)="upload($event)" accept=".png,.jpg">
-      <input type="file" name="file4" class="form-control-file file-input" ngModel (change)="upload($event)" accept=".png,.jpg">
-      <input type="file" name="file5" class="form-control-file file-input" ngModel (change)="upload($event)" accept=".png,.jpg"> 
-    </fieldset>
-
-    <fieldset class="form-group">
-       <b2-uploader></b2-uploader>
+       <b2-uploader name="uploads" [(ngModel)]="uploads" (uploadAdded)="addUpload($event)" (uploadRemoved)="removeUpload($event)"></b2-uploader>
     </fieldset>
 
     <fieldset class="form-group">

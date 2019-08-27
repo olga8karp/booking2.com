@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DataStorageService } from '../../services/data-storage.service';
-import { AngularFireStorage, AngularFireStorageReference } from 'angularfire2/storage';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'b2-add-item',
@@ -11,34 +7,14 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./add-item.component.css']
 })
 
-export class AddItemComponent implements OnInit {
+export class AddItemComponent {
   address = [];
   propertyType = 'hotel';
   propertyRating = 'unrated';
   numberOfGuests = '2';
   price = '0';
   meals = '';
-  ref: AngularFireStorageReference;
-  downloadURLs: string[] = [];
-  task: any;
-  uploadState: any;
-
-  constructor(private afStorage: AngularFireStorage, private db: AngularFirestore) { }
-  upload(event) {
-    const path = ``;
-    // const id = Math.random().toString(36).substring(2);
-    // this.ref = this.afStorage.ref(id);
-    // this.task = this.ref.put(event.target.files[0]);
-    // this.task.snapshotChanges().pipe(
-    //   finalize(() => {
-    //     this.ref.getDownloadURL().subscribe(url => {
-    //       this.downloadURLs.push(url);
-    //     });
-    //   })
-    // ).subscribe();
-  }
-
-  ngOnInit() { }
+  uploads: string[] = [];
 
   handleAddressChange($event) {
     this.address = $event.address_components;
@@ -46,11 +22,14 @@ export class AddItemComponent implements OnInit {
 
   formSubmit(form: NgForm) {
     form.value.address = this.address;
-    form.value.file1 = this.downloadURLs[0];
-    form.value.file2 = this.downloadURLs[1];
-    form.value.file3 = this.downloadURLs[2];
-    form.value.file4 = this.downloadURLs[3];
-    form.value.file5 = this.downloadURLs[4];
-    //this.dataStorageService.addProperty(form.value);
+    console.log(form.value);
+  }
+
+  addUpload(addedUrl) {
+    this.uploads.push(addedUrl);
+  }
+
+  removeUpload(deletedUrl) {
+    this.uploads = this.uploads.filter(url => url !== deletedUrl);
   }
 }
