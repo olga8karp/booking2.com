@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploaderComponent implements OnInit {
   isHovering: boolean;
+  deleted = false;
   files: File[] = [];
+
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
@@ -23,4 +25,7 @@ export class UploaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  removeImage(file: File) {
+    this.files = this.files.filter(f => f !== file);
+  }
 }
