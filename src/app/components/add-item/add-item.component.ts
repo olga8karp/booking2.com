@@ -14,7 +14,7 @@ export class AddItemComponent {
   numberOfGuests = '2';
   price = '0';
   meals = '';
-  uploads: string[] = [];
+  fileUrls: string[] = [];
 
   formSubmit(form: NgForm) {
     console.log(this.address)
