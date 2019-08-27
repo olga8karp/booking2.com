@@ -23,6 +23,6 @@ progress::-webkit-progress-value {
   transition: width 0.1s ease;
 }
 
-.uploaded-item {
+.uploaded-items {
   margin: 2em auto;
 }

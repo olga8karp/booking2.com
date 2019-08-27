@@ -8,7 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 
 export class AddItemComponent {
-  address = [];
+  address = '';
   propertyType = 'hotel';
   propertyRating = 'unrated';
   numberOfGuests = '2';
@@ -16,12 +16,8 @@ export class AddItemComponent {
   meals = '';
   uploads: string[] = [];
 
-  handleAddressChange($event) {
-    this.address = $event.address_components;
-  }
-
   formSubmit(form: NgForm) {
-    form.value.address = this.address;
+    console.log(this.address)
     console.log(form.value);
   }
 

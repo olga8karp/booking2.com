@@ -74,14 +74,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-      <label for="address" class="font-weight-bold"> Address </label>
-      <small>Do not forget to indicate your building/appartment number </small>
-      <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-        (onAddressChange)="handleAddressChange($event)" name="address" id="address"
-        class="form-control search-text-input" ngModel required />
-      <ul *ngIf="address.length" class="list-group">
-        <li *ngFor="let item of address" class="list-group-item">{{ item.long_name }}</li>
-      </ul>
+      <b2-address-input name="address" [(ngModel)]="address"></b2-address-input>
     </fieldset>
 
     <fieldset class="form-group">

@@ -1,0 +1,6 @@
+<label for="address" class="font-weight-bold"> Address </label>
+<small>Do not forget to indicate your building/appartment number </small>
+<input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" name="address" id="address"
+  class="form-control search-text-input"
+  (onAddressChange)="handleAddressSelect($event)"
+   required [ngModel]="address"/>
