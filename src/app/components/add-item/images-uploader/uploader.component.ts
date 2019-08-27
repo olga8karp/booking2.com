@@ -17,8 +17,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 export class UploaderComponent implements ControlValueAccessor {
   isHovering: boolean;
   files: File[] = [];
-  @Output() uploadAdded = new EventEmitter<string>();
-  @Output() uploadRemoved = new EventEmitter<string>();
+  uploads: string[] = [];
 
   toggleHover(event: boolean) {
     this.isHovering = event;
@@ -30,24 +29,28 @@ export class UploaderComponent implements ControlValueAccessor {
     }
   }
 
-  writeValue(): void {
+  writeValue() {}
+
+  onChanged: (value: string[]) => void = () => {};
+
+  onTouched: () => void = () => {};
+
+  registerOnChange(fn: any) {
+    this.onChanged = fn;
   }
-
-  onChange = (_: any) => {};
-
-  emitChanges() {
+  registerOnTouched(fn: any) {
+    this.onTouched = fn;
   }
-
-  registerOnTouched() {}
-
-  registerOnChange() {}
 
   removeUpload(fileData: { file: File, url: string }) {
     this.files = this.files.filter(f => f !== fileData.file);
-    this.uploadRemoved.emit(fileData.url);
+    this.uploads = this.uploads.filter(f => f !== fileData.url);
+    this.onChanged(this.uploads);
   }
 
   addUpload(url) {
-    this.uploadAdded.emit(url);
+    this.uploads.push(url);
+    this.onChanged(this.uploads);
+    this.onTouched();
   }
 }

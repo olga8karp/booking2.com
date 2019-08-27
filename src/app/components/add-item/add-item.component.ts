@@ -20,12 +20,4 @@ export class AddItemComponent {
     console.log(this.address)
     console.log(form.value);
   }
-
-  addUpload(addedUrl) {
-    this.uploads.push(addedUrl);
-  }
-
-  removeUpload(deletedUrl) {
-    this.uploads = this.uploads.filter(url => url !== deletedUrl);
-  }
 }
