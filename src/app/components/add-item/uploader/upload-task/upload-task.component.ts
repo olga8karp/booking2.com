@@ -42,4 +42,8 @@ export class UploadTaskComponent implements OnInit {
   isActive(snapshot) {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
+
+  delete(url) {
+    this.storage.storage.refFromURL(url).delete();
+  }
 }
