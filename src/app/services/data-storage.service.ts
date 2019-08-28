@@ -1,38 +1,30 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Property } from '../shared/property.model';
-import { pipe, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-
-import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStorageService {
+  properties: Observable<Property[]>;
 
-  propertiesCollection: AngularFirestoreCollection<Property[]>;
-  properties: Observable<Property[][]>;
-
-  constructor(private afs: AngularFirestore, private sanitizer: DomSanitizer) {
-    //this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
-    this.propertiesCollection = this.afs.collection('properties', ref => {
-      return ref;
-    });
-    this.properties = this.propertiesCollection.valueChanges();
+  constructor(private db: AngularFirestore) {
+    this.properties = this.getProperties().pipe(shareReplay());
   }
 
   addProperty(property: Property) {
-  //  // this.getProperties().pipe(switchMap((properties: Property[] = []) => {
-  //     properties = properties || [];
-  //     properties.push(property);
-  //     //return this.http.put<Property[]>(environment.realTimeDatabasePropertiesLink, properties);
-   // }));
+    return this.db.collection('properties').add(property);
   }
 
   getProperties() {
-    //return this.http.get<Property[]>(environment.realTimeDatabasePropertiesLink);
+    return this.db.collection('properties').snapshotChanges()
+    .pipe(map(actions => actions.map(a => { 
+      return { propertyId: a.payload.doc.id, ...a.payload.doc.data() }; })) ) as Observable<Property[]>;
+  }
+
+  getPropertyById(id: string) {
+    return this.db.collection('properties').doc(id).valueChanges();
   }
 }
