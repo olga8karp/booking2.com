@@ -12,7 +12,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './b2-routing.module';
 import { AppComponent } from './components/b2.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SearchComponent } from './components/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -29,7 +28,6 @@ import { AddressInputComponent } from './components/add-item/address-input/addre
   declarations: [
     AppComponent,
     HeaderComponent,
-    SearchComponent,
     SearchResultsComponent,
     FooterComponent,
     PropertyComponent,
