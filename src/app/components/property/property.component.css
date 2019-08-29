@@ -28,6 +28,10 @@
 
 }
 
+.image-slide {
+    height: 490px;
+}
+
 @media only screen and (max-width: 700px) {
     .list-group-container {
         display: inline-block;
@@ -39,5 +43,9 @@
 
     .carousel-container, .picsum-img-wrapper {
         width: 100%;
+    }
+
+    .image-slide {
+        height: 200px;
     }
 }

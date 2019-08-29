@@ -17,10 +17,10 @@
   <div class="carousel-container">
     <ngb-carousel>
       <ng-template ngbSlide *ngFor="let imageUrl of (property$ | async)?.uploads">
-        <img [src]="imageUrl" alt="one image slide" height="490">
+        <img [src]="imageUrl" alt="one image slide" class="image-slide">
       </ng-template>
       <ng-template ngbSlide *ngIf="!(property$ | async)?.uploads.length">
-          <img src="../assets/images/no-image-available.jpg" alt="one image slide" height="490">
+          <img src="../assets/images/no-image-available.jpg" alt="one image slide" class="image-slide">
       </ng-template>
     </ngb-carousel>
   </div>
