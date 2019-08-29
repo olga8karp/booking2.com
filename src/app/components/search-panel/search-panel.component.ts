@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'b2-search-panel',
@@ -44,7 +45,7 @@ export class SearchPanelComponent {
     return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
   }
 
-  search($event) {
-    console.log($event);
+  search(form: NgForm) {
+    console.log(form);
   }
 }

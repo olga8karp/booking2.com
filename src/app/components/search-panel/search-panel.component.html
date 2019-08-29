@@ -1,5 +1,5 @@
 <div class="bg-warning container-fluid search-panel-wrapper">
-    <form class="form-inline" (ngSubmit)="search($event)" #f="ngForm">
+    <form class="form-inline" (ngSubmit)="search(searchForm)" #searchForm="ngForm">
         <fieldset class="input-wrapper">
             <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
                 class="form-control search-text-input" type="search" placeholder="Search" size="26" name="location"
