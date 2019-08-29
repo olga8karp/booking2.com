@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DataStorageService } from 'src/app/services/data-storage.service';
+import { Property } from 'src/app/shared/property.model';
 
 @Component({
   selector: 'b2-property',
@@ -6,13 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property.component.css']
 })
 export class PropertyComponent implements OnInit {
-  images = ['https://cdn.pixabay.com/photo/2019/08/12/06/14/field-4400519_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2017/10/21/14/45/aurora-borealis-2874887_960_720.jpg',
-            'https://cdn.pixabay.com/photo/2019/08/12/13/39/lisbon-4401269_960_720.jpg'];
+  property$;
 
-  constructor() { }
+  constructor(private dataService: DataStorageService,  private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.property$ = this.dataService.getPropertyById(id);
   }
-
 }

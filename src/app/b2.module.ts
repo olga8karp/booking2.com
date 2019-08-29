@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
@@ -20,8 +21,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { DropzoneDirective } from './directives/dropzone/dropzone.directive';
-import { UploaderComponent } from './components/add-item/uploader/uploader.component';
-import { UploadTaskComponent } from './components/add-item/uploader/upload-task/upload-task.component';
+import { UploaderComponent } from './components/add-item/images-uploader/uploader.component';
+import { UploadTaskComponent } from './components/add-item/images-uploader/upload-task/upload-task.component';
+import { AddressInputComponent } from './components/add-item/address-input/address-input.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { UploadTaskComponent } from './components/add-item/uploader/upload-task/
     AddItemComponent,
     DropzoneDirective,
     UploaderComponent,
-    UploadTaskComponent
+    UploadTaskComponent,
+    AddressInputComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ import { UploadTaskComponent } from './components/add-item/uploader/upload-task/
     }),
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

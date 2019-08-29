@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DataStorageService } from 'src/app/services/data-storage.service';
 
 @Component({
   selector: 'b2-add-item',
@@ -16,8 +17,9 @@ export class AddItemComponent {
   meals = '';
   fileUrls: string[] = [];
 
+  constructor(private storageService: DataStorageService) {}
+
   formSubmit(form: NgForm) {
-    console.log(this.address)
-    console.log(form.value);
+    this.storageService.addProperty(form.value);
   }
 }

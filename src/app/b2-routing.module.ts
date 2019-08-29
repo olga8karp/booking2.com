@@ -7,7 +7,7 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 
 const routes: Routes = [
   { path: 'listings', component: SearchResultsComponent },
-  { path: 'details', component: PropertyComponent },
+  { path: 'property/:id', component: PropertyComponent },
   { path: 'add', component: AddItemComponent },
   { path: '', redirectTo: '/listings', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

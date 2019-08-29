@@ -1,60 +1,50 @@
-<div class="jumbotron bg-white wrapper">
-  <h1>My Jumbotron</h1>
-  <p>Think BIG with a Bootstrap Jumbotron!</p>
+<div class="jumbotron bg-white wrapper" style="min-width: 83vw;">
+  <h1>{{ (property$ | async)?.name }}</h1>
+  <p><img src="../assets/images/location.png"> {{ (property$ | async)?.address }}</p>
+
+  <h3 class="font-weight-bold text-danger">${{ (property$ | async)?.price }}/night</h3>
+
+  <p class="font-weight-bold"> Fits {{ (property$ | async)?.numberOfGuests }} people </p>
+
   <div class="wrapper">
-    <img src="../../assets/images/star-icon.png">
-    <img src="../../assets/images/star-icon.png">
-    <img src="../../assets/images/star-icon.png">
-    <img src="../../assets/images/star-icon.png">
-    <img src="../../assets/images/star-icon.png">
+    <img *ngIf="(property$ | async)?.propertyRating > 0" src="../../assets/images/star-icon.png">
+    <img *ngIf="(property$ | async)?.propertyRating > 1" src="../../assets/images/star-icon.png">
+    <img *ngIf="(property$ | async)?.propertyRating > 2" src="../../assets/images/star-icon.png">
+    <img *ngIf="(property$ | async)?.propertyRating > 3" src="../../assets/images/star-icon.png">
+    <img *ngIf="(property$ | async)?.propertyRating > 4" src="../../assets/images/star-icon.png">
   </div>
-<div class="carousel-container">
-    <ngb-carousel *ngIf="images">
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img [src]="images[0]" alt="Random first slide">
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img [src]="images[1]" alt="Random second slide">
-          </div>
-        </ng-template>
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img [src]="images[2]" alt="Random third slide">
-          </div>
-        </ng-template>
-      </ngb-carousel>
-</div>
-   
-      
-    <div class="wrapper">
-      <div class="list-group-container">
-        <ul class="list-group">
-          <li class="list-group-item bg-warning">itdgsdgsdgsdgsem1</li>
-          <li class="list-group-item bg-warning">item1</li>
-          <li class="list-group-item bg-warning">ixcvxcvxcvtem1</li>
-          <li class="list-group-item bg-warning">item1</li>
-          <li class="list-group-item bg-warning">item1</li>
-        </ul>
-      </div>
+
+  <div class="carousel-container">
+    <ngb-carousel *ngIf="(property$ | async)?.uploads as uploads">
+      <ng-template ngbSlide *ngFor="let imageUrl of uploads">
+        <img [src]="imageUrl" alt="Random second slide" height="490">
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <div class="wrapper">
+    <div class="list-group-container">
+      <ul class="list-group">
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.breakfast"> breakfast included </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.lunch"> lunch included </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.dinner"> dinner included </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.restaurant"> restaurant </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.kitchen"> kitchen facilities </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.parking"> parking </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.fitnessCenter"> fitness center </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.swimmingPool"> swimming pool </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.petFriendly"> pet friendly </li>
+        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.chargingStation"> electric vehicle charging
+          station </li>
+      </ul>
     </div>
-  <div class="container-fluid">
-    <div style="display: inline-block; width: 75%; text-align: left; vertical-align: top">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, dolores debitis cum repellendus est
-        quibusdam! Numquam pariatur ex, ea tempora deserunt odio fugiat, reprehenderit rem enim voluptate facilis
-        voluptatibus accusantium.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, dolores debitis cum repellendus est
-        quibusdam! Numquam pariatur ex, ea tempora deserunt odio fugiat, reprehenderit rem enim voluptate facilis
-        voluptatibus accusantium.</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, dolores debitis cum repellendus est
-        quibusdam! Numquam pariatur ex, ea tempora deserunt odio fugiat, reprehenderit rem enim voluptate facilis
-        voluptatibus accusantium.</p>
+  </div>
+
+  <div style="width:100%">
+      <p>{{ (property$ | async)?.description }}</p>
       <div class="text-center wrapper">
         <button type="button" class="btn btn-primary font-weight-bold" routerLink="/listings"> Back to search results
         </button>
       </div>
-
-    </div>
   </div>
+</div>

@@ -1,11 +1,11 @@
 <div class="card-columns">
     <div class="card" *ngFor="let property of properties | async">
         <div class="card">
-            <img class="card-img-top" [src]="property.file1 ? property.file1 : '../assets/images/no-image-available.jpg'" alt="property picture">
+            <img class="card-img-top" [src]="property.uploads.length ? property.uploads[0] : '../assets/images/no-image-available.jpg'" alt="property picture">
             <div class="card-body">
                 <h5 class="card-title text-center">{{ property.name }}</h5>
-                <p> <img src="../assets/images/location.png"> <span class="address"
-                        *ngFor="let name of property.address"> {{ name.long_name }} </span></p>
+                <p class="text-danger font-weight-bold">${{ property.price }} per night</p>
+                <p> <img src="../assets/images/location.png"> <span class="address"> {{ property.address }} </span></p>
                 <div class="wrapper">
                     <div class="list-group-container">
                         <ul class="list-group">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="text-center">
                     <button type="button" class="btn btn-primary font-weight-bold card-body-button"
-                        routerLink="/details">More info</button>
+                        [routerLink]="['/property', property.propertyId]">More info</button>
                 </div>
 
             </div>
