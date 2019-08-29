@@ -9,9 +9,9 @@
                 <div class="wrapper">
                     <div class="list-group-container">
                         <ul class="list-group">
-                            <li class="list-group-item bg-warning" *ngIf="property.breakfast">breakfast included</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.lunch">lunch included</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.dinner">dinner included</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.breakfast">breakfast</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.lunch">lunch</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.dinner">dinner</li>
                             <li class="list-group-item bg-warning" *ngIf="property.kitchen">kitchen facilities</li>
                             <li class="list-group-item bg-warning" *ngIf="property.chargingStation">electric vehicle charging station</li>
                             <li class="list-group-item bg-warning" *ngIf="property.fitnessCenter">fitness center</li>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div style="display: inline-block; position: absolute; bottom: 2rem; left: 40%">
-                    <button type="button" class="btn btn-primary font-weight-bold card-body-button" 
+                    <button type="button" class="btn btn-primary font-weight-bold card-body-button"
                         [routerLink]="['/property', property.propertyId]">More info</button>
                 </div>
 
