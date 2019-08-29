@@ -15,9 +15,12 @@
   </div>
 
   <div class="carousel-container">
-    <ngb-carousel *ngIf="(property$ | async)?.uploads as uploads">
-      <ng-template ngbSlide *ngFor="let imageUrl of uploads">
-        <img [src]="imageUrl" alt="Random second slide" height="490">
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let imageUrl of (property$ | async)?.uploads">
+        <img [src]="imageUrl" alt="one image slide" height="490">
+      </ng-template>
+      <ng-template ngbSlide *ngIf="!(property$ | async)?.uploads.length">
+          <img src="../assets/images/no-image-available.jpg" alt="one image slide" height="490">
       </ng-template>
     </ngb-carousel>
   </div>
