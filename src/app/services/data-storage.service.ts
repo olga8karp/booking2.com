@@ -27,4 +27,38 @@ export class DataStorageService {
   getPropertyById(id: string) {
     return this.db.collection('properties').doc(id).valueChanges();
   }
+
+  getFilteredProperties({ breakfast,
+                          chargingStation,
+                          dinner,
+                          fitnessCenter,
+                          kitchen,
+                          parking,
+                          petFriendly,
+                          numberOfGuests,
+                          lunch,
+                          description,
+                          propertyType,
+                          restaurant,
+                          swimmingPool,
+                          propertyRating }) {
+
+    return this.db.collection('properties').ref
+           .where('breakfast', '==', breakfast)
+          //  .where('chargingStation', '==', chargingStation)
+          //  .where('dinner', '==', dinner)
+          //  .where('fitnessCenter', '==', fitnessCenter)
+          //  .where('kitchen', '==', kitchen)
+          //  .where('lunch', '==', lunch)
+           //.where('numberOfGuests', '==', numberOfGuests)
+          //  .where('parking', '==', parking)
+           //.where('price', '==', '20')
+          //  .where('petFriendly', '==', petFriendly)
+           // .where('description', 'array-contains', '')
+          //  .where('propertyType', '==', propertyType)
+          //  .where('restaurant', '==', restaurant)
+          //  .where('swimmingPool', '==', swimmingPool)
+          // .where('propertyRating', '==', propertyRating)
+           .get();
+  }
 }

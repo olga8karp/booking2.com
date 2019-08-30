@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {NgbDate, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
+import { DataStorageService } from 'src/app/services/data-storage.service';
 
 @Component({
   selector: 'b2-search-panel',
@@ -14,7 +15,7 @@ export class SearchPanelComponent {
   fromDate: NgbDate;
   toDate: NgbDate;
 
-  constructor(calendar: NgbCalendar) {
+  constructor(calendar: NgbCalendar, private dataService: DataStorageService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
@@ -46,6 +47,13 @@ export class SearchPanelComponent {
   }
 
   search(form: NgForm) {
-    console.log(form);
+    this.dataService.getFilteredProperties(form.value).then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        console.log(form.value, doc.id, ' => ', doc.data());
+      });
+    })
+      .catch((error) => {
+        console.log('Error getting documents: ', error);
+      });
   }
 }
