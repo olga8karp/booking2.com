@@ -7,17 +7,7 @@
         </fieldset>
 
         <fieldset class="input-wrapper">
-            <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="1" [dayTemplate]="t"
-                outsideDays="visible" class="bg-white" name="date" ngModel>
-            </ngb-datepicker>
-
-            <ng-template #t let-date let-focused="focused">
-                <span class="custom-day" [class.focused]="focused" [class.range]="isRange(date)"
-                    [class.faded]="isHovered(date) || isInside(date)" (mouseenter)="hoveredDate = date"
-                    (mouseleave)="hoveredDate = null">
-                    {{ date.day }}
-                </span>
-            </ng-template>
+            <b2-time-picker name="dateRange" [(ngModel)]="dateRange" [unavailableDates]="unavailableDates$ | async"></b2-time-picker>
         </fieldset>
 
         <fieldset class="input-wrapper">
