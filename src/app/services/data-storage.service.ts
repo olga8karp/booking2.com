@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Property, BookedDatesRange } from '../shared/property.model';
-import { Observable, Subject } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { Property, NgbDate } from '../shared/property.model';
+import { Observable, Subject, pipe } from 'rxjs';
+import { map, shareReplay, first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataStorageService {
   properties: Observable<Property[]>;
-  unavailableDates = new Subject<BookedDatesRange[]>();
+  unavailableDates = new Subject<any[]>();
 
   constructor(private db: AngularFirestore) {
     this.properties = this.getProperties().pipe(shareReplay());
@@ -65,62 +65,34 @@ export class DataStorageService {
   }
 
   setBookedDates(id, dates) {
-    const fromDate = Object.assign({}, dates.dateRange.fromDate);
-    const toDate = Object.assign({}, dates.dateRange.toDate);
     const bookedDatesArray = dates.dateRange.bookedDatesArray;
-    let bookedDates: BookedDatesRange[];
-    this.db.collection('properties').doc(id).valueChanges().subscribe((propertyData: Property) => {
-      bookedDates = propertyData.bookedDates || [];
-      if (!bookedDates.find(dateRange => this.deepIsEqual(dateRange.fromDate, fromDate) ||
-      this.deepIsEqual(dateRange.toDate, toDate))) {
-        bookedDates.push({
-          fromDate,
-          toDate,
+
+    this.db.collection('properties').doc(id).valueChanges().pipe(first()).subscribe((propertyData: Property) => {
+      const datesInBD = propertyData.bookedDates ? propertyData.bookedDates.map(date => date = date.toDate()) : [];
+
+      if (!this.checkIfTwoDateArraysHaveCommonElement(bookedDatesArray, datesInBD)) {
+        datesInBD.push(...
           bookedDatesArray
-        });
-        this.db.collection('properties').doc(id).set({ bookedDates }, { merge: true });
-        this.unavailableDates.next(bookedDates);
+        );
+
+        alert("You have booked this place from " + bookedDatesArray[0] + " to " + bookedDatesArray[bookedDatesArray.length - 1]);
+        this.db.collection('properties').doc(id).set({ bookedDates: datesInBD }, { merge: true });
+        this.unavailableDates.next(datesInBD);
+      } else {
+        alert("This property is unavailable for the selected dates.");
       }
     });
   }
 
-  deepIsEqual(first, second) {
-    // If first and second are the same type and have the same value
-    // Useful if strings or other primitive types are compared
-    // tslint:disable-next-line: curly
-    if (first === second) return true;
-
-    // Try a quick compare by seeing if the length of properties are the same
-    // tslint:disable-next-line: prefer-const
-    let firstProps = Object.getOwnPropertyNames(first);
-    // tslint:disable-next-line: prefer-const
-    let secondProps = Object.getOwnPropertyNames(second);
-
-    // Check different amount of properties
-    // tslint:disable-next-line: curly
-    if (firstProps.length != secondProps.length) return false;
-
-    // Go through properties of first object
-    // tslint:disable-next-line: prefer-for-of
-    for (var i = 0; i < firstProps.length; i++) {
-      let prop = firstProps[i];
-      // Check the type of property to perform different comparisons
-      switch (typeof (first[prop])) {
-        // If it is an object, decend for deep compare
-        case 'object':
-          // tslint:disable-next-line: curly
-          if (!this.deepIsEqual(first[prop], second[prop])) return false;
-          break;
-        case 'number':
-          // with JavaScript NaN != NaN so we need a special check
-          // tslint:disable-next-line: curly
-          if (isNaN(first[prop]) && isNaN(second[prop])) break;
-        // tslint:disable-next-line: no-switch-case-fall-through
-        default:
-          // tslint:disable-next-line: curly
-          if (first[prop] !== second[prop]) return false;
+  checkIfTwoDateArraysHaveCommonElement(dateArr1: Date[], dateArr2: Date[]): boolean {
+    let result = false;
+    for (let i = 0; i < dateArr1.length; i++) {
+      for (let j = 0; j < dateArr2.length; j++) {
+        if (dateArr1[i].getTime() === dateArr2[j].getTime()) {
+          result = true;
+        }
       }
     }
-    return true;
+    return result;
   }
 }

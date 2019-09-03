@@ -1,3 +1,5 @@
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export class Property {
     address: Address[];
     breakfast: true | '';
@@ -18,18 +20,13 @@ export class Property {
     description: string;
     uploads: string[];
     propertyId?: string;
-    bookedDates?: BookedDatesRange[];
+    bookedDates?: any[];
 }
 
 export interface Address {
     formatted_address: string;
 }
 
-export interface BookedDatesRange {
-    fromDate: NgbDate;
-    toDate: NgbDate;
-    bookedDatesArray: Date[];
-}
 
 export interface NgbDate {
     day: number;
