@@ -18,9 +18,21 @@ export class Property {
     description: string;
     uploads: string[];
     propertyId?: string;
+    bookedDates?: BookedDatesRange[];
 }
 
-export class Address {
-    // tslint:disable-next-line: variable-name
+export interface Address {
     formatted_address: string;
+}
+
+export interface BookedDatesRange {
+    fromDate: NgbDate;
+    toDate: NgbDate;
+    bookedDatesArray: Date[];
+}
+
+export interface NgbDate {
+    day: number;
+    month: number;
+    year: number;
 }

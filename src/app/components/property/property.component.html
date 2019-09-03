@@ -1,26 +1,26 @@
 <div class="jumbotron bg-white wrapper" style="min-width: 83vw;">
-  <h1>{{ (property$ | async)?.name }}</h1>
-  <p><img src="../assets/images/location.png"> {{ (property$ | async)?.address }}</p>
+  <h1>{{ property?.name }}</h1>
+  <p><img src="../assets/images/location.png"> {{ property?.address }}</p>
 
-  <h3 class="font-weight-bold text-danger">${{ (property$ | async)?.price }}/night</h3>
+  <h3 class="font-weight-bold text-danger">${{ property?.price }}/night</h3>
 
-  <p class="font-weight-bold"> Fits {{ (property$ | async)?.numberOfGuests }} people </p>
+  <p class="font-weight-bold"> Fits {{ property?.numberOfGuests }} people </p>
 
   <div class="wrapper">
-    <img *ngIf="(property$ | async)?.propertyRating > 0" src="../../assets/images/star-icon.png">
-    <img *ngIf="(property$ | async)?.propertyRating > 1" src="../../assets/images/star-icon.png">
-    <img *ngIf="(property$ | async)?.propertyRating > 2" src="../../assets/images/star-icon.png">
-    <img *ngIf="(property$ | async)?.propertyRating > 3" src="../../assets/images/star-icon.png">
-    <img *ngIf="(property$ | async)?.propertyRating > 4" src="../../assets/images/star-icon.png">
+    <img *ngIf="property?.propertyRating > 0" src="../../assets/images/star-icon.png">
+    <img *ngIf="property?.propertyRating > 1" src="../../assets/images/star-icon.png">
+    <img *ngIf="property?.propertyRating > 2" src="../../assets/images/star-icon.png">
+    <img *ngIf="property?.propertyRating > 3" src="../../assets/images/star-icon.png">
+    <img *ngIf="property?.propertyRating > 4" src="../../assets/images/star-icon.png">
   </div>
 
   <div class="carousel-container">
     <ngb-carousel>
-      <ng-template ngbSlide *ngFor="let imageUrl of (property$ | async)?.uploads">
+      <ng-template ngbSlide *ngFor="let imageUrl of property?.uploads">
         <img [src]="imageUrl" alt="one image slide" class="image-slide">
       </ng-template>
-      <ng-template ngbSlide *ngIf="!(property$ | async)?.uploads.length">
-          <img src="../assets/images/no-image-available.jpg" alt="one image slide" class="image-slide">
+      <ng-template ngbSlide *ngIf="!property?.uploads.length">
+        <img src="../assets/images/no-image-available.jpg" alt="one image slide" class="image-slide">
       </ng-template>
     </ngb-carousel>
   </div>
@@ -28,26 +28,45 @@
   <div class="wrapper">
     <div class="list-group-container">
       <ul class="list-group">
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.breakfast"> breakfast included </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.lunch"> lunch included </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.dinner"> dinner included </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.restaurant"> restaurant </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.kitchen"> kitchen facilities </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.parking"> parking </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.fitnessCenter"> fitness center </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.swimmingPool"> swimming pool </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.petFriendly"> pet friendly </li>
-        <li class="list-group-item bg-warning" *ngIf="(property$ | async)?.chargingStation"> electric vehicle charging
+        <li class="list-group-item bg-warning" *ngIf="property?.breakfast"> breakfast included </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.lunch"> lunch included </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.dinner"> dinner included </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.restaurant"> restaurant </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.kitchen"> kitchen facilities </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.parking"> parking </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.fitnessCenter"> fitness center </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.swimmingPool"> swimming pool </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.petFriendly"> pet friendly </li>
+        <li class="list-group-item bg-warning" *ngIf="property?.chargingStation"> electric vehicle charging
           station </li>
       </ul>
     </div>
   </div>
 
   <div style="width:100%">
-      <p>{{ (property$ | async)?.description }}</p>
-      <div class="text-center wrapper">
-        <button type="button" class="btn btn-primary font-weight-bold" routerLink="/listings"> Back to search results
-        </button>
-      </div>
+    <p>{{ property?.description }}</p>
+    <div class="text-center wrapper">
+      <button *ngIf="!isCalendarOpen" type="button" class="btn btn-primary font-weight-bold" (click)="toggleCalendar()"> Book this property
+      </button>
+      <button *ngIf="isCalendarOpen" type="button" class="btn btn-primary font-weight-bold" (click)="toggleCalendar()"> Close calendar
+      </button>
+    </div>
+    <div *ngIf="isCalendarOpen">
+      <form (ngSubmit)="bookForSelectedDates(bookingForm)" #bookingForm="ngForm">
+          <div>
+              <b2-date-picker name="dateRange" [(ngModel)]="dateRange"></b2-date-picker>
+          </div>
+          <div>
+            <button type="submit" class="btn btn-danger font-weight-bold"> Book for the selected dates
+            </button>
+          </div>
+      </form>
+    </div>
+    <br>
+    <hr>
+    <div class="text-center wrapper">
+      <button type="button" class="btn btn-secondary font-weight-bold" routerLink="/listings"> Back to search results
+      </button>
+    </div>
   </div>
 </div>

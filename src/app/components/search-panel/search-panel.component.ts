@@ -10,14 +10,11 @@ import { DataStorageService } from 'src/app/services/data-storage.service';
 export class SearchPanelComponent implements OnInit {
   numberOfGuests = '2';
   dateRange = {};
-  unavailableDates$;
 
   constructor(private dataService: DataStorageService) {
   }
 
-  ngOnInit() {
-    this.unavailableDates$ = this.dataService.unavailableDates.asObservable();
-  }
+  ngOnInit() {}
   search(form: NgForm) {
     this.dataService.getFilteredProperties(form.value).then((querySnapshot) => {
       querySnapshot.forEach((doc) => {

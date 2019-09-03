@@ -23,6 +23,7 @@ import { DropzoneDirective } from './directives/dropzone/dropzone.directive';
 import { UploaderComponent } from './components/add-item/images-uploader/uploader.component';
 import { UploadTaskComponent } from './components/add-item/images-uploader/upload-task/upload-task.component';
 import { AddressInputComponent } from './components/add-item/address-input/address-input.component';
+import { DatePickerComponent } from './components/search-panel/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AddressInputComponent } from './components/add-item/address-input/addre
     DropzoneDirective,
     UploaderComponent,
     UploadTaskComponent,
-    AddressInputComponent
+    AddressInputComponent,
+    DatePickerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,28 +1,24 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbDate, NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { reduce } from 'rxjs/operators';
-import { BookedDatesRange } from 'src/app/shared/property.model';
 
 @Component({
-  selector: 'b2-time-picker',
-  templateUrl: './time-picker.component.html',
-  styleUrls: ['./time-picker.component.css'],
+  selector: 'b2-date-picker',
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => TimePickerComponent),
+      useExisting: forwardRef(() => DatePickerComponent),
       multi: true
     }
   ]
 })
-export class TimePickerComponent implements OnInit, ControlValueAccessor {
+export class DatePickerComponent implements OnInit, ControlValueAccessor {
   hoveredDate: NgbDate;
   fromDate: NgbDate;
   toDate: NgbDate;
   minDate: NgbDateStruct;
-
-  @Input() unavailableDates: any;
 
   constructor(private calendar: NgbCalendar) { }
 
@@ -37,6 +33,7 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
     };
   }
 
+
   onDateSelection(date: NgbDate) {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
@@ -47,9 +44,10 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
       this.fromDate = date;
     }
     if (this.fromDate && this.toDate) {
-      if (this.fromDate && this.toDate) {
-        this.onChanged({ fromDate: this.fromDate, toDate: this.toDate });
-      }
+      const from = this.createDateFromNgbDate(this.fromDate);
+      const to = this.createDateFromNgbDate(this.toDate);
+      const bookedDatesArray = Array.from(this.datesBetween(from, to));
+      this.onChanged({ fromDate: this.fromDate, toDate: this.toDate, bookedDatesArray });
       this.onTouched();
     }
   }
@@ -77,11 +75,6 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
   }
   registerOnTouched(fn: any) {
     this.onTouched = fn;
-  }
-
-  isDisabled(date: NgbDateStruct, current: { month: number, year: number }) {
-    return this.unavailableDates.find(x =>  this.deepIsEqual(new NgbDate(x.year, x.month, x.day), JSON.stringify(date))) ?
-      true : false;
   }
 
   deepIsEqual(first, second) {
@@ -122,6 +115,39 @@ export class TimePickerComponent implements OnInit, ControlValueAccessor {
       }
     }
     return true;
+  }
+
+  private createDateFromNgbDate(ngbDate: NgbDate): Date {
+    return new Date(Date.UTC(ngbDate.year, ngbDate.month - 1, ngbDate.day));
+  }
+
+  *datesBetween(startDate, endDate) {
+    startDate = startDate || new Date();
+    endDate = endDate || startDate;
+    const current = this.incrementDate(this.cloneDate(startDate), -1);
+    while (current < endDate) {
+      yield this.cloneDate(this.incrementDate(current, undefined));
+    }
+  }
+
+  cloneDate(date) {
+    return new Date(date.valueOf());
+  }
+
+  incrementDate(date, amount) {
+    date.setDate(date.getDate() + this.defaultValue(amount, 1));
+    return date;
+  }
+
+  defaultValue(value, valueDefault) {
+    return (typeof value === 'undefined' ? valueDefault : value);
+  }
+
+  isDisabled(date: NgbDateStruct) {
+    // console.log(this);
+    // return this.unavailableDates.find(unavailableDate => {
+    //   return this.deepIsEqual(date, unavailableDate);
+    // })
   }
 }
 
