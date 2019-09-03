@@ -13,7 +13,6 @@ export class PropertyComponent implements OnInit {
   id: string;
   dateRange = {};
   isCalendarOpen = false;
-  unavailableDates;
 
   constructor(private dataService: DataStorageService,  private route: ActivatedRoute) { }
 
@@ -21,14 +20,6 @@ export class PropertyComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.dataService.getPropertyById(this.id).subscribe(property => {
       this.property = property;
-      // this.unavailableDates = this.property.bookedDates.length ?
-      // this.property.bookedDates.forEach(bookedDates => {
-      //   console.log(bookedDates);
-      // }) : [];
-
-      //   utcDate = utcDate.toDate();
-      //   return { day: utcDate.getUTCDay(), month: utcDate.getUTCMonth() + 1, year: utcDate.getUTCFullYear() };
-      // }) : [];
     });
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Property, NgbDate } from '../shared/property.model';
-import { Observable, Subject, pipe } from 'rxjs';
+import { Property } from '../shared/property.model';
+import { Observable, Subject } from 'rxjs';
 import { map, shareReplay, first } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { map, shareReplay, first } from 'rxjs/operators';
 })
 export class DataStorageService {
   properties: Observable<Property[]>;
-  unavailableDates = new Subject<any[]>();
+  unavailableDates = new Subject<Date[]>();
 
   constructor(private db: AngularFirestore) {
     this.properties = this.getProperties().pipe(shareReplay());
@@ -52,9 +52,9 @@ export class DataStorageService {
       //  .where('fitnessCenter', '==', fitnessCenter)
       //  .where('kitchen', '==', kitchen)
       //  .where('lunch', '==', lunch)
-      //.where('numberOfGuests', '==', numberOfGuests)
+      // .where('numberOfGuests', '==', numberOfGuests)
       //  .where('parking', '==', parking)
-      //.where('price', '==', '20')
+      // .where('price', '==', '20')
       //  .where('petFriendly', '==', petFriendly)
       // .where('description', 'array-contains', '')
       //  .where('propertyType', '==', propertyType)
@@ -75,17 +75,22 @@ export class DataStorageService {
           bookedDatesArray
         );
 
-        alert("You have booked this place from " + bookedDatesArray[0] + " to " + bookedDatesArray[bookedDatesArray.length - 1]);
+        alert(`You have booked this place from ${bookedDatesArray[0].getDate()}.${
+          bookedDatesArray[0].getMonth() + 1}.${bookedDatesArray[0].getFullYear()}
+          to ${bookedDatesArray[bookedDatesArray.length - 1].getDate()}.${
+          bookedDatesArray[bookedDatesArray.length - 1].getMonth() + 1}.${
+          bookedDatesArray[bookedDatesArray.length - 1].getFullYear()}`);
         this.db.collection('properties').doc(id).set({ bookedDates: datesInBD }, { merge: true });
         this.unavailableDates.next(datesInBD);
       } else {
-        alert("This property is unavailable for the selected dates.");
+        alert('This property is unavailable for the selected dates.');
       }
     });
   }
 
   checkIfTwoDateArraysHaveCommonElement(dateArr1: Date[], dateArr2: Date[]): boolean {
     let result = false;
+    // tslint:disable: prefer-for-of
     for (let i = 0; i < dateArr1.length; i++) {
       for (let j = 0; j < dateArr2.length; j++) {
         if (dateArr1[i].getTime() === dateArr2[j].getTime()) {

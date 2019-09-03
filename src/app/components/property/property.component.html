@@ -46,9 +46,9 @@
   <div style="width:100%">
     <p>{{ property?.description }}</p>
     <div class="text-center wrapper">
-      <button *ngIf="!isCalendarOpen" type="button" class="btn btn-primary font-weight-bold" (click)="toggleCalendar()"> Book this property
+      <button *ngIf="!isCalendarOpen" type="button" class="btn btn-danger font-weight-bold" (click)="toggleCalendar()"> Book this property
       </button>
-      <button *ngIf="isCalendarOpen" type="button" class="btn btn-primary font-weight-bold" (click)="toggleCalendar()"> Close calendar
+      <button *ngIf="isCalendarOpen" type="button" class="btn btn-primary font-weight-bold" (click)="toggleCalendar()"> X
       </button>
     </div>
     <div *ngIf="isCalendarOpen">

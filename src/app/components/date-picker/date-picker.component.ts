@@ -77,47 +77,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  deepIsEqual(first, second) {
-    // If first and second are the same type and have the same value
-    // Useful if strings or other primitive types are compared
-    // tslint:disable-next-line: curly
-    if (first === second) return true;
-
-    // Try a quick compare by seeing if the length of properties are the same
-    // tslint:disable-next-line: prefer-const
-    let firstProps = Object.getOwnPropertyNames(first);
-    // tslint:disable-next-line: prefer-const
-    let secondProps = Object.getOwnPropertyNames(second);
-
-    // Check different amount of properties
-    // tslint:disable-next-line: curly
-    if (firstProps.length != secondProps.length) return false;
-
-    // Go through properties of first object
-    // tslint:disable-next-line: prefer-for-of
-    for (var i = 0; i < firstProps.length; i++) {
-      let prop = firstProps[i];
-      // Check the type of property to perform different comparisons
-      switch (typeof (first[prop])) {
-        // If it is an object, decend for deep compare
-        case 'object':
-          // tslint:disable-next-line: curly
-          if (!this.deepIsEqual(first[prop], second[prop])) return false;
-          break;
-        case 'number':
-          // with JavaScript NaN != NaN so we need a special check
-          // tslint:disable-next-line: curly
-          if (isNaN(first[prop]) && isNaN(second[prop])) break;
-        // tslint:disable-next-line: no-switch-case-fall-through
-        default:
-          // tslint:disable-next-line: curly
-          if (first[prop] !== second[prop]) return false;
-      }
-    }
-    return true;
-  }
-
-  private createDateFromNgbDate(ngbDate: NgbDate): Date {
+  private createDateFromNgbDate(ngbDate: NgbDateStruct): Date {
     return new Date(Date.UTC(ngbDate.year, ngbDate.month - 1, ngbDate.day));
   }
 
@@ -141,13 +101,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
   defaultValue(value, valueDefault) {
     return (typeof value === 'undefined' ? valueDefault : value);
-  }
-
-  isDisabled(date: NgbDateStruct) {
-    // console.log(this);
-    // return this.unavailableDates.find(unavailableDate => {
-    //   return this.deepIsEqual(date, unavailableDate);
-    // })
   }
 }
 
