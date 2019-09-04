@@ -15,7 +15,9 @@ export class DataStorageService {
   }
 
   addProperty(property: Property) {
-    return this.db.collection('properties').add(property);
+    property.timestamp = new Date().getTime();
+    const docId = property.timestamp.toString();
+    return this.db.collection('properties').doc(docId).set(property);
   }
 
   getProperties() {
@@ -28,9 +30,8 @@ export class DataStorageService {
       }))) as Observable<Property[]>;
   }
 
-  getPropertyById(timestamp: number) {
-    return this.db.collection('properties', ref => ref.where('timestamp', '==', timestamp))
-    .valueChanges().pipe(map(propertyArray => propertyArray[0]));
+  getPropertyById(id: string) {
+    return this.db.collection('properties').doc(id).valueChanges();
   }
 
   getFilteredProperties({ breakfast,
@@ -65,7 +66,9 @@ export class DataStorageService {
   setBookedDates(id, dates) {
     const bookedDatesArray = dates.dateRange.bookedDatesArray;
 
-    this.db.collection('properties').doc(id).valueChanges().pipe(first()).subscribe((propertyData: Property) => {
+    this.db.collection('properties').doc(id).valueChanges()
+    .pipe(first()).subscribe((propertyData: Property) => {
+      console.log(propertyData);
       const datesInBD = propertyData.bookedDates ? propertyData.bookedDates.map(date => date = date.toDate()) : [];
 
       if (!this.checkIfTwoDateArraysHaveCommonElement(bookedDatesArray, datesInBD)) {
@@ -78,7 +81,8 @@ export class DataStorageService {
           to ${bookedDatesArray[bookedDatesArray.length - 1].getDate()}.${
           bookedDatesArray[bookedDatesArray.length - 1].getMonth() + 1}.${
           bookedDatesArray[bookedDatesArray.length - 1].getFullYear()}`);
-        this.db.collection('properties').doc(id).set({ bookedDates: datesInBD }, { merge: true });
+        this.db.collection('properties').doc(id)
+        .set({ bookedDates: datesInBD }, { merge: true });
       } else {
         alert('This property is unavailable for the selected dates.');
       }

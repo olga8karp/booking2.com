@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataStorageService } from 'src/app/services/data-storage.service';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'b2-add-item',
@@ -17,10 +18,10 @@ export class AddItemComponent {
   meals = '';
   fileUrls: string[] = [];
 
-  constructor(private storageService: DataStorageService) {}
+  constructor(private storageService: DataStorageService, private router: Router) {}
 
   formSubmit(form: NgForm) {
-    form.value.timestamp = new Date().getTime();
     this.storageService.addProperty(form.value);
+    this.router.navigateByUrl('listings');
   }
 }
