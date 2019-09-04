@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseConfig: {
+  firebase: {
     apiKey: 'AIzaSyAsSV524BTbeHlm5VYiFhcRgBPtNtTSOmQ',
     authDomain: 'booking2project.firebaseapp.com',
     databaseURL: 'https://booking2project.firebaseio.com',

@@ -1,6 +1,7 @@
 .container {
     min-height: 85vh;
     min-width: 80vw;
+    padding-top: 20vh;
 }
 
 .error-template {

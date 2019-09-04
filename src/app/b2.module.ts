@@ -24,6 +24,7 @@ import { UploaderComponent } from './components/add-item/images-uploader/uploade
 import { UploadTaskComponent } from './components/add-item/images-uploader/upload-task/upload-task.component';
 import { AddressInputComponent } from './components/add-item/address-input/address-input.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -48,15 +49,7 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     GooglePlaceModule,
     NgbModule,
     HttpClientModule,
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyAsSV524BTbeHlm5VYiFhcRgBPtNtTSOmQ',
-      authDomain: 'booking2project.firebaseapp.com',
-      databaseURL: 'https://booking2project.firebaseio.com',
-      projectId: 'booking2project',
-      storageBucket: 'booking2project.appspot.com',
-      messagingSenderId: '186972044950',
-      appId: '1:186972044950:web:2b7699158f0780ff'
-    }),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,

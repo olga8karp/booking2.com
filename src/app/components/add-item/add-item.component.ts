@@ -20,6 +20,7 @@ export class AddItemComponent {
   constructor(private storageService: DataStorageService) {}
 
   formSubmit(form: NgForm) {
+    form.value.timestamp = new Date().getTime();
     this.storageService.addProperty(form.value);
   }
 }

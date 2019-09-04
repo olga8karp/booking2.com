@@ -1,7 +1,9 @@
 <div class="card-columns">
-    <div class="card" *ngFor="let property of properties | async">
+    <div class="card" *ngFor="let property of properties">
         <div class="card">
-            <img class="card-img-top" [src]="property.uploads.length ? property.uploads[0] : '../assets/images/no-image-available.jpg'" alt="property picture">
+            <img class="card-img-top"
+                [src]="property.uploads && property.uploads.length ? property.uploads[0] : '../assets/images/no-image-available.jpg'"
+                alt="property picture">
             <div class="card-body">
                 <h5 class="card-title text-center">{{ property.name }}</h5>
                 <p class="text-danger font-weight-bold">${{ property.price }} per night</p>
@@ -13,7 +15,8 @@
                             <li class="list-group-item bg-warning" *ngIf="property.lunch">lunch</li>
                             <li class="list-group-item bg-warning" *ngIf="property.dinner">dinner</li>
                             <li class="list-group-item bg-warning" *ngIf="property.kitchen">kitchen facilities</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.chargingStation">electric vehicle charging station</li>
+                            <li class="list-group-item bg-warning" *ngIf="property.chargingStation">electric vehicle
+                                charging station</li>
                             <li class="list-group-item bg-warning" *ngIf="property.fitnessCenter">fitness center</li>
                             <li class="list-group-item bg-warning" *ngIf="property.parking">parking included</li>
                             <li class="list-group-item bg-warning" *ngIf="property.petFriendly">pet friendly</li>
@@ -24,23 +27,15 @@
                 </div>
                 <div style="display: inline-block; position: absolute; bottom: 2rem; left: 40%">
                     <button type="button" class="btn btn-primary font-weight-bold card-body-button"
-                        [routerLink]="['/property', property.propertyId]">More info</button>
+                        [routerLink]="['/property', property.timestamp]">More info</button>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-end" style="margin-right: 1rem">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>
+<div class="text-center" style="padding: 2rem;">
+    <button class="btn btn btn-secondary float-left" (click)="prevPage()"
+        [disabled]="disable_prev || !(pagination_clicked_count>0)">Previous</button> <b>Page #{{pagination_clicked_count+1}}</b>
+    <button class="btn btn btn-secondary float-right" (click)="nextPage()" [disabled]="disable_next">Next</button>
+</div>

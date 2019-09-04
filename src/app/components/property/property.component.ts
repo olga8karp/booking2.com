@@ -10,17 +10,15 @@ import { NgForm } from '@angular/forms';
 })
 export class PropertyComponent implements OnInit {
   property;
-  id: string;
+  id: number;
   dateRange = {};
   isCalendarOpen = false;
 
   constructor(private dataService: DataStorageService,  private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.dataService.getPropertyById(this.id).subscribe(property => {
-      this.property = property;
-    });
+    this.id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    this.dataService.getPropertyById(this.id).subscribe(property => this.property = property);
   }
 
   toggleCalendar() {

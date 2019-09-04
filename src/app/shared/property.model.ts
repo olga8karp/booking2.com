@@ -19,8 +19,9 @@ export class Property {
     swimmingPool: true | '';
     description: string;
     uploads: string[];
-    propertyId?: string;
     bookedDates?: any[];
+    propertyId?: string;
+    timestamp?: number;
 }
 
 export interface Address {

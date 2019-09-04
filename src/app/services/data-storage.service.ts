@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Property } from '../shared/property.model';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, shareReplay, first } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +9,6 @@ import { map, shareReplay, first } from 'rxjs/operators';
 })
 export class DataStorageService {
   properties: Observable<Property[]>;
-  unavailableDates = new Subject<Date[]>();
 
   constructor(private db: AngularFirestore) {
     this.properties = this.getProperties().pipe(shareReplay());
@@ -20,14 +19,18 @@ export class DataStorageService {
   }
 
   getProperties() {
-    return this.db.collection('properties').snapshotChanges()
+    return this.db.collection('properties', ref => ref
+    .orderBy('timestamp', 'desc')
+    .limit(6)
+  ).snapshotChanges()
       .pipe(map(actions => actions.map(a => {
         return { propertyId: a.payload.doc.id, ...a.payload.doc.data() };
       }))) as Observable<Property[]>;
   }
 
-  getPropertyById(id: string) {
-    return this.db.collection('properties').doc(id).valueChanges();
+  getPropertyById(timestamp: number) {
+    return this.db.collection('properties', ref => ref.where('timestamp', '==', timestamp))
+    .valueChanges().pipe(map(propertyArray => propertyArray[0]));
   }
 
   getFilteredProperties({ breakfast,
@@ -47,20 +50,15 @@ export class DataStorageService {
     location }) {
 
     return this.db.collection('properties').ref
-      //  .where('chargingStation', '==', chargingStation)
-      //  .where('dinner', '==', dinner)
-      //  .where('fitnessCenter', '==', fitnessCenter)
-      //  .where('kitchen', '==', kitchen)
-      //  .where('lunch', '==', lunch)
-      // .where('numberOfGuests', '==', numberOfGuests)
-      //  .where('parking', '==', parking)
-      // .where('price', '==', '20')
-      //  .where('petFriendly', '==', petFriendly)
-      // .where('description', 'array-contains', '')
-      //  .where('propertyType', '==', propertyType)
-      //  .where('restaurant', '==', restaurant)
-      //  .where('swimmingPool', '==', swimmingPool)
-      // .where('propertyRating', '==', propertyRating)
+       .where('chargingStation', '==', chargingStation)
+       .where('dinner', '==', dinner)
+       .where('fitnessCenter', '==', fitnessCenter)
+       .where('kitchen', '==', kitchen)
+       .where('lunch', '==', lunch)
+       .where('parking', '==', parking)
+       .where('petFriendly', '==', petFriendly)
+       .where('restaurant', '==', restaurant)
+       .where('swimmingPool', '==', swimmingPool)
       .get();
   }
 
@@ -81,7 +79,6 @@ export class DataStorageService {
           bookedDatesArray[bookedDatesArray.length - 1].getMonth() + 1}.${
           bookedDatesArray[bookedDatesArray.length - 1].getFullYear()}`);
         this.db.collection('properties').doc(id).set({ bookedDates: datesInBD }, { merge: true });
-        this.unavailableDates.next(datesInBD);
       } else {
         alert('This property is unavailable for the selected dates.');
       }
