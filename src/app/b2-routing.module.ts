@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'listings', component: SearchResultsComponent },
   { path: 'property/:id', component: PropertyComponent },
   { path: 'add', component: AddItemComponent },
-  { path: '', redirectTo: '/listings', pathMatch: 'full' },
+  { path: '', redirectTo: 'listings', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

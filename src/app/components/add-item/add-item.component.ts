@@ -10,6 +10,7 @@ import { RouterLink, Router } from '@angular/router';
 })
 
 export class AddItemComponent {
+  name = '';
   address = '';
   propertyType = 'hotel';
   propertyRating = 'unrated';
@@ -17,6 +18,7 @@ export class AddItemComponent {
   price = '0';
   meals = '';
   fileUrls: string[] = [];
+  description = '';
 
   constructor(private storageService: DataStorageService, private router: Router) {}
 

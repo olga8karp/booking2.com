@@ -3,4 +3,7 @@
 <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" name="address" id="address"
   class="form-control search-text-input"
   (onAddressChange)="handleAddressSelect($event)"
-   required [ngModel]="address"/>
+  [(ngModel)]="address"
+  #addressInput="ngModel" 
+  pattern="^[a-zA-Z]*\d+[a-zA-Z]*$"
+  [ngClass]="addressInput.invalid && addressInput.touched ? 'is-invalid' : addressInput.touched && addressInput.valid ? 'is-valid' : ''" maxlength="50" required />

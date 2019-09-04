@@ -8,7 +8,7 @@
     <fieldset class="form-group">
       <label for="name" class="font-weight-bold"> Name </label>
       <small> Please give your property an attractive name </small>
-      <input placeholder="Enter a name" name="name" id="name" class="form-control search-text-input" ngModel required />
+      <input placeholder="Enter a name" name="name" id="name" class="form-control search-text-input" [(ngModel)]="name" #nameInput="ngModel" [ngClass]="nameInput.invalid && nameInput.touched ? 'is-invalid' : nameInput.touched && nameInput.valid ? 'is-valid' : ''" minlength="5" maxlength="303" required />
     </fieldset>
 
     <fieldset class="form-group">
@@ -163,13 +163,14 @@
     <fieldset class="form-group">
         <label for="description" class="font-weight-bold"> Description </label>
         <small> Please write a short description between 10 and 300 symbols </small>
-        <textarea type="textarea" name="description" id="description" class="form-control search-text-input" minlength="15" maxlength="300" rows="6" ngModel required></textarea>
+        <textarea type="textarea" name="description" id="description" class="form-control search-text-input" minlength="15" maxlength="300" rows="6" [(ngModel)]="description" #descInput="ngModel" [ngClass]="descInput.invalid && descInput.touched ? 'is-invalid' : descInput.touched && descInput.valid ? 'is-valid' : ''" minlength="5" maxlength="303" required>
+        </textarea>
     </fieldset>
 
     <fieldset class="form-group">
       <label for="price" class="font-weight-bold" required> Price per night (USD) </label>
       <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input"
-        pattern="^[1-9]+[0-9]*$" />
+        pattern="^[1-9]+[0-9]*$" #priceInput="ngModel" [ngClass]="priceInput.invalid && priceInput.touched ? 'is-invalid' : priceInput.touched && priceInput.valid ? 'is-valid' : ''" minlength="5" maxlength="303" required>
     </fieldset>
 
     <button type="submit" class="btn btn-primary font-weight-bold" [disabled]="!addPropertyForm.valid">Submit</button>
