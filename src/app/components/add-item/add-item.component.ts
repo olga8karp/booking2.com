@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataStorageService } from 'src/app/services/data-storage.service';
 import { RouterLink, Router } from '@angular/router';
@@ -10,6 +10,7 @@ import { RouterLink, Router } from '@angular/router';
 })
 
 export class AddItemComponent {
+  @ViewChild('addPropertyForm', { static: false }) public addPropertyForm: NgForm;
   name = '';
   address = '';
   propertyType = 'hotel';

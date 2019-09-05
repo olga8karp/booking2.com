@@ -108,7 +108,7 @@ export class SearchResultsComponent implements OnInit {
 
   pop_prev_startAt(prev_first_doc) {
     this.prev_strt_at.forEach(element => {
-      if (prev_first_doc.data().id == element.data().id) {
+      if (prev_first_doc.data().id === element.data().id) {
         element = null;
       }
     });
