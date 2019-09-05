@@ -1,5 +1,5 @@
 <div class="card-columns">
-    <div class="card" *ngFor="let property of properties">
+    <div class="card" *ngFor="let property of properties; let i = index">
         <div class="card" [routerLink]="['/property', property.timestamp]">
             <img class="card-img-top"
                 [src]="property.uploads && property.uploads.length ? property.uploads[0] : '../assets/images/no-image-available.jpg'"
@@ -30,7 +30,7 @@
     </div>
 </div>
 <div class="text-center" style="padding: 0 2rem 2rem 2rem; color: #212529;">
-    <button class="btn btn btn-secondary float-left" (click)="prevPage()"
+    <button class="btn btn-secondary float-left" (click)="prevPage()"
         [disabled]="disable_prev || !(pagination_clicked_count>0)">Previous</button> <b>Page #{{pagination_clicked_count+1}}</b>
-    <button class="btn btn btn-secondary float-right" (click)="nextPage()" [disabled]="disable_next">Next</button>
+    <button class="btn btn-secondary float-right" (click)="nextPage()" [disabled]="disable_next">Next</button>
 </div>
