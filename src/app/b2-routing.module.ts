@@ -7,10 +7,10 @@ import { AddItemComponent } from './components/add-item/add-item.component';
 import { AddItemCanDeactivateGuardService } from './components/add-item-can-deactivate-guard.service';
 
 const routes: Routes = [
-  { path: 'listings', component: SearchResultsComponent },
+  { path: 'listings/:id', component: SearchResultsComponent },
   { path: 'property/:id', component: PropertyComponent },
   { path: 'add', component: AddItemComponent, canDeactivate: [AddItemCanDeactivateGuardService] },
-  { path: '', redirectTo: 'listings', pathMatch: 'full' },
+  { path: '', redirectTo: 'listings/1', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -25,6 +25,6 @@ export class AddItemComponent {
 
   formSubmit(form: NgForm) {
     this.storageService.addProperty(form.value);
-    this.router.navigateByUrl('listings');
+    this.router.navigateByUrl('listings/1');
   }
 }

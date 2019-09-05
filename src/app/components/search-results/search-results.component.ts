@@ -17,6 +17,7 @@ export class SearchResultsComponent implements OnInit {
   pagination_clicked_count = 0;
   disable_next = false;
   disable_prev = false;
+  page = 1;
 
   constructor(
     private firestore: AngularFirestore
@@ -91,7 +92,7 @@ export class SearchResultsComponent implements OnInit {
         this.firstInResponse = response.docs[0];
         this.lastInResponse = response.docs[response.docs.length - 1];
         this.properties = [];
-        for (let item of response.docs) {
+        for (const item of response.docs) {
           this.properties.push(item.data());
         }
         this.pagination_clicked_count++;

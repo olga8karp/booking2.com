@@ -1,10 +1,15 @@
 .card-columns {
-    height: 130vh;
+    height: 98vh;
  }
 
 .card {
-    height: 35rem;
+    height: 28rem;
     font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 5px 5px 5px #CDCDCD;
 }
 
 .card-img-top {

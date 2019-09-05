@@ -1,6 +1,6 @@
 <div class="card-columns">
     <div class="card" *ngFor="let property of properties">
-        <div class="card">
+        <div class="card" [routerLink]="['/property', property.timestamp]">
             <img class="card-img-top"
                 [src]="property.uploads && property.uploads.length ? property.uploads[0] : '../assets/images/no-image-available.jpg'"
                 alt="property picture">
@@ -25,11 +25,6 @@
                         </ul>
                     </div>
                 </div>
-                <div style="display: inline-block; position: absolute; bottom: 2rem; left: 40%">
-                    <button type="button" class="btn btn-primary font-weight-bold card-body-button"
-                        [routerLink]="['/property', property.timestamp]">More info</button>
-                </div>
-
             </div>
         </div>
     </div>

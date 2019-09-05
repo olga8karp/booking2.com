@@ -1,9 +1,7 @@
 .search-panel-wrapper {
     max-width: 320px;
     padding: 1rem;
-    margin: 1rem 0;
-    position: sticky;
-    top: 1rem;
+    height: 100%;
 }
 
 label {
@@ -13,7 +11,7 @@ label {
 .input-wrapper {
     font-size: 0.8rem;
     font-weight: bold;
-    margin: 1em;
+    margin: 5px;
 }
 
 .input-wrapper * {
