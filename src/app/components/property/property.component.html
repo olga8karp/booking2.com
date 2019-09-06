@@ -67,11 +67,11 @@
     <br>
     <hr>
     <div class="text-center wrapper">
-      <a class="previous" (click)="goToPrevious()">&laquo; Previous</a>
-      <a class="next" (click)="goToNext()">Next &raquo;</a>
+      <button class="btn previous" (click)="goToPrevious(property?.timestamp)" [disabled]="goToPrevDisabled">&laquo; Previous</button>
+      <button class="btn next" (click)="goToNext(property?.timestamp)" [disabled]="goToNextDisabled">Next &raquo;</button>
     </div>
     <div class="text-center wrapper">
-      <button type="button" class="btn btn-secondary font-weight-bold" routerLink="/listings"> Back to search results
+      <button type="button" class="btn btn-secondary font-weight-bold" routerLink="/listings"> Back to all search results
       </button>
     </div>
   </div>
