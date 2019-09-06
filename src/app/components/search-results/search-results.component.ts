@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataStorageService } from '../../services/data-storage.service';
-import { Property } from 'src/app/shared/property.model';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'b2-search-results',
@@ -18,13 +17,15 @@ export class SearchResultsComponent implements OnInit {
   disable_next = false;
   disable_prev = false;
   page = 1;
+  visitedPropertyId: number;
 
   constructor(
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore, private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.loadItems();
+    this.visitedPropertyId = +this.route.snapshot.paramMap.get('lastVisited');
   }
 
   loadItems() {

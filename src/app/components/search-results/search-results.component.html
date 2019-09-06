@@ -1,6 +1,6 @@
 <div class="card-columns">
     <div class="card" *ngFor="let property of properties; let i = index">
-        <div class="card" [routerLink]="['/property', property.timestamp]">
+        <div class="card" [routerLink]="['/property', property.timestamp]" [ngStyle]="{ 'background-color': property.timestamp === this.visitedPropertyId ? '#ddd' : '#fff' }">
             <img class="card-img-top"
                 [src]="property.uploads && property.uploads.length ? property.uploads[0] : '../assets/images/no-image-available.jpg'"
                 alt="property picture">

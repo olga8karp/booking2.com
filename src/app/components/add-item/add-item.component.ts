@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DataStorageService } from 'src/app/services/data-storage.service';
-import { RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'b2-add-item',
