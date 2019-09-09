@@ -34,7 +34,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
 
-  onDateSelection(date: NgbDate) {
+  onDateSelection(date: NgbDate): void {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
     } else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
@@ -52,28 +52,29 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  isHovered(date: NgbDate) {
+  isHovered(date: NgbDate): boolean {
     return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
   }
 
-  isInside(date: NgbDate) {
+  isInside(date: NgbDate): boolean {
     return date.after(this.fromDate) && date.before(this.toDate);
   }
 
-  isRange(date: NgbDate) {
+  isRange(date: NgbDate): boolean {
     return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
   }
 
-  writeValue() { }
+  writeValue(): void { }
 
   onChanged: (value: {}) => void = () => { };
 
   onTouched: () => void = () => { };
 
-  registerOnChange(fn: any) {
+  registerOnChange(fn: any): void {
     this.onChanged = fn;
   }
-  registerOnTouched(fn: any) {
+
+  registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
@@ -81,7 +82,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     return new Date(Date.UTC(ngbDate.year, ngbDate.month - 1, ngbDate.day));
   }
 
-  *datesBetween(startDate, endDate) {
+  *datesBetween(startDate: Date, endDate: Date): IterableIterator<Date> {
     startDate = startDate || new Date();
     endDate = endDate || startDate;
     const current = this.incrementDate(this.cloneDate(startDate), -1);
@@ -90,16 +91,16 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     }
   }
 
-  cloneDate(date) {
+  cloneDate(date: Date): Date {
     return new Date(date.valueOf());
   }
 
-  incrementDate(date, amount) {
+  incrementDate(date: Date, amount: number): Date {
     date.setDate(date.getDate() + this.defaultValue(amount, 1));
     return date;
   }
 
-  defaultValue(value, valueDefault) {
+  defaultValue(value: number, valueDefault: number): number {
     return (typeof value === 'undefined' ? valueDefault : value);
   }
 }

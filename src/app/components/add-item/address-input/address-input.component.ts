@@ -25,14 +25,14 @@ export class AddressInputComponent implements ControlValueAccessor {
 
   onTouched: () => void = () => {};
 
-  registerOnChange(fn: any) {
+  registerOnChange(fn: any): void {
     this.onChanged = fn;
   }
-  registerOnTouched(fn: any) {
+  registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  handleAddressSelect(address: Address) {
+  handleAddressSelect(address: Address): void {
     this.onChanged(address.formatted_address);
     this.onTouched();
   }

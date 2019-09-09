@@ -25,7 +25,7 @@ export class UploadTaskComponent implements OnInit {
     this.startUpload();
   }
 
-  startUpload() {
+  startUpload(): void {
     const path = `file/${Date.now()}_${this.file.name}`;
     const ref = this.storage.ref(path);
     this.task = this.storage.upload(path, this.file);
@@ -41,11 +41,11 @@ export class UploadTaskComponent implements OnInit {
     );
   }
 
-  isActive(snapshot) {
+  isActive(snapshot): boolean {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
 
-  delete(downloadURL) {
+  delete(downloadURL): void {
     this.storage.storage.refFromURL(downloadURL).delete();
     this.uploadRemoved.emit({ file: this.file, url: this.downloadURL });
   }

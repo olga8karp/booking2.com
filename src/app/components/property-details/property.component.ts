@@ -12,7 +12,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 })
 export class PropertyComponent implements OnInit {
   property: Property;
-  id: string;
+  id = '';
   name = '';
   phone = '';
   email = '';
