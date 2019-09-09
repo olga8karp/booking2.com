@@ -56,10 +56,40 @@
     <div *ngIf="isCalendarOpen">
       <form (ngSubmit)="bookForSelectedDates(bookingForm)" #bookingForm="ngForm">
         <div>
-          <b2-date-picker name="dateRange" [(ngModel)]="dateRange"></b2-date-picker>
+          <input type="text" name="name" class="form-control" style="width: 20rem; margin: 0 auto" placeholder="Your name" minlength="2" maxlength="30"
+          [(ngModel)]="name"
+          #nameInput="ngModel"
+          [ngClass]="nameInput.invalid && nameInput.touched ? 'is-invalid' : nameInput.touched && nameInput.valid ? 'is-valid' : ''"
+          required>
+        </div>
+        <br>
+        <div>
+            <input type="email" name="email" class="form-control" style="width: 20rem; margin: 0 auto" placeholder="Email" 
+            pattern='^(([^()\[\]\.,;:\s@\"]+(\.[^()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^()[\]\.,;:\s@\"]+\.)+[^()[\]\.,;:\s@\"]{2,})$'
+            [(ngModel)]="email"
+            #emailInput="ngModel"
+            [ngClass]="emailInput.invalid && emailInput.touched ? 'is-invalid' : emailInput.touched && emailInput.valid ? 'is-valid' : ''"
+            required>
+        </div>
+        <br>
+        <div>
+            <input type="text" name="phone" class="form-control" style="width: 20rem; margin: 0 auto" placeholder="Your phone number" pattern="\+?(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|
+            2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|
+            4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$" 
+            [(ngModel)]="phone"
+            #phoneInput="ngModel"
+            [ngClass]="phoneInput.invalid && phoneInput.touched ? 'is-invalid' : phoneInput.touched && phoneInput.valid ? 'is-valid' : ''"
+            required>
+        </div>
+        <br>
+        <div>
+          <b2-date-picker name="dateRange" 
+          [(ngModel)]="dateRange"
+          #dateInput="ngModel">
+          </b2-date-picker>
         </div>
         <div>
-          <button type="submit" class="btn btn-danger font-weight-bold"> Book for the selected dates
+          <button type="submit" class="btn btn-danger font-weight-bold" [disabled]="!bookingForm.valid || !dateRange.bookedDatesArray"> Book for the selected dates
           </button>
         </div>
       </form>

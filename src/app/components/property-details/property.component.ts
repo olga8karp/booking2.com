@@ -13,14 +13,17 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class PropertyComponent implements OnInit {
   property: Property;
   id: string;
+  name = '';
+  phone = '';
+  email = '';
   dateRange = {};
   isCalendarOpen = false;
   goToPrevDisabled = false;
   goToNextDisabled = false;
 
   constructor(private dataService: DataStorageService,
-    private router: Router, private route: ActivatedRoute,
-    private firestore: AngularFirestore) { }
+              private router: Router, private route: ActivatedRoute,
+              private firestore: AngularFirestore) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((routeParams: ParamMap) => {
@@ -37,6 +40,7 @@ export class PropertyComponent implements OnInit {
 
   bookForSelectedDates(form: NgForm): void {
     this.dataService.setBookedDates(this.id, form.value);
+    this.dataService.saveBookingDetails(this.id, form.value);
   }
 
   goToPrevious(id: number): void {

@@ -63,10 +63,10 @@ export class DataStorageService {
       .get();
   }
 
-  setBookedDates(id, dates) {
-    const bookedDatesArray = dates.dateRange.bookedDatesArray;
+  setBookedDates(propertyId, bookingData) {
+    const bookedDatesArray = bookingData.dateRange.bookedDatesArray;
 
-    this.db.collection('properties').doc(id).valueChanges()
+    this.db.collection('properties').doc(propertyId).valueChanges()
     .pipe(first()).subscribe((propertyData: Property) => {
       console.log(propertyData);
       const datesInBD = propertyData.bookedDates ? propertyData.bookedDates.map(date => date = date.toDate()) : [];
@@ -81,12 +81,17 @@ export class DataStorageService {
           to ${bookedDatesArray[bookedDatesArray.length - 1].getDate()}.${
           bookedDatesArray[bookedDatesArray.length - 1].getMonth() + 1}.${
           bookedDatesArray[bookedDatesArray.length - 1].getFullYear()}`);
-        this.db.collection('properties').doc(id)
+        this.db.collection('properties').doc(propertyId)
         .set({ bookedDates: datesInBD }, { merge: true });
       } else {
         alert('This property is unavailable for the selected dates.');
       }
     });
+  }
+
+  saveBookingDetails(propertyId, bookingData) {
+    bookingData.propertyId = propertyId;
+    return this.db.collection('bookings').doc(propertyId).set(bookingData);
   }
 
   checkIfTwoDateArraysHaveCommonElement(dateArr1: Date[], dateArr2: Date[]): boolean {

@@ -15,7 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { PropertyComponent } from './components/property/property.component';
+import { PropertyComponent } from './components/property-details/property.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { AddItemComponent } from './components/add-item/add-item.component';

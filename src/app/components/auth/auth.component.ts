@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FirebaseAuth } from 'angularfire2';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'b2-auth',
@@ -12,14 +11,14 @@ export class AuthComponent {
   isLoginMode = true;
   isResetPasswordMode = false;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {}
 
   onSwitchMode() {
     this.isResetPasswordMode = false;
     this.isLoginMode = !this.isLoginMode;
   }
 
-  getSubmitButtonText() {
+  getSubmitButtonText(): string {
     if (this.isResetPasswordMode) {
       return 'Send password recovery email';
     } else if (this.isLoginMode) {
@@ -29,7 +28,7 @@ export class AuthComponent {
     }
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm): void {
     try {
     if (this.isResetPasswordMode) {
       this.authService.forgotPassword(form.value.email);
@@ -44,7 +43,7 @@ export class AuthComponent {
     form.reset();
   }
 
-  toggleResetPasswordMode(){
+  toggleResetPasswordMode(): void {
     this.isResetPasswordMode = !this.isResetPasswordMode;
   }
 }
