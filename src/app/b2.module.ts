@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './b2-routing.module';
@@ -25,6 +25,7 @@ import { UploadTaskComponent } from './components/add-item/images-uploader/uploa
 import { AddressInputComponent } from './components/add-item/address-input/address-input.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { environment } from 'src/environments/environment';
+import { AuthComponent } from './components/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { environment } from 'src/environments/environment';
     UploaderComponent,
     UploadTaskComponent,
     AddressInputComponent,
-    DatePickerComponent
+    DatePickerComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

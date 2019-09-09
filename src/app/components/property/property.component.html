@@ -1,10 +1,10 @@
 <div class="jumbotron bg-white wrapper" style="min-width: 83vw;">
-  <h1>{{ property?.name }}</h1>
+  <h2 class="font-weight-bold">{{ property?.name }}</h2>
   <p><img src="../assets/images/location.png"> {{ property?.address }}</p>
 
-  <h3 class="font-weight-bold text-danger">${{ property?.price }}/night</h3>
+  <h4 class="font-weight-bold text-danger">${{ property?.price }}/night</h4>
 
-  <p class="font-weight-bold"> Fits {{ property?.numberOfGuests }} people </p>
+  <p class="font-weight-bold" style="margin-bottom: 0"> Fits {{ property?.numberOfGuests }} people </p>
 
   <div class="wrapper">
     <img *ngIf="property?.propertyRating > 0" src="../../assets/images/star-icon.png">
@@ -50,7 +50,7 @@
         Book this property
       </button>
       <button *ngIf="isCalendarOpen" type="button" class="btn btn-primary font-weight-bold" (click)="toggleCalendar()">
-        X
+        x
       </button>
     </div>
     <div *ngIf="isCalendarOpen">
@@ -71,7 +71,7 @@
       <button class="btn next" (click)="goToNext(property?.timestamp)" [disabled]="goToNextDisabled">Next &raquo;</button>
     </div>
     <div class="text-center wrapper">
-      <button type="button" class="btn btn-secondary font-weight-bold" [routerLink]="['/listings', { lastVisited: property.timestamp }]"> Back to all search results
+      <button type="button" class="btn btn-secondary font-weight-bold" [routerLink]="['/listings', { lastVisited: property?.timestamp }]"> Back to all search results
       </button>
     </div>
   </div>

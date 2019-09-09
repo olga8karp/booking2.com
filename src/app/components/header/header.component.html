@@ -5,10 +5,16 @@
         </a>
     </div>
     <div>
-        <a routerLink="" style="margin-left: auto">
-            <button class="btn btn-light font-weight-bold">Login</button>
+        <a routerLink="auth" style="margin-left: auto" *ngIf="authService.user$ | async as user; else login">
+            <span style="color: #fff; text-decoration: none; margin-right: 1rem; font-weight: bold"> Logged in as {{ user.displayName || user.email }} </span>
+            <button class="btn btn-light font-weight-bold" (click)="authService.signOut()">Sign Out</button>
         </a>
-        <a routerLink="/add" style="margin-left: 1rem">
+        <ng-template #login>
+            <a routerLink="auth" style="margin-left: auto">
+                <button class="btn btn-light font-weight-bold">Sign Up / Login</button>
+            </a>
+        </ng-template>
+        <a routerLink="/add" style="margin-left: 1rem" *ngIf="(authService.user$ | async)?.uid === 'VWqVCnFHnKTNTKVuYYexx4e5mCf2'">
             <button class="btn btn-light font-weight-bold">List new property</button>
         </a>
     </div>
