@@ -47,7 +47,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
       const from = this.createDateFromNgbDate(this.fromDate);
       const to = this.createDateFromNgbDate(this.toDate);
       const bookedDatesArray = Array.from(this.datesBetween(from, to));
-      this.onChanged({ bookedDatesArray });
+      this.onChanged(bookedDatesArray);
       this.onTouched();
     }
   }

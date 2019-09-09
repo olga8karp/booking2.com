@@ -9,7 +9,7 @@ import { DataStorageService } from 'src/app/services/data-storage.service';
 })
 export class SearchPanelComponent implements OnInit {
   numberOfGuests = '2';
-  dateRange = {};
+  bookedDates = {};
 
   constructor(private dataService: DataStorageService) {
   }

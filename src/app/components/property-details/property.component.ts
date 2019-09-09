@@ -16,7 +16,7 @@ export class PropertyComponent implements OnInit {
   name = '';
   phone = '';
   email = '';
-  dateRange = {};
+  bookedDates = [];
   isCalendarOpen = false;
   goToPrevDisabled = false;
   goToNextDisabled = false;
@@ -40,7 +40,6 @@ export class PropertyComponent implements OnInit {
 
   bookForSelectedDates(form: NgForm): void {
     this.dataService.setBookedDates(this.id, form.value);
-    this.dataService.saveBookingDetails(this.id, form.value);
   }
 
   goToPrevious(id: number): void {
