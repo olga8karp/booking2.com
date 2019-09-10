@@ -13,7 +13,7 @@ export class AuthComponent {
 
   constructor(private authService: AuthService) {}
 
-  onSwitchMode() {
+  onSwitchMode(): void {
     this.isResetPasswordMode = false;
     this.isLoginMode = !this.isLoginMode;
   }

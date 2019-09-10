@@ -19,36 +19,36 @@ export class UploaderComponent implements ControlValueAccessor {
   files: File[] = [];
   fileUrls: string[] = [];
 
-  toggleHover(event: boolean) {
+  toggleHover(event: boolean): void {
     this.isHovering = event;
   }
 
-  onDrop(files: FileList) {
+  onDrop(files: FileList): void {
     for (let i = 0; i < files.length; i++) {
       this.files.push(files.item(i));
     }
   }
 
-  writeValue() {}
+  writeValue(): void {}
 
   onChanged: (value: string[]) => void = () => {};
 
   onTouched: () => void = () => {};
 
-  registerOnChange(fn: any) {
+  registerOnChange(fn: any): void {
     this.onChanged = fn;
   }
-  registerOnTouched(fn: any) {
+  registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
 
-  removeUpload(fileData: { file: File, url: string }) {
+  removeUpload(fileData: { file: File, url: string }): void {
     this.files = this.files.filter(f => f !== fileData.file);
     this.fileUrls = this.fileUrls.filter(f => f !== fileData.url);
     this.onChanged(this.fileUrls);
   }
 
-  addUpload(url) {
+  addUpload(url): void {
     this.fileUrls.push(url);
     this.onChanged(this.fileUrls);
     this.onTouched();

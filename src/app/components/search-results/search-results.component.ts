@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFirestore, QuerySnapshot } from 'angularfire2/firestore';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -28,7 +28,7 @@ export class SearchResultsComponent implements OnInit {
     this.visitedPropertyId = +this.route.snapshot.paramMap.get('lastVisited');
   }
 
-  loadItems() {
+  loadItems(): void {
     this.firestore.collection('properties', ref => ref
       .limit(6)
       .orderBy('timestamp', 'desc')
@@ -51,9 +51,10 @@ export class SearchResultsComponent implements OnInit {
         this.disable_prev = false;
         this.push_prev_startAt(this.firstInResponse);
       }, error => {
+        console.log(error);
       });
   }
-  prevPage() {
+  prevPage(): void {
     this.disable_prev = true;
     this.firestore.collection('properties', ref => ref
       .orderBy('timestamp', 'desc')
@@ -78,7 +79,7 @@ export class SearchResultsComponent implements OnInit {
       });
   }
 
-  nextPage() {
+  nextPage(): void {
     this.disable_next = true;
     this.firestore.collection('properties', ref => ref
       .limit(6)
@@ -104,11 +105,11 @@ export class SearchResultsComponent implements OnInit {
       });
   }
 
-  push_prev_startAt(prev_first_doc) {
+  push_prev_startAt(prev_first_doc): void {
     this.prev_strt_at.push(prev_first_doc);
   }
 
-  pop_prev_startAt(prev_first_doc) {
+  pop_prev_startAt(prev_first_doc): void {
     this.prev_strt_at.forEach(element => {
       if (prev_first_doc.data().id === element.data().id) {
         element = null;

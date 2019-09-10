@@ -4,6 +4,8 @@ import { DataStorageService } from 'src/app/services/data-storage.service';
 import { NgForm } from '@angular/forms';
 import { Property } from 'src/app/shared/property.model';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BookingModalComponent } from '../booking-modal/booking-modal.component';
 
 @Component({
   selector: 'b2-property',
@@ -22,8 +24,9 @@ export class PropertyComponent implements OnInit {
   goToNextDisabled = false;
 
   constructor(private dataService: DataStorageService,
-              private router: Router, private route: ActivatedRoute,
-              private firestore: AngularFirestore) { }
+    private router: Router, private route: ActivatedRoute,
+    private firestore: AngularFirestore,
+    private modalService: NgbModal) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((routeParams: ParamMap) => {
@@ -36,10 +39,6 @@ export class PropertyComponent implements OnInit {
 
   toggleCalendar(): void {
     this.isCalendarOpen = !this.isCalendarOpen;
-  }
-
-  bookForSelectedDates(form: NgForm): void {
-    this.dataService.setBookedDates(this.id, form.value);
   }
 
   goToPrevious(id: number): void {
@@ -78,5 +77,10 @@ export class PropertyComponent implements OnInit {
           this.goToNextDisabled = true;
         }
       });
+  }
+
+  open() {
+    const modalRef = this.modalService.open(BookingModalComponent);
+    modalRef.componentInstance.propertyId = this.id;
   }
 }

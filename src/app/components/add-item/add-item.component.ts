@@ -23,7 +23,7 @@ export class AddItemComponent {
 
   constructor(private storageService: DataStorageService, private router: Router) {}
 
-  formSubmit(form: NgForm) {
+  formSubmit(form: NgForm): void {
     this.storageService.addProperty(form.value);
     this.router.navigateByUrl('listings');
   }
