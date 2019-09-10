@@ -1,0 +1,35 @@
+<div class="modal-header">
+    <h2 class="modal-title text-primary font-weight-bold">Log in</h2>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="jumbotron bg-white">
+    <div>
+        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email"  pattern='^(([^()\[\]\.,;:\s@\"]+(\.[^()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^()[\]\.,;:\s@\"]+\.)+[^()[\]\.,;:\s@\"]{2,})$' ngModel required email>
+            </div>
+            <div class="form-group" *ngIf="!isResetPasswordMode">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" ngModel required minlength="6">
+                <a href="javascript:void(0)" class="text-primary" (click)="toggleResetPasswordMode()">Forgot your
+                    password</a>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary" style="margin-bottom: 5px" [disabled]="!authForm.valid">
+                    {{ isResetPasswordMode ? 'Send password recovery email' : 'Log In'}} </button>
+            </div>
+        </form>
+        <br>
+        <br>
+        <div class="text-center" *ngIf="!isResetPasswordMode">
+            <button class="btn btn-secondary" (click)="switchToSignup()">Switch to sign up</button> |
+            <button class="btn btn-danger" (click)="loginWithGoogle()">Log in with Google</button>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+</div>

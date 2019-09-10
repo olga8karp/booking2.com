@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { DataStorageService } from 'src/app/services/data-storage.service';
-import { NgForm } from '@angular/forms';
 import { Property } from 'src/app/shared/property.model';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';

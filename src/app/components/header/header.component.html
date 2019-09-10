@@ -4,18 +4,20 @@
             <img src="../../assets/images/logo.png" alt="booking2">
         </a>
     </div>
-    <div class="username">
+    <div class="account-management">
         <a routerLink="auth" style="margin-left: auto" *ngIf="authService.user$ | async as user; else login">
-            <span style="color: #fff; text-decoration: none; margin-right: 1rem; font-weight: bold"> Logged in as {{ user.displayName || user.email }} </span>
+            <span style="color: #fff; text-decoration: none; margin-right: 1rem; font-weight: bold"> Logged in as
+                {{ user.displayName || user.email }} </span>
             <button class="btn btn-light font-weight-bold" (click)="authService.signOut()">Sign Out</button>
         </a>
         <ng-template #login>
-            <a routerLink="auth" style="margin-left: auto">
-                <button class="btn btn-light font-weight-bold">Sign Up / Login</button>
-            </a>
+            <button class="btn btn-light font-weight-bold" (click)="openLoginModal()" style="margin-right: 5px">Log in</button>
+            <button class="btn btn-light font-weight-bold" (click)="openSignupModal()">Sign up</button>
         </ng-template>
-        <a routerLink="/add" style="margin-left: 1rem" *ngIf="(authService.user$ | async)?.uid === 'VWqVCnFHnKTNTKVuYYexx4e5mCf2'">
+        <a routerLink="/add" style="margin-left: 1rem"
+            *ngIf="(authService.user$ | async)?.uid === 'VWqVCnFHnKTNTKVuYYexx4e5mCf2'">
             <button class="btn btn-light font-weight-bold">List new property</button>
         </a>
+
     </div>
 </nav>
