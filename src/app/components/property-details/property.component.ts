@@ -15,18 +15,13 @@ import { BookingModalComponent } from '../booking-modal/booking-modal.component'
 export class PropertyComponent implements OnInit {
   property: Property;
   id = '';
-  name = '';
-  phone = '';
-  email = '';
-  bookedDates = [];
-  isCalendarOpen = false;
   goToPrevDisabled = false;
   goToNextDisabled = false;
 
   constructor(private dataService: DataStorageService,
-    private router: Router, private route: ActivatedRoute,
-    private firestore: AngularFirestore,
-    private modalService: NgbModal) { }
+              private router: Router, private route: ActivatedRoute,
+              private firestore: AngularFirestore,
+              private modalService: NgbModal) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((routeParams: ParamMap) => {
@@ -35,10 +30,6 @@ export class PropertyComponent implements OnInit {
         this.property = prop;
       });
     });
-  }
-
-  toggleCalendar(): void {
-    this.isCalendarOpen = !this.isCalendarOpen;
   }
 
   goToPrevious(id: number): void {
