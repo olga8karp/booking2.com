@@ -14,7 +14,7 @@ export class AuthService {
   user$: Observable<User>;
   constructor(private router: Router, private authService: AngularFireAuth, private firestore: AngularFirestore) {
     this.user$ = this.authService.authState.pipe(
-      switchMap(user => {
+      switchMap((user: User) => {
         if (user) {
           return this.firestore.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
@@ -23,42 +23,24 @@ export class AuthService {
       }));
   }
 
-  // Sign in with email/password
-  signIn(email, password): Promise<void> {
-    return this.authService.auth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.updateUserData(result.user);
-      }).catch((error) => {
-        window.alert(error.message);
-      });
+  logIn(email: string, password: string): Promise<auth.UserCredential> {
+    return this.authService.auth.signInWithEmailAndPassword(email, password);
   }
 
-  signUp(email, password) {
+  signUp(email: string, password: string): Promise<void> {
     return this.authService.auth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then((result: auth.UserCredential) => {
         this.sendVerificationMail();
         this.updateUserData(result.user);
-      }).catch((error) => {
-        window.alert(error.message);
-      })
+      });
   }
 
-  // Send email verfificaiton when new user sign up
   sendVerificationMail(): Promise<void> {
-    return this.authService.auth.currentUser.sendEmailVerification()
-      .then(() => {
-        this.router.navigate(['verify-email-address']);
-      });
+    return this.authService.auth.currentUser.sendEmailVerification();
   }
 
-  // Reset Forggot password
-  forgotPassword(passwordResetEmail): Promise<void> {
-    return this.authService.auth.sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      }).catch((error) => {
-        window.alert(error);
-      });
+  forgotPassword(passwordResetEmail: string): Promise<void> {
+    return this.authService.auth.sendPasswordResetEmail(passwordResetEmail);
   }
 
   async googleSignin(): Promise<void> {
@@ -67,13 +49,13 @@ export class AuthService {
     return this.updateUserData(credential.user);
   }
 
-  async signOut(): Promise<boolean> {
+  async logOut(): Promise<boolean> {
     await this.authService.auth.signOut();
     return this.router.navigateByUrl('listings');
   }
 
   private updateUserData({ uid, email, displayName }): Promise<void> {
-    const userRef: AngularFirestoreDocument<User> = this.firestore.doc(`users/${uid}`);
+    const userRef: AngularFirestoreDocument<User> = this.firestore.doc<User>(`users/${uid}`);
     const data = {
       uid,
       email,

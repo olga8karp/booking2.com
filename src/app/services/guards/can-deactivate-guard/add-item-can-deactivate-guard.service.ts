@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
-import { AddItemComponent } from '../../components/add-item/add-item.component';
+import { AddItemComponent } from '../../../components/add-item/add-item.component';
 
 @Injectable({
   providedIn: 'root'

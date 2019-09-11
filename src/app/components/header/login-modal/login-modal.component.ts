@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
+
+import { Alert, AlertType, SuccessAlertMessage } from './login-alert-model';
+import { CurrentModeLabel } from './login-mode.enum';
+import { AuthFormData } from '../../../shared/auth-form-data-model';
 
 @Component({
   selector: 'b2-login-modal',
@@ -9,26 +12,64 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent {
+  isLoginMode = true;
   isResetPasswordMode = false;
+  alert: Alert = { type: null, message: null };
 
   constructor(public activeModal: NgbActiveModal, private authService: AuthService) { }
 
-  onSubmit(form: NgForm): void {
+  onSwitchMode(): void {
+    this.isResetPasswordMode = false;
+    this.isLoginMode = !this.isLoginMode;
+  }
+
+  getCurrentModeLabel(): string {
     if (this.isResetPasswordMode) {
-      this.authService.forgotPassword(form.value.email);
+      return CurrentModeLabel.passRecoveryMode;
+    } else if (this.isLoginMode) {
+      return CurrentModeLabel.loginMode;
     } else {
-      this.authService.signIn(form.value.email, form.value.password);
+      return CurrentModeLabel.signupMode;
     }
-    form.reset();
-    this.activeModal.close();
   }
 
-  loginWithGoogle() {
-    this.authService.googleSignin().finally(() =>
-      this.activeModal.close());
+  onSubmit(formData: AuthFormData): void {
+    if (this.isResetPasswordMode) {
+      this.authService.forgotPassword(formData.email).then(() => {
+        this.alert.message = SuccessAlertMessage.emailSent; this.alert.type = AlertType.success;
+      }).catch((error: Error) => {
+        this.alert.message = error.message; this.alert.type = AlertType.danger;
+      });
+    } else if (this.isLoginMode) {
+      this.authService.logIn(formData.email, formData.password).then(() => {
+        this.alert.message = SuccessAlertMessage.loginSuccess; this.alert.type = AlertType.success;
+      }).catch((error: Error) => {
+        this.alert.message = error.message; this.alert.type = AlertType.danger;
+      });
+    } else {
+      this.authService.signUp(formData.email, formData.password).then(() => {
+        this.alert.message = SuccessAlertMessage.signupSuccess; this.alert.type = AlertType.success;
+      }).catch((error: Error) => {
+        this.alert.message = error.message; this.alert.type = AlertType.danger;
+      });
+    }
   }
 
-  toggleResetPasswordMode() {
+  googleSignin(): void {
+    this.authService.googleSignin().then(() => {
+      this.alert.message = SuccessAlertMessage.loginSuccess; this.alert.type = AlertType.success;
+    }).catch((error: Error) => {
+      this.alert.message = error.message; this.alert.type = AlertType.danger;
+    });
+  }
+
+  toggleResetPasswordMode(event): boolean {
     this.isResetPasswordMode = !this.isResetPasswordMode;
+    event.preventDefault();
+    return false;
+  }
+
+  closeAlert(): void {
+    this.alert = { type: null, message: null };
   }
 }
