@@ -26,7 +26,8 @@ import { AddressInputComponent } from './components/add-item/address-input/addre
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { environment } from 'src/environments/environment';
 import { LoginModalComponent } from './components/header/login-modal/login-modal.component';
-import { BookingModalComponent } from './components/booking-modal/booking-modal.component';
+import { BookingModalComponent } from './components/property-details/booking-modal/booking-modal.component';
+import { NumberOfGuestsInputComponent } from './components/number-of-guests-input/number-of-guests-input.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { BookingModalComponent } from './components/booking-modal/booking-modal.
     AddressInputComponent,
     DatePickerComponent,
     LoginModalComponent,
-    BookingModalComponent
+    BookingModalComponent,
+    NumberOfGuestsInputComponent
   ],
   imports: [
     BrowserModule,

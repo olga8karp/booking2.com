@@ -1,36 +1,35 @@
-import { Timestamp } from 'rxjs/internal/operators/timestamp';
-
-export class Property {
-    address: Address[];
-    breakfast: true | '';
-    chargingStation: true | '';
-    dinner: true | '';
-    fitnessCenter: true | '';
-    kitchen: true | '';
-    lunch: true | '';
-    name: string;
-    numberOfGuests: string;
-    parking: true | '';
-    petFriendly: true | '';
-    price: number;
-    propertyRating: string;
-    propertyType: string;
-    restaurant: true | '';
-    swimmingPool: true | '';
-    description: string;
-    uploads: string[];
-    bookedDates?: any[];
-    propertyId?: string;
-    timestamp?: number;
+export class PropertyData {
+    constructor(
+        public address: string = '',
+        public breakfast: boolean = false,
+        public chargingStation: boolean = false,
+        public description = '',
+        public dinner: boolean = false,
+        public fitnessCenter: boolean = false,
+        public kitchen: boolean = false,
+        public lunch: boolean = false,
+        public name: string = '',
+        public numberOfGuests: number = 2,
+        public parking: boolean = false,
+        public petFriendly: boolean = false,
+        public price: number = null,
+        public propertyRating: string = 'unrated',
+        public propertyType: string = 'hotel',
+        public restaurant: boolean = false,
+        public swimmingPool: boolean = false,
+        public uploads: string[] = [],
+        public bookedDates?: any[],
+        public timestamp?: number
+    ) {}
 }
 
 export interface Address {
     formatted_address: string;
 }
 
-
 export interface NgbDate {
     day: number;
     month: number;
     year: number;
 }
+

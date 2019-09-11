@@ -1,0 +1,10 @@
+* {
+    font-size: 0.8rem;
+}
+
+select {
+    display: block;
+    margin: 0 auto;
+    max-width: 6rem;
+}
+

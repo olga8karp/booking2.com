@@ -8,7 +8,7 @@ legend {
 }
 
 .jumbotron {
-    min-height: 81vh;
+    min-width: 85vw;
     text-align: center; 
   }
 

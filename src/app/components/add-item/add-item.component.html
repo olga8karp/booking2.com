@@ -1,14 +1,17 @@
-<div class="jumbotron bg-white" style="min-width: 83vw;">
+<div class="jumbotron bg-white">
   <h1 class="font-weight-bold">Property details</h1>
   <p class="text-primary font-weight-bold">Please provide detailed information about your property</p>
   <br>
 
-  <form (ngSubmit)="formSubmit(addPropertyForm)" #addPropertyForm="ngForm">
+  <form (ngSubmit)="formSubmit(addPropertyForm.value)" #addPropertyForm="ngForm">
 
     <fieldset class="form-group">
       <label for="name" class="font-weight-bold"> Name </label>
       <small> Please give your property an attractive name </small>
-      <input placeholder="Enter a name" name="name" id="name" class="form-control search-text-input" [(ngModel)]="name" #nameInput="ngModel" [ngClass]="nameInput.invalid && nameInput.touched ? 'is-invalid' : nameInput.touched && nameInput.valid ? 'is-valid' : ''" minlength="5" maxlength="303" required />
+      <input placeholder="Enter a name" name="name" id="name" class="form-control search-text-input"
+        [(ngModel)]="propertyData.name" #nameInput="ngModel"
+        [ngClass]="nameInput.invalid && nameInput.touched ? 'is-invalid' : nameInput.touched && nameInput.valid ? 'is-valid' : ''"
+        minlength="5" maxlength="303" required />
     </fieldset>
 
     <fieldset class="form-group">
@@ -16,19 +19,19 @@
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="hotel">
           <input type="radio" class="form-check-input" id="hotel" name="propertyType" value="hotel"
-            [(ngModel)]="propertyType">Hotel
+            [(ngModel)]="propertyData.propertyType">Hotel
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="villa">
           <input type="radio" class="form-check-input" id="villa" name="propertyType" value="villa"
-            [(ngModel)]="propertyType">Villa
+            [(ngModel)]="propertyData.propertyType">Villa
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="appartment">
           <input type="radio" class="form-check-input" id="appartment" name="propertyType" value="appartment"
-            [(ngModel)]="propertyType">Appartment
+            [(ngModel)]="propertyData.propertyType">Appartment
         </label>
       </div>
     </fieldset>
@@ -38,88 +41,71 @@
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="unrated">
           <input type="radio" class="form-check-input" id="unrated" name="propertyRating" value="unrated"
-            [(ngModel)]="propertyRating">Unrated
+            [(ngModel)]="propertyData.propertyRating">unrated
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="1-star">
           <input type="radio" class="form-check-input" id="1-star" name="propertyRating" value="1"
-            [(ngModel)]="propertyRating">1 star
+            [(ngModel)]="propertyData.propertyRating">1 star
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="2-stars">
           <input type="radio" class="form-check-input" id="2-stars" name="propertyRating" value="2"
-            [(ngModel)]="propertyRating">2 stars
+            [(ngModel)]="propertyData.propertyRating">2 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="3-stars">
           <input type="radio" class="form-check-input" id="3-stars" name="propertyRating" value="3"
-            [(ngModel)]="propertyRating">3 stars
+            [(ngModel)]="propertyData.propertyRating">3 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="4-stars">
           <input type="radio" class="form-check-input" id="4-stars" name="propertyRating" value="4"
-            [(ngModel)]="propertyRating">4 stars
+            [(ngModel)]="propertyData.propertyRating">4 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="5-stars">
           <input type="radio" class="form-check-input" id="5-stars" name="propertyRating" value="5"
-            [(ngModel)]="propertyRating">5 stars
+            [(ngModel)]="propertyData.propertyRating">5 stars
         </label>
       </div>
     </fieldset>
 
     <fieldset class="form-group">
-      <b2-address-input name="address" [(ngModel)]="address"></b2-address-input>
+      <b2-address-input name="address" [(ngModel)]="propertyData.address"></b2-address-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <label for="number-of-guests" class="font-weight-bold"> How many people can stay?</label>
-      <select class="form-control" name="numberOfGuests" [(ngModel)]="numberOfGuests" class="number-of-guests-input"
-        id="number-of-guests">
-        <option value="1">1 guest</option>
-        <option value="2">2 guests</option>
-        <option value="3">3 guests</option>
-        <option value="4">4 guests</option>
-        <option value="5">5 guests</option>
-        <option value="6">6 guests</option>
-        <option value="7">7 guests</option>
-        <option value="8">8 guests</option>
-        <option value="9">9 guests</option>
-        <option value="10">10 guests</option>
-        <option value="11">11 guests</option>
-        <option value="12">12 guests</option>
-        <option value="13">13 guests</option>
-        <option value="14">14 guests</option>
-        <option value="15">15 guests</option>
-        <option value="16">16 guests</option>
-        <option value="17">17 guests</option>
-        <option value="18">18 guests</option>
-        <option value="19">19 guests</option>
-        <option value="20">20 guests</option>
-      </select>
+      <label class="font-weight-bold"> How many people can stay?
+        <b2-number-of-guests-input name="numberOfGuests" [(ngModel)]="propertyData.numberOfGuests"></b2-number-of-guests-input>
+      </label>
     </fieldset>
 
     <fieldset class="form-group">
       <legend> Do you provide meals for your guests? </legend>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="breakfast" value="breakfast" name="breakfast" ngModel>
+        <input class="form-check-input" type="checkbox" id="breakfast" value="breakfast" name="breakfast"
+          [(ngModel)]="propertyData.breakfast">
         <label class="form-check-label" for="breakfast">Breakfast included</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="lunch" value="lunch" name="lunch" ngModel>
+        <input class="form-check-input" type="checkbox" id="lunch" value="lunch" name="lunch"
+          [(ngModel)]="propertyData.lunch">
         <label class="form-check-label" for="lunch">Lunch included </label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="dinner" value="dinner" name="dinner" ngModel>
+        <input class="form-check-input" type="checkbox" id="dinner" value="dinner" name="dinner"
+          [(ngModel)]="propertyData.dinner">
         <label class="form-check-label" for="dinner">Dinner included</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="kitchen" value="kitchen" name="kitchen" ngModel>
+        <input class="form-check-input" type="checkbox" id="kitchen" value="kitchen" name="kitchen"
+          [(ngModel)]="propertyData.kitchen">
         <label class="form-check-label" for="kitchen">Kitchen facilities</label>
       </div>
     </fieldset>
@@ -127,50 +113,57 @@
     <fieldset class="form-group">
       <legend> What else can guests expect at your place? </legend>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="restaurant" name="restaurant" value="restaurant" ngModel>
+        <input class="form-check-input" type="checkbox" id="restaurant" name="restaurant" value="restaurant"
+          [(ngModel)]="propertyData.restaurant">
         <label class="form-check-label" for="restaurant">Restaurant</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="parking" name="parking" value="parking" ngModel>
+        <input class="form-check-input" type="checkbox" id="parking" name="parking" value="parking"
+          [(ngModel)]="propertyData.parking">
         <label class="form-check-label" for="parking">Parking</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="pet-friendly" name="petFriendly" value="petFriendly"
-          ngModel>
+          [(ngModel)]="propertyData.pet-friendly">
         <label class="form-check-label" for="pet-friendly">Pet friendly</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="fitness-center" name="fitnessCenter" value="fitnessCenter"
-          ngModel>
+          [(ngModel)]="propertyData.fitnessCenter">
         <label class="form-check-label" for="fitness-center">Fitness center</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="swimming-pool" name="swimmingPool" value="swimmingPool"
-          ngModel>
+          [(ngModel)]="propertyData.swimming-pool">
         <label class="form-check-label" for="swimming-pool">Swimming pool</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="charging-station" name="chargingStation"
-          value="chargingStation" ngModel>
+          value="chargingStation" [(ngModel)]="propertyData.charging-station">
         <label class="form-check-label" for="charging-station">Electric vehicle charging station</label>
       </div>
     </fieldset>
 
     <fieldset class="form-group">
-       <b2-uploader name="uploads" [(ngModel)]="fileUrls"></b2-uploader>
+      <b2-uploader name="uploads" [(ngModel)]="propertyData.fileUrls"></b2-uploader>
     </fieldset>
 
     <fieldset class="form-group">
-        <label for="description" class="font-weight-bold"> Description </label>
-        <small> Please write a short description between 10 and 300 symbols </small>
-        <textarea type="textarea" name="description" id="description" class="form-control search-text-input" minlength="15" maxlength="300" rows="6" [(ngModel)]="description" #descInput="ngModel" [ngClass]="descInput.invalid && descInput.touched ? 'is-invalid' : descInput.touched && descInput.valid ? 'is-valid' : ''" minlength="5" maxlength="303" required>
+      <label for="description" class="font-weight-bold"> Description </label>
+      <small> Please write a short description between 10 and 300 symbols </small>
+      <textarea type="textarea" name="description" id="description" class="form-control search-text-input"
+        minlength="15" maxlength="300" rows="6" [(ngModel)]="propertyData.description" #descInput="ngModel"
+        [ngClass]="descInput.invalid && descInput.touched ? 'is-invalid' : descInput.touched && descInput.valid ? 'is-valid' : ''"
+        minlength="5" maxlength="303" required>
         </textarea>
     </fieldset>
 
     <fieldset class="form-group">
       <label for="price" class="font-weight-bold" required> Price per night (USD) </label>
-      <input type="number" min="0" name="price" [(ngModel)]="price" id="price" class="form-control price-input"
-        pattern="^[1-9]+[0-9]*$" #priceInput="ngModel" [ngClass]="priceInput.invalid && priceInput.touched ? 'is-invalid' : priceInput.touched && priceInput.valid ? 'is-valid' : ''" minlength="5" maxlength="303" required>
+      <input type="number" min="0" name="price" [(ngModel)]="propertyData.price" id="price"
+        class="form-control price-input" pattern="^[1-9]+[0-9]*$" #priceInput="ngModel"
+        [ngClass]="priceInput.invalid && priceInput.touched ? 'is-invalid' : priceInput.touched && priceInput.valid ? 'is-valid' : ''"
+        minlength="5" maxlength="303" required>
     </fieldset>
 
     <button type="submit" class="btn btn-primary font-weight-bold" [disabled]="!addPropertyForm.valid">Submit</button>

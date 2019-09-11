@@ -19,7 +19,11 @@ import { Address } from 'src/app/shared/property.model';
 export class AddressInputComponent implements ControlValueAccessor {
   address = '';
 
-  writeValue() {}
+  writeValue(value: string): void {
+    if (value && typeof value === 'string') {
+      this.address = value;
+    }
+  }
 
   onChanged: (value: string) => void = () => {};
 
@@ -28,6 +32,7 @@ export class AddressInputComponent implements ControlValueAccessor {
   registerOnChange(fn: any): void {
     this.onChanged = fn;
   }
+
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }

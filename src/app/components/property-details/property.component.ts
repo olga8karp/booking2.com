@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { DataStorageService } from 'src/app/services/data-storage.service';
-import { Property } from 'src/app/shared/property.model';
+import { PropertyData } from 'src/app/shared/property.model';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BookingModalComponent } from '../booking-modal/booking-modal.component';
+import { BookingModalComponent } from './booking-modal/booking-modal.component';
 
 @Component({
   selector: 'b2-property',
@@ -12,7 +12,7 @@ import { BookingModalComponent } from '../booking-modal/booking-modal.component'
   styleUrls: ['./property.component.css']
 })
 export class PropertyComponent implements OnInit {
-  property: Property;
+  property: PropertyData;
   id = '';
   goToPrevDisabled = false;
   goToNextDisabled = false;
@@ -25,7 +25,7 @@ export class PropertyComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((routeParams: ParamMap) => {
       this.id = routeParams.get('id');
-      this.dataService.getPropertyById(this.id).subscribe((prop: Property) => {
+      this.dataService.getPropertyById(this.id).subscribe((prop: PropertyData) => {
         this.property = prop;
       });
     });

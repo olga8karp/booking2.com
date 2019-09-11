@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { Property } from '../shared/property.model';
+import { PropertyData } from '../shared/property.model';
 import { Observable } from 'rxjs';
 import { map, shareReplay, first } from 'rxjs/operators';
 
@@ -8,13 +8,13 @@ import { map, shareReplay, first } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataStorageService {
-  properties: Observable<Property[]>;
+  properties: Observable<PropertyData[]>;
 
   constructor(private db: AngularFirestore) {
     this.properties = this.getProperties().pipe(shareReplay());
   }
 
-  addProperty(property: Property) {
+  addProperty(property: PropertyData) {
     property.timestamp = new Date().getTime();
     const docId = property.timestamp.toString();
     return this.db.collection('properties').doc(docId).set(property);
@@ -27,7 +27,7 @@ export class DataStorageService {
     ).snapshotChanges()
       .pipe(map(actions => actions.map(a => {
         return { propertyId: a.payload.doc.id, ...a.payload.doc.data() };
-      }))) as Observable<Property[]>;
+      }))) as Observable<any>;
   }
 
   getPropertyById(id: string) {
@@ -67,7 +67,7 @@ export class DataStorageService {
     const bookedDatesArray = bookingData.bookedDates;
 
     this.db.collection('properties').doc(propertyId).valueChanges()
-      .pipe(first()).subscribe((propertyData: Property) => {
+      .pipe(first()).subscribe((propertyData: PropertyData) => {
         const datesInBD = propertyData.bookedDates ? propertyData.bookedDates.map(date => date = date.toDate()) : [];
 
         if (!this.checkIfTwoDateArraysHaveCommonElement(bookedDatesArray, datesInBD)) {

@@ -64,7 +64,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
   }
 
-  writeValue(): void { }
+  writeValue(): void {}
 
   onChanged: (value: {}) => void = () => { };
 

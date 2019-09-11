@@ -1,5 +1,6 @@
 import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: 'b2-uploader',
@@ -29,11 +30,15 @@ export class UploaderComponent implements ControlValueAccessor {
     }
   }
 
-  writeValue(): void {}
+  writeValue(value: string[]): void {
+    if (value && typeof value === 'string') {
+      this.fileUrls = value;
+    }
+  }
 
-  onChanged: (value: string[]) => void = () => {};
+  onChanged: (value: string[]) => void = () => { };
 
-  onTouched: () => void = () => {};
+  onTouched: () => void = () => { };
 
   registerOnChange(fn: any): void {
     this.onChanged = fn;

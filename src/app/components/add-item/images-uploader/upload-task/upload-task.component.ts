@@ -31,7 +31,7 @@ export class UploadTaskComponent implements OnInit {
     this.task = this.storage.upload(path, this.file);
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges().pipe(
-      finalize(async() => {
+      finalize(async () => {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         this.db.collection('files').add({
           downloadURL: this.downloadURL, path
@@ -45,8 +45,10 @@ export class UploadTaskComponent implements OnInit {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
   }
 
-  delete(downloadURL): void {
+  delete(event: Event, downloadURL: string): boolean {
     this.storage.storage.refFromURL(downloadURL).delete();
     this.uploadRemoved.emit({ file: this.file, url: this.downloadURL });
+    event.preventDefault();
+    return false;
   }
 }

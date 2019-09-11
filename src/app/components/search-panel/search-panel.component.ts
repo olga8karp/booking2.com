@@ -8,7 +8,7 @@ import { DataStorageService } from 'src/app/services/data-storage.service';
   styleUrls: ['./search-panel.component.css']
 })
 export class SearchPanelComponent implements OnInit {
-  numberOfGuests = '2';
+  numberOfGuests = 2;
   bookedDates = {};
 
   constructor(private dataService: DataStorageService) {
