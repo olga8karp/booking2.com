@@ -27,9 +27,3 @@ export interface Address {
     formatted_address: string;
 }
 
-export interface NgbDate {
-    day: number;
-    month: number;
-    year: number;
-}
-

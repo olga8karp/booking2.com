@@ -31,7 +31,8 @@
                     [ngClass]="phoneInput.invalid && phoneInput.touched ? 'is-invalid' : phoneInput.touched && phoneInput.valid ? 'is-valid' : ''"
                     required>
             </div>
-            <br>
+            <hr>
+            <ngb-alert *ngIf="alert?.type" [type]="alert.type" (close)="closeAlert()">{{ alert.message }}</ngb-alert>
             <div style="text-align: center">
                 <b2-date-picker name="bookedDates" [(ngModel)]="bookedDates" #dateInput="ngModel">
                 </b2-date-picker>

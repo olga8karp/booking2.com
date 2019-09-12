@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DataStorageService } from 'src/app/services/data-storage.service';
+import { DataStorageService } from 'src/app/services/data-storage/data-storage.service';
 
 @Component({
   selector: 'b2-search-panel',

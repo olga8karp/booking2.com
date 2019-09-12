@@ -17,17 +17,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { PropertyComponent } from './components/property-details/property.component';
+import { PropertyDetailsComponent } from './components/property-details/property-details.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
-import { AddNewPropertyComponent } from './components/add-new-property/add-new-property.component';
+import { AddNewPropertyDetailsComponent } from './components/add-new-property/add-new-property.component';
 import { DropzoneDirective } from './directives/dropzone/dropzone.directive';
 import { UploaderComponent } from './components/utility-components/images-uploader/uploader.component';
 import { UploadTaskComponent } from './components/utility-components/images-uploader/upload-task/upload-task.component';
 import { AddressInputComponent } from './components/utility-components/address-input/address-input.component';
 import { DatePickerComponent } from './components/utility-components/date-picker/date-picker.component';
-import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
-import { BookingModalComponent } from './components/modals/booking-modal/booking-modal.component';
+import { LoginModalComponent } from './components/utility-components/modals/login-modal/login-modal.component';
+import { BookingModalComponent } from './components/utility-components/modals/booking-modal/booking-modal.component';
 import { NumberOfGuestsInputComponent } from './components/utility-components/number-of-guests-input/number-of-guests-input.component';
 
 @NgModule({
@@ -36,10 +36,10 @@ import { NumberOfGuestsInputComponent } from './components/utility-components/nu
     HeaderComponent,
     SearchResultsComponent,
     FooterComponent,
-    PropertyComponent,
+    PropertyDetailsComponent,
     PageNotFoundComponent,
     SearchPanelComponent,
-    AddNewPropertyComponent,
+    AddNewPropertyDetailsComponent,
     DropzoneDirective,
     UploaderComponent,
     UploadTaskComponent,

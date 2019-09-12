@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { take, map, tap } from 'rxjs/operators';
-import { AdminUserId } from '../../../../environments/environment';
 
+import { AdminUserId } from '../../../../environments/environment';
 import { AuthService } from '../../auth/auth.service';
 @Injectable({
   providedIn: 'root'

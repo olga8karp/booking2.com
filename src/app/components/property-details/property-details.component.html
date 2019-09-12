@@ -1,0 +1,59 @@
+<div class="jumbotron bg-white wrapper" style="min-width: 83vw;" *ngIf="(property$ | async) as property">
+  <h2 class="font-weight-bold">{{ property.name }}</h2>
+  <p><img src="../assets/images/location.png"> {{ property.address }}</p>
+
+  <h4 class="font-weight-bold text-danger">${{ property.price }}/night</h4>
+
+  <p class="font-weight-bold" style="margin-bottom: 0"> Fits {{ property.numberOfGuests }} people </p>
+
+  <div class="wrapper">
+    <img *ngIf="property.propertyRating > 0" src="../../assets/images/star-icon.png">
+    <img *ngIf="property.propertyRating > 1" src="../../assets/images/star-icon.png">
+    <img *ngIf="property.propertyRating > 2" src="../../assets/images/star-icon.png">
+    <img *ngIf="property.propertyRating > 3" src="../../assets/images/star-icon.png">
+    <img *ngIf="property.propertyRating > 4" src="../../assets/images/star-icon.png">
+  </div>
+
+  <div class="carousel-container">
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let imageUrl of property.uploads">
+        <img [src]="imageUrl" alt="one image slide" class="image-slide">
+      </ng-template>
+      <ng-template ngbSlide *ngIf="!property.uploads.length">
+        <img src="../assets/images/no-image-available.jpg" alt="one image slide" class="image-slide">
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+  <div class="wrapper">
+    <div class="list-group-container">
+      <ul class="list-group">
+        <li class="list-group-item bg-warning" *ngIf="property.breakfast"> breakfast included </li>
+        <li class="list-group-item bg-warning" *ngIf="property.lunch"> lunch included </li>
+        <li class="list-group-item bg-warning" *ngIf="property.dinner"> dinner included </li>
+        <li class="list-group-item bg-warning" *ngIf="property.restaurant"> restaurant </li>
+        <li class="list-group-item bg-warning" *ngIf="property.kitchen"> kitchen facilities </li>
+        <li class="list-group-item bg-warning" *ngIf="property.parking"> parking </li>
+        <li class="list-group-item bg-warning" *ngIf="property.fitnessCenter"> fitness center </li>
+        <li class="list-group-item bg-warning" *ngIf="property.swimmingPool"> swimming pool </li>
+        <li class="list-group-item bg-warning" *ngIf="property.petFriendly"> pet friendly </li>
+        <li class="list-group-item bg-warning" *ngIf="property.chargingStation"> electric vehicle charging
+          station </li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="width:100%">
+    <p>{{ property.description }}</p>
+    <div class="text-center wrapper">
+      <button type="button" class="btn btn-danger font-weight-bold" (click)="open()">
+        Book this property
+      </button>
+    </div>
+    <br>
+    <div class="text-center wrapper">
+      <button type="button" class="btn btn-secondary font-weight-bold" [routerLink]="['/listings', { lastVisited: property.timestamp }]"> Back to all search results
+      </button>
+    </div>
+  </div>
+</div>

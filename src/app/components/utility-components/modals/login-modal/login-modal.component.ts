@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from 'src/app/services/auth/auth.service';
 
-import { Alert, AlertType, SuccessAlertMessage } from './login-alert-model';
-import { CurrentModeLabel } from './login-mode.enum';
-import { AuthFormData } from '../../../shared/auth-form-data-model';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Alert, AlertType, SuccessAlertMessage } from '../../../../data-models/alert-model';
+import { CurrentModeLabel } from '../../../../data-models/login-mode.enum';
+import { AuthFormData } from '../../../../data-models/auth-form-data.model';
 
 @Component({
   selector: 'b2-login-modal',

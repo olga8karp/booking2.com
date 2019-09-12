@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DataStorageService } from 'src/app/services/data-storage.service';
+import { DataStorageService } from 'src/app/services/data-storage/data-storage.service';
 import { Router } from '@angular/router';
-import { PropertyData } from 'src/app/shared/property.model';
+import { PropertyData } from 'src/app/data-models/property-data.model';
 
 @Component({
   selector: 'b2-add-new-property',
@@ -10,7 +10,7 @@ import { PropertyData } from 'src/app/shared/property.model';
   styleUrls: ['./add-new-property.component.css']
 })
 
-export class AddNewPropertyComponent {
+export class AddNewPropertyDetailsComponent {
   // Needed for AddItemCanDeactivateGuardService
   @ViewChild('addPropertyForm', { static: false }) public addPropertyForm: NgForm;
 

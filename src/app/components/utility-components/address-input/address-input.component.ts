@@ -1,7 +1,7 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { Address } from 'src/app/shared/property.model';
+import { Address } from 'src/app/data-models/property-data.model';
 
 @Component({
   selector: 'b2-address-input',

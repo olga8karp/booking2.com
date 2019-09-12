@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate } from '@angular/router';
-import { AddNewPropertyComponent } from '../../../components/add-new-property/add-new-property.component';
+
+import { AddNewPropertyDetailsComponent } from '../../../components/add-new-property/add-new-property.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddItemCanDeactivateGuardService implements CanDeactivate<AddNewPropertyComponent> {
-  canDeactivate(component: AddNewPropertyComponent): boolean {
+export class AddItemCanDeactivateGuardService implements CanDeactivate<AddNewPropertyDetailsComponent> {
+  canDeactivate(component: AddNewPropertyDetailsComponent): boolean {
     if (component.addPropertyForm.dirty && !component.addPropertyForm.submitted) {
       return confirm('Are you sure you want to discard yor changes?');
     }

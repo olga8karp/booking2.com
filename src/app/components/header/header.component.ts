@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { LoginModalComponent } from '../modals/login-modal/login-modal.component';
+import { LoginModalComponent } from '../utility-components/modals/login-modal/login-modal.component';
 
 @Component({
   selector: 'b2-header',
