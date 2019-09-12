@@ -2,6 +2,8 @@ import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbDate, NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
+import { DatePickerService } from 'src/app/services/date-picker.service';
+
 @Component({
   selector: 'b2-date-picker',
   templateUrl: './date-picker.component.html',
@@ -20,7 +22,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   toDate: NgbDate;
   minDate: NgbDateStruct;
 
-  constructor(private calendar: NgbCalendar) { }
+  constructor(private calendar: NgbCalendar, private datePickerService: DatePickerService) { }
 
   ngOnInit() {
     this.fromDate = this.calendar.getToday();
@@ -33,7 +35,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     };
   }
 
-
   onDateSelection(date: NgbDate): void {
     if (!this.fromDate && !this.toDate) {
       this.fromDate = date;
@@ -44,9 +45,9 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
       this.fromDate = date;
     }
     if (this.fromDate && this.toDate) {
-      const from = this.createDateFromNgbDate(this.fromDate);
-      const to = this.createDateFromNgbDate(this.toDate);
-      const bookedDatesArray = Array.from(this.datesBetween(from, to));
+      const from = this.datePickerService.createDateFromNgbDate(this.fromDate);
+      const to = this.datePickerService.createDateFromNgbDate(this.toDate);
+      const bookedDatesArray = Array.from(this.datePickerService.datesBetween(from, to));
       this.onChanged(bookedDatesArray);
       this.onTouched();
     }
@@ -77,31 +78,6 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-
-  private createDateFromNgbDate(ngbDate: NgbDateStruct): Date {
-    return new Date(Date.UTC(ngbDate.year, ngbDate.month - 1, ngbDate.day));
-  }
-
-  *datesBetween(startDate: Date, endDate: Date): IterableIterator<Date> {
-    startDate = startDate || new Date();
-    endDate = endDate || startDate;
-    const current = this.incrementDate(this.cloneDate(startDate), -1);
-    while (current < endDate) {
-      yield this.cloneDate(this.incrementDate(current, undefined));
-    }
-  }
-
-  cloneDate(date: Date): Date {
-    return new Date(date.valueOf());
-  }
-
-  incrementDate(date: Date, amount: number): Date {
-    date.setDate(date.getDate() + this.defaultValue(amount, 1));
-    return date;
-  }
-
-  defaultValue(value: number, valueDefault: number): number {
-    return (typeof value === 'undefined' ? valueDefault : value);
-  }
 }
+
 

@@ -4,7 +4,7 @@ import { DataStorageService } from 'src/app/services/data-storage.service';
 import { PropertyData } from 'src/app/shared/property.model';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BookingModalComponent } from './booking-modal/booking-modal.component';
+import { BookingModalComponent } from '../modals/booking-modal/booking-modal.component';
 
 @Component({
   selector: 'b2-property',

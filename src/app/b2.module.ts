@@ -20,14 +20,14 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { DropzoneDirective } from './directives/dropzone/dropzone.directive';
-import { UploaderComponent } from './components/add-item/images-uploader/uploader.component';
-import { UploadTaskComponent } from './components/add-item/images-uploader/upload-task/upload-task.component';
-import { AddressInputComponent } from './components/add-item/address-input/address-input.component';
-import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { UploaderComponent } from './components/utility-components/images-uploader/uploader.component';
+import { UploadTaskComponent } from './components/utility-components/images-uploader/upload-task/upload-task.component';
+import { AddressInputComponent } from './components/utility-components/address-input/address-input.component';
+import { DatePickerComponent } from './components/utility-components/date-picker/date-picker.component';
 import { environment } from 'src/environments/environment';
-import { LoginModalComponent } from './components/header/login-modal/login-modal.component';
-import { BookingModalComponent } from './components/property-details/booking-modal/booking-modal.component';
-import { NumberOfGuestsInputComponent } from './components/number-of-guests-input/number-of-guests-input.component';
+import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
+import { BookingModalComponent } from './components/modals/booking-modal/booking-modal.component';
+import { NumberOfGuestsInputComponent } from './components/utility-components/number-of-guests-input/number-of-guests-input.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,5 @@
 import { Component, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { IfStmt } from '@angular/compiler';
 
 @Component({
   selector: 'b2-uploader',
