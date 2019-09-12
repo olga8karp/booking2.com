@@ -5,12 +5,12 @@ import { Router } from '@angular/router';
 import { PropertyData } from 'src/app/shared/property.model';
 
 @Component({
-  selector: 'b2-add-item',
-  templateUrl: './add-item.component.html',
-  styleUrls: ['./add-item.component.css']
+  selector: 'b2-add-new-property',
+  templateUrl: './add-new-property.component.html',
+  styleUrls: ['./add-new-property.component.css']
 })
 
-export class AddItemComponent {
+export class AddNewPropertyComponent {
   // Needed for AddItemCanDeactivateGuardService
   @ViewChild('addPropertyForm', { static: false }) public addPropertyForm: NgForm;
 
@@ -18,7 +18,6 @@ export class AddItemComponent {
   constructor(private storageService: DataStorageService, private router: Router) {}
 
   formSubmit(propertyData: PropertyData): void {
-    console.log(propertyData);
     this.storageService.addProperty(propertyData);
     this.router.navigateByUrl('listings');
   }

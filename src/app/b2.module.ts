@@ -20,7 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PropertyComponent } from './components/property-details/property.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchPanelComponent } from './components/search-panel/search-panel.component';
-import { AddItemComponent } from './components/add-item/add-item.component';
+import { AddNewPropertyComponent } from './components/add-new-property/add-new-property.component';
 import { DropzoneDirective } from './directives/dropzone/dropzone.directive';
 import { UploaderComponent } from './components/utility-components/images-uploader/uploader.component';
 import { UploadTaskComponent } from './components/utility-components/images-uploader/upload-task/upload-task.component';
@@ -39,7 +39,7 @@ import { NumberOfGuestsInputComponent } from './components/utility-components/nu
     PropertyComponent,
     PageNotFoundComponent,
     SearchPanelComponent,
-    AddItemComponent,
+    AddNewPropertyComponent,
     DropzoneDirective,
     UploaderComponent,
     UploadTaskComponent,

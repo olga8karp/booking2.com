@@ -51,11 +51,6 @@
       </button>
     </div>
     <br>
-    <hr>
-    <div class="text-center wrapper">
-      <button class="btn previous" (click)="goToPrevious(property?.timestamp)" [disabled]="goToPrevDisabled">&laquo; Previous</button>
-      <button class="btn next" (click)="goToNext(property?.timestamp)" [disabled]="goToNextDisabled">Next &raquo;</button>
-    </div>
     <div class="text-center wrapper">
       <button type="button" class="btn btn-secondary font-weight-bold" [routerLink]="['/listings', { lastVisited: property?.timestamp }]"> Back to all search results
       </button>

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DataStorageService } from 'src/app/services/data-storage.service';
 import { PropertyData } from 'src/app/shared/property.model';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BookingModalComponent } from '../modals/booking-modal/booking-modal.component';
 
@@ -18,9 +17,8 @@ export class PropertyComponent implements OnInit {
   goToNextDisabled = false;
 
   constructor(private dataService: DataStorageService,
-              private router: Router, private route: ActivatedRoute,
-              private firestore: AngularFirestore,
-              private modalService: NgbModal) { }
+              private route: ActivatedRoute,
+              private modalService: NgbModal) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((routeParams: ParamMap) => {
@@ -29,44 +27,6 @@ export class PropertyComponent implements OnInit {
         this.property = prop;
       });
     });
-  }
-
-  goToPrevious(id: number): void {
-    this.firestore.collection('properties', ref => ref
-      .orderBy('timestamp', 'asc')
-      .startAfter(id)
-      .limit(2)
-    ).get()
-      .subscribe(response => {
-        this.goToNextDisabled = false;
-        if (!response.docs[1]) {
-          this.goToPrevDisabled = true;
-        }
-        if (response.docs[0]) {
-          this.router.navigateByUrl(`property/${response.docs[0].get('timestamp')}`);
-        } else {
-          this.goToPrevDisabled = true;
-        }
-      });
-  }
-
-  goToNext(id: number): void {
-    this.firestore.collection('properties', ref => ref
-      .orderBy('timestamp', 'desc')
-      .startAfter(id)
-      .limit(2)
-    ).get()
-      .subscribe(response => {
-        this.goToPrevDisabled = false;
-        if (!response.docs[1]) {
-          this.goToNextDisabled = true;
-        }
-        if (response.docs[0]) {
-          this.router.navigateByUrl(`property/${response.docs[0].get('timestamp')}`);
-        } else {
-          this.goToNextDisabled = true;
-        }
-      });
   }
 
   open() {
