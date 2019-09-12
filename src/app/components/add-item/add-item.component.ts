@@ -18,6 +18,7 @@ export class AddItemComponent {
   constructor(private storageService: DataStorageService, private router: Router) {}
 
   formSubmit(propertyData: PropertyData): void {
+    console.log(propertyData);
     this.storageService.addProperty(propertyData);
     this.router.navigateByUrl('listings');
   }

@@ -49,12 +49,12 @@ export class UploaderComponent implements ControlValueAccessor {
   removeUpload(fileData: { file: File, url: string }): void {
     this.files = this.files.filter(f => f !== fileData.file);
     this.fileUrls = this.fileUrls.filter(f => f !== fileData.url);
-    this.onChanged(this.fileUrls);
+    this.onChanged(this.fileUrls || []);
   }
 
   addUpload(url): void {
     this.fileUrls.push(url);
-    this.onChanged(this.fileUrls);
+    this.onChanged(this.fileUrls || []);
     this.onTouched();
   }
 }

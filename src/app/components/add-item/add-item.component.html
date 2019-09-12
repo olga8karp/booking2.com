@@ -77,7 +77,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-      <b2-address-input name="address" [(ngModel)]="propertyData.address"></b2-address-input>
+      <b2-address-input name="address" [(ngModel)]="propertyData.address" required></b2-address-input>
     </fieldset>
 
     <fieldset class="form-group">
@@ -113,39 +113,39 @@
     <fieldset class="form-group">
       <legend> What else can guests expect at your place? </legend>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="restaurant" name="restaurant" value="restaurant"
+        <input class="form-check-input" type="checkbox" id="restaurant" name="restaurant"
           [(ngModel)]="propertyData.restaurant">
         <label class="form-check-label" for="restaurant">Restaurant</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="parking" name="parking" value="parking"
+        <input class="form-check-input" type="checkbox" id="parking" name="parking"
           [(ngModel)]="propertyData.parking">
         <label class="form-check-label" for="parking">Parking</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="pet-friendly" name="petFriendly" value="petFriendly"
-          [(ngModel)]="propertyData.pet-friendly">
+        <input class="form-check-input" type="checkbox" id="pet-friendly" name="petFriendly"
+          [(ngModel)]="propertyData.petFriendly">
         <label class="form-check-label" for="pet-friendly">Pet friendly</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="fitness-center" name="fitnessCenter" value="fitnessCenter"
+        <input class="form-check-input" type="checkbox" id="fitness-center" name="fitnessCenter"
           [(ngModel)]="propertyData.fitnessCenter">
         <label class="form-check-label" for="fitness-center">Fitness center</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="swimming-pool" name="swimmingPool" value="swimmingPool"
-          [(ngModel)]="propertyData.swimming-pool">
+        <input class="form-check-input" type="checkbox" id="swimming-pool" name="swimmingPool"
+          [(ngModel)]="propertyData.swimmingPool">
         <label class="form-check-label" for="swimming-pool">Swimming pool</label>
       </div>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="charging-station" name="chargingStation"
-          value="chargingStation" [(ngModel)]="propertyData.charging-station">
+          [(ngModel)]="propertyData.chargingStation">
         <label class="form-check-label" for="charging-station">Electric vehicle charging station</label>
       </div>
     </fieldset>
 
     <fieldset class="form-group">
-      <b2-uploader name="uploads" [(ngModel)]="propertyData.fileUrls"></b2-uploader>
+      <b2-uploader name="uploads" [(ngModel)]="propertyData.uploads"></b2-uploader>
     </fieldset>
 
     <fieldset class="form-group">

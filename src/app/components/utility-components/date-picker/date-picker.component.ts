@@ -2,7 +2,7 @@ import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgbDate, NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
-import { DatePickerService } from 'src/app/services/date-picker.service';
+import { DatePickerService } from 'src/app/services/date-picker/date-picker.service';
 
 @Component({
   selector: 'b2-date-picker',

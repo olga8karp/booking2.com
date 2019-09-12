@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
@@ -24,7 +26,6 @@ import { UploaderComponent } from './components/utility-components/images-upload
 import { UploadTaskComponent } from './components/utility-components/images-uploader/upload-task/upload-task.component';
 import { AddressInputComponent } from './components/utility-components/address-input/address-input.component';
 import { DatePickerComponent } from './components/utility-components/date-picker/date-picker.component';
-import { environment } from 'src/environments/environment';
 import { LoginModalComponent } from './components/modals/login-modal/login-modal.component';
 import { BookingModalComponent } from './components/modals/booking-modal/booking-modal.component';
 import { NumberOfGuestsInputComponent } from './components/utility-components/number-of-guests-input/number-of-guests-input.component';
