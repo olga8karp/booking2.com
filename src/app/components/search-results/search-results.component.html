@@ -1,6 +1,7 @@
 <div class="card-columns">
     <div class="card" *ngFor="let property of properties; let i = index">
-        <div class="card" [routerLink]="['/property', property.timestamp]" [ngStyle]="{ 'background-color': property.timestamp === this.visitedPropertyId ? '#ddd' : '#fff' }">
+        <div class="card" [routerLink]="['/property', property.timestamp]"
+            [ngStyle]="{ 'background-color': property.timestamp === this.visitedPropertyId ? '#ddd' : '#fff' }">
             <img class="card-img-top"
                 [src]="property.uploads && property.uploads.length ? property.uploads[0] : '../assets/images/no-image-available.jpg'"
                 alt="property picture">
@@ -11,17 +12,11 @@
                 <div class="wrapper">
                     <div class="list-group-container">
                         <ul class="list-group">
-                            <li class="list-group-item bg-warning" *ngIf="property.breakfast">breakfast</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.lunch">lunch</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.dinner">dinner</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.kitchen">kitchen facilities</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.chargingStation">electric vehicle
-                                charging station</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.fitnessCenter">fitness center</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.parking">parking included</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.petFriendly">pet friendly</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.restaurant">restaurant</li>
-                            <li class="list-group-item bg-warning" *ngIf="property.restaurant">swimming pool</li>
+                            <li class="list-group-item bg-warning" *ngFor="let meal of property.meals"> {{ meal }} </li>
+                        </ul>
+                        <ul class="list-group">
+                            <li class="list-group-item bg-warning" *ngFor="let fac of property.facilities"> {{ fac }}
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -31,6 +26,7 @@
 </div>
 <div class="text-center" style="padding: 0 2rem 2rem 2rem; color: #212529;">
     <button class="btn btn-secondary float-left" (click)="prevPage()"
-        [disabled]="disable_prev || !(pagination_clicked_count>0)">Previous</button> <b>Page #{{pagination_clicked_count+1}}</b>
+        [disabled]="disable_prev || !(pagination_clicked_count>0)">Previous</button> <b>Page
+        #{{pagination_clicked_count+1}}</b>
     <button class="btn btn-secondary float-right" (click)="nextPage()" [disabled]="disable_next">Next</button>
 </div>

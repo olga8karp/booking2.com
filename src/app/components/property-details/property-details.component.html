@@ -7,11 +7,7 @@
   <p class="font-weight-bold" style="margin-bottom: 0"> Fits {{ property.numberOfGuests }} people </p>
 
   <div class="wrapper">
-    <img *ngIf="property.propertyRating > 0" src="../../assets/images/star-icon.png">
-    <img *ngIf="property.propertyRating > 1" src="../../assets/images/star-icon.png">
-    <img *ngIf="property.propertyRating > 2" src="../../assets/images/star-icon.png">
-    <img *ngIf="property.propertyRating > 3" src="../../assets/images/star-icon.png">
-    <img *ngIf="property.propertyRating > 4" src="../../assets/images/star-icon.png">
+      <b2-rating [propertyRating]="property.propertyRating"></b2-rating>
   </div>
 
   <div class="carousel-container">
@@ -28,17 +24,10 @@
   <div class="wrapper">
     <div class="list-group-container">
       <ul class="list-group">
-        <li class="list-group-item bg-warning" *ngIf="property.breakfast"> breakfast included </li>
-        <li class="list-group-item bg-warning" *ngIf="property.lunch"> lunch included </li>
-        <li class="list-group-item bg-warning" *ngIf="property.dinner"> dinner included </li>
-        <li class="list-group-item bg-warning" *ngIf="property.restaurant"> restaurant </li>
-        <li class="list-group-item bg-warning" *ngIf="property.kitchen"> kitchen facilities </li>
-        <li class="list-group-item bg-warning" *ngIf="property.parking"> parking </li>
-        <li class="list-group-item bg-warning" *ngIf="property.fitnessCenter"> fitness center </li>
-        <li class="list-group-item bg-warning" *ngIf="property.swimmingPool"> swimming pool </li>
-        <li class="list-group-item bg-warning" *ngIf="property.petFriendly"> pet friendly </li>
-        <li class="list-group-item bg-warning" *ngIf="property.chargingStation"> electric vehicle charging
-          station </li>
+        <li class="list-group-item bg-warning" *ngFor="let meal of property.meals"> {{ meal }} </li>
+      </ul>
+      <ul class="list-group">
+        <li class="list-group-item bg-warning" *ngFor="let fac of property.facilities"> {{ fac }} </li>
       </ul>
     </div>
   </div>
@@ -52,7 +41,8 @@
     </div>
     <br>
     <div class="text-center wrapper">
-      <button type="button" class="btn btn-secondary font-weight-bold" [routerLink]="['/listings', { lastVisited: property.timestamp }]"> Back to all search results
+      <button type="button" class="btn btn-secondary font-weight-bold"
+        [routerLink]="['/listings', { lastVisited: property.timestamp }]"> Back to all search results
       </button>
     </div>
   </div>

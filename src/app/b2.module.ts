@@ -29,6 +29,9 @@ import { DatePickerComponent } from './components/utility-components/date-picker
 import { LoginModalComponent } from './components/utility-components/modals/login-modal/login-modal.component';
 import { BookingModalComponent } from './components/utility-components/modals/booking-modal/booking-modal.component';
 import { NumberOfGuestsInputComponent } from './components/utility-components/number-of-guests-input/number-of-guests-input.component';
+import { MealsInputComponent } from './components/utility-components/meals-input/meals-input.component';
+import { FacilitiesInputComponent } from './components/utility-components/facilities-input/facilities-input.component';
+import { RatingComponent } from './components/utility-components/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { NumberOfGuestsInputComponent } from './components/utility-components/nu
     DatePickerComponent,
     LoginModalComponent,
     BookingModalComponent,
-    NumberOfGuestsInputComponent
+    NumberOfGuestsInputComponent,
+    MealsInputComponent,
+    FacilitiesInputComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

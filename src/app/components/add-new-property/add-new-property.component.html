@@ -40,37 +40,37 @@
       <legend> Rating (if any) </legend>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="unrated">
-          <input type="radio" class="form-check-input" id="unrated" name="propertyRating" value="unrated"
+          <input type="radio" class="form-check-input" id="unrated" name="propertyRating" [value]="0"
             [(ngModel)]="propertyData.propertyRating">unrated
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="1-star">
-          <input type="radio" class="form-check-input" id="1-star" name="propertyRating" value="1"
+          <input type="radio" class="form-check-input" id="1-star" name="propertyRating" [value]="1"
             [(ngModel)]="propertyData.propertyRating">1 star
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="2-stars">
-          <input type="radio" class="form-check-input" id="2-stars" name="propertyRating" value="2"
+          <input type="radio" class="form-check-input" id="2-stars" name="propertyRating" [value]="2"
             [(ngModel)]="propertyData.propertyRating">2 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="3-stars">
-          <input type="radio" class="form-check-input" id="3-stars" name="propertyRating" value="3"
+          <input type="radio" class="form-check-input" id="3-stars" name="propertyRating" [value]="3"
             [(ngModel)]="propertyData.propertyRating">3 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="4-stars">
-          <input type="radio" class="form-check-input" id="4-stars" name="propertyRating" value="4"
+          <input type="radio" class="form-check-input" id="4-stars" name="propertyRating" [value]="4"
             [(ngModel)]="propertyData.propertyRating">4 stars
         </label>
       </div>
       <div class="form-check form-check-inline">
         <label class="form-check-label" for="5-stars">
-          <input type="radio" class="form-check-input" id="5-stars" name="propertyRating" value="5"
+          <input type="radio" class="form-check-input" id="5-stars" name="propertyRating" [value]="5"
             [(ngModel)]="propertyData.propertyRating">5 stars
         </label>
       </div>
@@ -88,60 +88,12 @@
 
     <fieldset class="form-group">
       <legend> Do you provide meals for your guests? </legend>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="breakfast" value="breakfast" name="breakfast"
-          [(ngModel)]="propertyData.breakfast">
-        <label class="form-check-label" for="breakfast">Breakfast included</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="lunch" value="lunch" name="lunch"
-          [(ngModel)]="propertyData.lunch">
-        <label class="form-check-label" for="lunch">Lunch included </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="dinner" value="dinner" name="dinner"
-          [(ngModel)]="propertyData.dinner">
-        <label class="form-check-label" for="dinner">Dinner included</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="kitchen" value="kitchen" name="kitchen"
-          [(ngModel)]="propertyData.kitchen">
-        <label class="form-check-label" for="kitchen">Kitchen facilities</label>
-      </div>
+      <b2-meals-input name="meals" [(ngModel)]="propertyData.meals"></b2-meals-input>
     </fieldset>
 
     <fieldset class="form-group">
       <legend> What else can guests expect at your place? </legend>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="restaurant" name="restaurant"
-          [(ngModel)]="propertyData.restaurant">
-        <label class="form-check-label" for="restaurant">Restaurant</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="parking" name="parking"
-          [(ngModel)]="propertyData.parking">
-        <label class="form-check-label" for="parking">Parking</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="pet-friendly" name="petFriendly"
-          [(ngModel)]="propertyData.petFriendly">
-        <label class="form-check-label" for="pet-friendly">Pet friendly</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="fitness-center" name="fitnessCenter"
-          [(ngModel)]="propertyData.fitnessCenter">
-        <label class="form-check-label" for="fitness-center">Fitness center</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="swimming-pool" name="swimmingPool"
-          [(ngModel)]="propertyData.swimmingPool">
-        <label class="form-check-label" for="swimming-pool">Swimming pool</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="charging-station" name="chargingStation"
-          [(ngModel)]="propertyData.chargingStation">
-        <label class="form-check-label" for="charging-station">Electric vehicle charging station</label>
-      </div>
+      <b2-facilities-input name="facilities" [(ngModel)]="propertyData.facilities"></b2-facilities-input>
     </fieldset>
 
     <fieldset class="form-group">

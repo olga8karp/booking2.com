@@ -25,7 +25,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.property$ = this.dataService.getPropertyById(this.id);
   }
 
-  open() {
+  open(): void {
     const modalRef = this.modalService.open(BookingModalComponent);
     modalRef.componentInstance.propertyId = this.id;
   }

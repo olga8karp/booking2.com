@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore, QuerySnapshot } from 'angularfire2/firestore';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { PropertyData } from 'src/app/data-models/property-data.model';
 
 @Component({
   selector: 'b2-search-results',
@@ -33,7 +34,7 @@ export class SearchResultsComponent implements OnInit {
       .limit(6)
       .orderBy('timestamp', 'desc')
     ).snapshotChanges()
-      .subscribe(response => {
+      .subscribe((response) => {
         if (!response.length) {
           console.log('No Data Available');
           return false;

@@ -50,16 +50,32 @@ export class DataStorageService {
     propertyRating,
     location }) {
 
-    return this.db.collection('properties').ref
-      .where('chargingStation', '==', chargingStation)
-      .where('dinner', '==', dinner)
-      .where('fitnessCenter', '==', fitnessCenter)
-      .where('kitchen', '==', kitchen)
-      .where('lunch', '==', lunch)
-      .where('parking', '==', parking)
-      .where('petFriendly', '==', petFriendly)
-      .where('restaurant', '==', restaurant)
-      .where('swimmingPool', '==', swimmingPool)
-      .get();
+    const arr = ['propertyRating', 'petFriendly'];
+
+    let collection = this.db.collection('properties').ref;
+    
+    let query;
+
+    arr.forEach(f => {
+      if (query === undefined) {
+        query = collection.where(f, '==', true);
+      } else {
+        query = query.where(f, '==', true);
+      }
+    });
+
+    return query.get();
+
+    // return this.db.collection('properties').ref
+    //   .where('chargingStation', '==', chargingStation)
+    //   .where('dinner', '==', dinner)
+    //   .where('fitnessCenter', '==', fitnessCenter)
+    //   .where('kitchen', '==', kitchen)
+    //   .where('lunch', '==', lunch)
+    //   .where('parking', '==', parking)
+    //   .where('petFriendly', '==', petFriendly)
+    //   .where('restaurant', '==', restaurant)
+    //   .where('swimmingPool', '==', swimmingPool)
+    //   .get();
   }
 }

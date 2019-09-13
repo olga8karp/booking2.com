@@ -9,7 +9,6 @@ import { PropertyData } from 'src/app/data-models/property-data.model';
   templateUrl: './add-new-property.component.html',
   styleUrls: ['./add-new-property.component.css']
 })
-
 export class AddNewPropertyDetailsComponent {
   // Needed for AddItemCanDeactivateGuardService
   @ViewChild('addPropertyForm', { static: false }) public addPropertyForm: NgForm;
@@ -18,6 +17,7 @@ export class AddNewPropertyDetailsComponent {
   constructor(private storageService: DataStorageService, private router: Router) {}
 
   formSubmit(propertyData: PropertyData): void {
+    console.log(propertyData);
     this.storageService.addProperty(propertyData);
     this.router.navigateByUrl('listings');
   }

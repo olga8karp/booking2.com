@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./rating.component.css']
 })
 export class RatingComponent {
-  @Input() propertyRating;
+  @Input() propertyRating: number;
 }
