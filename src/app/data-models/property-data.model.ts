@@ -15,6 +15,21 @@ export class PropertyData {
     ) {}
 }
 
+export type PriceRange = [0, 56] | [56, 110] | [110, 160] | [160, 220] | [220, null];
+
+export class SearchInputPropertyData {
+    constructor(
+        public facilities: string[] = [],
+        public meals: string[] = [],
+        public numberOfGuests: number = 2,
+        public priceRange: PriceRange = [110, 160],
+        public propertyRating: number = 0,
+        public propertyType: string = 'hotel',
+        public dates: Date[] = [],
+        public searchTerm: string = ''
+    ) {}
+}
+
 export interface Address {
     formatted_address: string;
 }

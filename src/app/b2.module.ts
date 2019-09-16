@@ -32,6 +32,10 @@ import { NumberOfGuestsInputComponent } from './components/utility-components/nu
 import { MealsInputComponent } from './components/utility-components/meals-input/meals-input.component';
 import { FacilitiesInputComponent } from './components/utility-components/facilities-input/facilities-input.component';
 import { RatingComponent } from './components/utility-components/rating/rating.component';
+import { PropertyTypeInputComponent } from './components/utility-components/property-type-input/property-type-input.component';
+import { RatingInputComponent } from './components/utility-components/rating-input/rating-input.component';
+import { PriceRangeInputComponent } from './components/utility-components/price-range-input/price-range-input.component';
+import { SearchTermInputComponent } from './components/utility-components/search-term-input/search-term-input.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +57,11 @@ import { RatingComponent } from './components/utility-components/rating/rating.c
     NumberOfGuestsInputComponent,
     MealsInputComponent,
     FacilitiesInputComponent,
-    RatingComponent
+    RatingComponent,
+    PropertyTypeInputComponent,
+    RatingInputComponent,
+    PriceRangeInputComponent,
+    SearchTermInputComponent
   ],
   imports: [
     BrowserModule,

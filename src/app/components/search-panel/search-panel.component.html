@@ -1,136 +1,37 @@
 <div class="bg-warning container-fluid search-panel-wrapper">
-    <form class="form-inline" (ngSubmit)="search(searchForm)" #searchForm="ngForm">
-        <fieldset class="input-wrapper">
-            <input ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places"
-                class="form-control search-text-input" type="search" placeholder="Search" size="27" name="location"
-                ngModel required />
+    <form (ngSubmit)="search(searchForm)" #searchForm="ngForm">
+        <fieldset class="form-group input-wrapper">
+            <b2-search-term-input name="searchTerm" [(ngModel)]="propertyData.searchTerm"></b2-search-term-input>
         </fieldset>
-
-        <fieldset class="input-wrapper">
-            <b2-date-picker name="bookedDates" [(ngModel)]="bookedDates"></b2-date-picker>
+        <hr>
+        <fieldset class="input-wrapper date-picker">
+            <b2-date-picker name="dates" [(ngModel)]="propertyData.dates"></b2-date-picker>
         </fieldset>
-
-        <fieldset class="input-wrapper">
-            <b2-number-of-guests-input name="numberOfGuests" [(ngModel)]="numberOfGuests"></b2-number-of-guests-input>
+        <hr>
+        <fieldset class="form-group input-wrapper">
+            <b2-number-of-guests-input name="numberOfGuests" [(ngModel)]="propertyData.numberOfGuests"></b2-number-of-guests-input>
         </fieldset>
-
-        <fieldset class="input-wrapper">
-            <div class="form-check">
-                <label for="price-range-1"><input type="checkbox" class="form-check-input" id="price-range-1"
-                        value="price:0-56" name="price:0-56" ngModel>US$0 - US$56
-                    per night</label>
-            </div>
-            <div class="form-check">
-                <label for="price-range-2"><input type="checkbox" class="form-check-input" id="price-range-2"
-                        value="price:56-110" name="price:56-110" ngModel>US$56 -
-                    US$110 per night</label>
-            </div>
-            <div class="form-check">
-                <label for="price-range-3"><input type="checkbox" class="form-check-input" id="price-range-3"
-                        value="price:110-160" name="price:110-160" ngModel>US$110 - US$160 per night</label>
-            </div>
-            <div class="form-check">
-                <label for="price-range-4"><input type="checkbox" class="form-check-input" id="price-range-4"
-                        value="price:160-220" name="price:160-220" ngModel>US$160 - US$220 per night</label>
-            </div>
-            <div class="form-check">
-                <label for="price-range-5"><input type="checkbox" class="form-check-input" id="price-range-5"
-                        value="price:220+" name="price:220+" ngModel>US$220
-                    + per night</label>
-            </div>
+        <hr>
+        <fieldset class="form-group input-wrapper">
+            <b2-price-range-input name="priceRange" [(ngModel)]="propertyData.priceRange"></b2-price-range-input>
         </fieldset>
-
-        <fieldset class="input-wrapper">
-            <div class="form-check">
-                <label for="hotels"><input type="checkbox" class="form-check-input" id="hotels" value="hotels"
-                        name="hotels" ngModel>Hotels</label>
-            </div>
-            <div class="form-check">
-                <label for="villas"><input type="checkbox" class="form-check-input" id="villas" value="villas"
-                        name="villas" ngModel>Villas</label>
-            </div>
-            <div class="form-check">
-                <label for="appartments"><input type="checkbox" class="form-check-input" id="appartments"
-                        value="appartments" name="appartments" ngModel>Appartments</label>
-            </div>
+        <hr>
+        <fieldset class="form-group input-wrapper">
+                <b2-property-type-input name="propertyType" [(ngModel)]="propertyData.propertyType"></b2-property-type-input>
         </fieldset>
-
-        <fieldset class="input-wrapper">
-            <div class="form-check">
-                <label for="unrated"><input type="checkbox" class="form-check-input" id="unrated" value="0"
-                        name="unrated" ngModel>Unrated</label>
-            </div>
-            <div class="form-check">
-                <label for="1-star"><input type="checkbox" class="form-check-input" id="1-star" value="1" name="1star"
-                        ngModel>1
-                    star</label>
-            </div>
-            <div class="form-check">
-                <label for="2-stars"><input type="checkbox" class="form-check-input" id="2-stars" value="2"
-                        name="2stars" ngModel>2 stars</label>
-            </div>
-            <div class="form-check">
-                <label for="3-stars"><input type="checkbox" class="form-check-input" id="3-stars" value="3"
-                        name="3stars" ngModel>3 stars</label>
-            </div>
-            <div class="form-check">
-                <label for="4-stars"><input type="checkbox" class="form-check-input" id="4-stars" value="4"
-                        name="4stars" ngModel>4 stars</label>
-            </div>
-            <div class="form-check">
-                <label for="5-stars"><input type="checkbox" class="form-check-input" id="5-stars" value="5"
-                        name="5stars" ngModel>5 stars</label>
-            </div>
+        <hr>
+        <fieldset class="form-group input-wrapper">
+                <b2-rating-input name="propertyRating" [(ngModel)]="propertyData.propertyRating"></b2-rating-input>
         </fieldset>
-
-        <fieldset class="input-wrapper">
-            <div class="form-check">
-                <label for="restaurant"><input type="checkbox" class="form-check-input" id="restaurant"
-                        value="restaurant" name="restaurant" ngModel>Restaurant</label>
-            </div>
-            <div class="form-check">
-                <label for="parking"><input type="checkbox" class="form-check-input" id="parking" value="parking"
-                        name="parking" ngModel>Parking</label>
-            </div>
-            <div class="form-check">
-                <label for="pet-friendly"><input type="checkbox" class="form-check-input" id="pet-friendly"
-                        value="petFriendly" name="petFriendly" ngModel>Pet friendly</label>
-            </div>
-            <div class="form-check">
-                <label for="fitness-center"><input type="checkbox" class="form-check-input" id="fitness-center"
-                        value="fitnessCenter" name="fitnessCenter" ngModel>Fitness center</label>
-            </div>
-            <div class="form-check">
-                <label for="swimming-pool"><input type="checkbox" class="form-check-input" id="swimming-pool"
-                        value="swimmingPool" name="swimmingPool" ngModel>Swimming pool</label>
-            </div>
-            <div class="form-check">
-                <label for="charging-station"><input type="checkbox" class="form-check-input" id="charging-station"
-                        value="chargingStation" name="chargingStation" ngModel>Electric vehicle charging station</label>
-            </div>
+        <hr>
+        <fieldset class="form-group input-wrapper">
+                <b2-meals-input name="meals" [(ngModel)]="propertyData.meals"></b2-meals-input>
         </fieldset>
-
-        <fieldset class="input-wrapper">
-            <div class="form-check">
-                <label for="breakfast"><input type="checkbox" class="form-check-input" id="breakfast" value="breakfast"
-                        name="breakfast" ngModel>Breakfast
-                    included</label>
-            </div>
-            <div class="form-check">
-                <label for="lunch"><input type="checkbox" class="form-check-input"
-                        id="lunch" value="lunch" name="lunch" ngModel>Lunch included</label>
-            </div>
-            <div class="form-check">
-                <label for="dinner"><input type="checkbox" class="form-check-input"
-                        id="dinner" value="dinner" name="dinner" ngModel>Dinner included</label>
-            </div>
-            <div class="form-check">
-                <label for="kitchen"><input type="checkbox" class="form-check-input" id="kitchen" value="kitchen"
-                        name="kitchen" ngModel>Kitchen
-                    facilities</label>
-            </div>
+        <hr>
+        <fieldset class="form-group input-wrapper">
+                <b2-facilities-input name="facilities" [(ngModel)]="propertyData.facilities"></b2-facilities-input>
         </fieldset>
-
+        <hr>
         <div class="submit-wrapper">
             <button class="btn btn-primary submit" type="submit">Search</button>
         </div>
