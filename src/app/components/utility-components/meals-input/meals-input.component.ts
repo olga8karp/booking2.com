@@ -1,10 +1,10 @@
-import { Component, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
 @Component({
-  selector: 'b2-meals-input',
-  templateUrl: './meals-input.component.html',
-  styleUrls: ['./meals-input.component.css'],
+  selector: "b2-meals-input",
+  templateUrl: "./meals-input.component.html",
+  styleUrls: ["./meals-input.component.css"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -22,9 +22,9 @@ export class MealsInputComponent implements ControlValueAccessor {
     }
   }
 
-  onChanged: (value: string[]) => void = () => { };
+  onChanged: (value: string[]) => void = () => {};
 
-  onTouched: () => void = () => { };
+  onTouched: () => void = () => {};
 
   registerOnChange(fn: any): void {
     this.onChanged = fn;

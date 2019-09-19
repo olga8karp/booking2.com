@@ -1,71 +1,150 @@
 <div class="jumbotron bg-white">
   <h1 class="font-weight-bold">Property details</h1>
-  <p class="text-primary font-weight-bold">Please provide detailed information about your property</p>
-  <br>
+  <p class="text-primary font-weight-bold">
+    Please provide detailed information about your property
+  </p>
+  <br/>
 
-  <form (ngSubmit)="formSubmit(addPropertyForm.value)" #addPropertyForm="ngForm">
-
+  <form
+    (ngSubmit)="formSubmit(addPropertyForm.value)"
+    #addPropertyForm="ngForm">
     <fieldset class="form-group">
       <label for="name" class="font-weight-bold"> Name </label>
       <small> Please give your property an attractive name </small>
-      <input placeholder="Enter a name" name="name" id="name" class="form-control search-text-input"
-        [(ngModel)]="propertyData.name" #nameInput="ngModel"
-        [ngClass]="nameInput.invalid && nameInput.touched ? 'is-invalid' : nameInput.touched && nameInput.valid ? 'is-valid' : ''"
-        minlength="5" maxlength="303" required />
+      <input
+        placeholder="Enter a name"
+        name="name"
+        id="name"
+        class="form-control search-text-input"
+        [(ngModel)]="propertyData.name"
+        #nameInput="ngModel"
+        [ngClass]="
+          nameInput.invalid && nameInput.touched
+            ? 'is-invalid'
+            : nameInput.touched && nameInput.valid
+            ? 'is-valid'
+            : ''
+        "
+        minlength="5"
+        maxlength="303"
+        required/>
     </fieldset>
 
     <fieldset class="form-group">
-      <legend> Property type </legend>
-      <b2-property-type-input name="propertyType" [(ngModel)]="propertyData.propertyType"></b2-property-type-input>
+      <legend>Property type</legend>
+      <b2-property-type-input
+        name="propertyType"
+        [(ngModel)]="propertyData.propertyType">
+      </b2-property-type-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <legend> Rating (if any) </legend>
-      <b2-rating-input name="propertyRating" [(ngModel)]="propertyData.propertyRating"></b2-rating-input>
+      <legend>Rating (if any)</legend>
+      <b2-rating-input
+        name="propertyRating"
+        [(ngModel)]="propertyData.propertyRating">
+      </b2-rating-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <b2-address-input name="address" [(ngModel)]="propertyData.address" required></b2-address-input>
+      <b2-address-input
+        name="address"
+        [(ngModel)]="propertyData.address"
+        required>
+      </b2-address-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <label class="font-weight-bold"> How many people can stay?
-        <b2-number-of-guests-input name="numberOfGuests" [(ngModel)]="propertyData.numberOfGuests"></b2-number-of-guests-input>
+      <label class="font-weight-bold">
+        How many people can stay?
+        <b2-number-of-guests-input
+          name="numberOfGuests"
+          [(ngModel)]="propertyData.numberOfGuests">
+        </b2-number-of-guests-input>
       </label>
     </fieldset>
 
     <fieldset class="form-group">
-      <legend> Do you provide meals for your guests? </legend>
-      <b2-meals-input name="meals" [(ngModel)]="propertyData.meals"></b2-meals-input>
+      <legend>Do you provide meals for your guests?</legend>
+      <b2-meals-input
+        name="meals"
+        [(ngModel)]="propertyData.meals"
+      ></b2-meals-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <legend> What else can guests expect at your place? </legend>
-      <b2-facilities-input name="facilities" [(ngModel)]="propertyData.facilities"></b2-facilities-input>
+      <legend>What else can guests expect at your place?</legend>
+      <b2-facilities-input
+        name="facilities"
+        [(ngModel)]="propertyData.facilities">
+      </b2-facilities-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <b2-uploader name="uploads" [(ngModel)]="propertyData.uploads"></b2-uploader>
+      <b2-uploader
+        name="uploads"
+        [(ngModel)]="propertyData.uploads">
+      </b2-uploader>
     </fieldset>
 
     <fieldset class="form-group">
       <label for="description" class="font-weight-bold"> Description </label>
-      <small> Please write a short description between 10 and 300 symbols </small>
-      <textarea type="textarea" name="description" id="description" class="form-control search-text-input"
-        minlength="15" maxlength="300" rows="6" [(ngModel)]="propertyData.description" #descInput="ngModel"
-        [ngClass]="descInput.invalid && descInput.touched ? 'is-invalid' : descInput.touched && descInput.valid ? 'is-valid' : ''"
-        minlength="5" maxlength="303" required>
-        </textarea>
+      <small>
+        Please write a short description between 10 and 300 symbols
+      </small>
+      <textarea
+        type="textarea"
+        name="description"
+        id="description"
+        class="form-control search-text-input"
+        minlength="15"
+        maxlength="300"
+        rows="6"
+        [(ngModel)]="propertyData.description"
+        #descInput="ngModel"
+        [ngClass]="
+          descInput.invalid && descInput.touched
+            ? 'is-invalid'
+            : descInput.touched && descInput.valid
+            ? 'is-valid'
+            : ''
+        "
+        minlength="5"
+        maxlength="303"
+        required>
+      </textarea>
     </fieldset>
 
     <fieldset class="form-group">
-      <label for="price" class="font-weight-bold" required> Price per night (USD) </label>
-      <input type="number" min="0" name="price" [(ngModel)]="propertyData.price" id="price"
-        class="form-control price-input" pattern="^[1-9]+[0-9]*$" #priceInput="ngModel"
-        [ngClass]="priceInput.invalid && priceInput.touched ? 'is-invalid' : priceInput.touched && priceInput.valid ? 'is-valid' : ''"
-        minlength="5" maxlength="303" required>
+      <label for="price" class="font-weight-bold" required>
+        Price per night (USD)
+      </label>
+      <input
+        type="number"
+        min="0"
+        name="price"
+        [(ngModel)]="propertyData.price"
+        id="price"
+        class="form-control price-input"
+        pattern="^[1-9]+[0-9]*$"
+        #priceInput="ngModel"
+        [ngClass]="
+          priceInput.invalid && priceInput.touched
+            ? 'is-invalid'
+            : priceInput.touched && priceInput.valid
+            ? 'is-valid'
+            : ''
+        "
+        minlength="5"
+        maxlength="303"
+        required/>
     </fieldset>
 
-    <button type="submit" class="btn btn-primary font-weight-bold" [disabled]="!addPropertyForm.valid">Submit</button>
+    <button
+      type="submit"
+      class="btn btn-primary font-weight-bold"
+      [disabled]="!addPropertyForm.valid">
+      Submit
+    </button>
   </form>
 </div>

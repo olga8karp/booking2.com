@@ -1,37 +1,43 @@
-.card-columns {
-    height: 98vh;
- }
+.card-columns,
+.no-props-founc {
+  height: 98vh;
+}
 
 .card {
-    height: 28rem;
-    font-size: 0.8rem;
-    cursor: pointer;
+  height: 28rem;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
 .card:hover {
-    box-shadow: 5px 5px 5px #CDCDCD;
+  box-shadow: 5px 5px 5px #cdcdcd;
 }
 
 .card-img-top {
-    height: 12rem;
+  height: 12rem;
 }
 
 .list-group {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .list-group * {
-    margin: 3px;
-    width: fit-content;
-    padding: 3px;
+  list-style: none;
+  margin-left: 5px;
+  font-size: 0.9rem;
+}
+
+.pagination-controls-wrapper {
+  padding: 0 2rem 2rem 2rem;
+  color: #212529;
 }
 
 @media (max-width: 700px) {
-    .card-columns {
-        height: fit-content;
-    }
- }
+  .card-columns {
+    height: fit-content;
+  }
+}

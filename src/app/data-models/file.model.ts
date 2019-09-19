@@ -1,5 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
-
 export class Upload {
   $key: string;
   file: File;
@@ -11,4 +9,3 @@ export class Upload {
     this.file = file;
   }
 }
-

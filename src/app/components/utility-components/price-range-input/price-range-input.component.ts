@@ -1,11 +1,11 @@
-import { Component, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { PriceRange } from 'src/app/data-models/property-data.model';
+import { Component, forwardRef } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { PriceRange } from "src/app/data-models/property-data.model";
 
 @Component({
-  selector: 'b2-price-range-input',
-  templateUrl: './price-range-input.component.html',
-  styleUrls: ['./price-range-input.component.css'],
+  selector: "b2-price-range-input",
+  templateUrl: "./price-range-input.component.html",
+  styleUrls: ["./price-range-input.component.css"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -15,7 +15,7 @@ import { PriceRange } from 'src/app/data-models/property-data.model';
   ]
 })
 export class PriceRangeInputComponent implements ControlValueAccessor {
-  priceRange: PriceRange = [110, 160];
+  priceRange: PriceRange = null;
 
   writeValue(value: PriceRange): void {
     if (value) {
@@ -23,9 +23,9 @@ export class PriceRangeInputComponent implements ControlValueAccessor {
     }
   }
 
-  onChanged: (value: [number, number]) => void = () => { };
+  onChanged: (value: [number, number]) => void = () => {};
 
-  onTouched: () => void = () => { };
+  onTouched: () => void = () => {};
 
   registerOnChange(fn: any): void {
     this.onChanged = fn;
@@ -36,8 +36,10 @@ export class PriceRangeInputComponent implements ControlValueAccessor {
   }
 
   handlePriceRangeSelect(newRange: PriceRange): void {
-    this.priceRange = newRange;
-    this.onChanged(this.priceRange);
-    this.onTouched();
+    if (newRange) {
+      this.priceRange = newRange;
+      this.onChanged(this.priceRange);
+      this.onTouched();
+    }
   }
 }

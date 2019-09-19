@@ -1,13 +1,13 @@
 <div class="wrapper">
-    <div *ngIf="snapshot | async as snap" class="w-25">
-        <div *ngIf="downloadURL as url">
-            <img class="w-50" [src]="url"><br>
-            <a [href]="url" target="_blank" rel="noopener" class="mr-2">Download</a>
-            <a href="#" class="text-danger" (click)="delete($event, url)">Delete</a>
-        </div>
+  <div *ngIf="snapshot | async as snap" class="w-25">
+    <div *ngIf="downloadURL as url">
+      <img class="w-50" [src]="url" /><br />
+      <a [href]="url" target="_blank" rel="noopener" class="mr-2">Download</a>
+      <a href="#" class="text-danger" (click)="delete($event, url)">Delete</a>
     </div>
-    <div *ngIf="percentage | async as pct">
-        <progress [value]="pct" max="100"></progress>
-        {{ pct | number }}%
-    </div>
+  </div>
+  <div *ngIf="percentage | async as pct">
+    <progress [value]="pct" max="100"></progress>
+    {{ pct | number }}%
+  </div>
 </div>

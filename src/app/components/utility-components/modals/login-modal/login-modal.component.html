@@ -1,39 +1,74 @@
 <div class="modal-header">
-    <h2 class="modal-title text-primary font-weight-bold"> {{ getCurrentModeLabel() }} </h2>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-    </button>
+  <h2 class="modal-title text-primary font-weight-bold">
+    {{ getCurrentModeLabel() }}
+  </h2>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 <div class="jumbotron bg-white">
-    <div>
-        <ngb-alert *ngIf="alert?.type" [type]="alert.type" (close)="closeAlert()">{{ alert.message }}</ngb-alert>
-        <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" ngModel required email>
-            </div>
-            <div class="form-group" *ngIf="!isResetPasswordMode">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" ngModel required minlength="6">
-                <a href="#" class="text-primary" (click)="toggleResetPasswordMode($event)">Forgot your
-                    password</a>
-            </div>
-            <div class="text-center">
-                <button class="btn btn-primary m-2" [disabled]="!authForm.valid">
-                    {{ getCurrentModeLabel() }}</button>
-            </div>
-            <div class="text-center">
-                <button type="button" class="btn btn-secondary" (click)="onSwitchMode()">Switch to
-                    {{ isLoginMode ? 'Sign up' : 'Log in' }} </button>
-            </div>
-        </form>
-        <br>
-        <div class="text-center">
-            <button type="button" class="btn btn-danger" (click)="googleSignin()">Log in with
-                Google</button>
-        </div>
+  <div>
+    <ngb-alert *ngIf="alert?.type" [type]="alert.type" (close)="closeAlert()">{{
+      alert.message
+    }}</ngb-alert>
+    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm.value)">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          ngModel
+          required
+          email/>
+      </div>
+      <div class="form-group" *ngIf="!isResetPasswordMode">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          ngModel
+          required
+          minlength="6"/>
+        <a
+          href="#"
+          class="text-primary"
+          (click)="toggleResetPasswordMode($event)">
+          Forgot your password
+        </a>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary m-2" [disabled]="!authForm.valid">
+          {{ getCurrentModeLabel() }}
+        </button>
+      </div>
+      <div class="text-center">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="onSwitchMode()">
+          Switch to {{ isLoginMode ? "Sign up" : "Log in" }}
+        </button>
+      </div>
+    </form>
+    <br />
+    <div class="text-center">
+      <button type="button" class="btn btn-danger" (click)="googleSignin()">
+        Log in with Google
+      </button>
     </div>
+  </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="activeModal.close('Close click')">
+    Close
+  </button>
 </div>

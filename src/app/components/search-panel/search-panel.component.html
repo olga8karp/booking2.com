@@ -1,39 +1,62 @@
 <div class="bg-warning container-fluid search-panel-wrapper">
-    <form (ngSubmit)="search(searchForm)" #searchForm="ngForm">
-        <fieldset class="form-group input-wrapper">
-            <b2-search-term-input name="searchTerm" [(ngModel)]="propertyData.searchTerm"></b2-search-term-input>
-        </fieldset>
-        <hr>
-        <fieldset class="input-wrapper date-picker">
-            <b2-date-picker name="dates" [(ngModel)]="propertyData.dates"></b2-date-picker>
-        </fieldset>
-        <hr>
-        <fieldset class="form-group input-wrapper">
-            <b2-number-of-guests-input name="numberOfGuests" [(ngModel)]="propertyData.numberOfGuests"></b2-number-of-guests-input>
-        </fieldset>
-        <hr>
-        <fieldset class="form-group input-wrapper">
-            <b2-price-range-input name="priceRange" [(ngModel)]="propertyData.priceRange"></b2-price-range-input>
-        </fieldset>
-        <hr>
-        <fieldset class="form-group input-wrapper">
-                <b2-property-type-input name="propertyType" [(ngModel)]="propertyData.propertyType"></b2-property-type-input>
-        </fieldset>
-        <hr>
-        <fieldset class="form-group input-wrapper">
-                <b2-rating-input name="propertyRating" [(ngModel)]="propertyData.propertyRating"></b2-rating-input>
-        </fieldset>
-        <hr>
-        <fieldset class="form-group input-wrapper">
-                <b2-meals-input name="meals" [(ngModel)]="propertyData.meals"></b2-meals-input>
-        </fieldset>
-        <hr>
-        <fieldset class="form-group input-wrapper">
-                <b2-facilities-input name="facilities" [(ngModel)]="propertyData.facilities"></b2-facilities-input>
-        </fieldset>
-        <hr>
-        <div class="submit-wrapper">
-            <button class="btn btn-primary submit" type="submit">Search</button>
-        </div>
-    </form>
+  <form (ngSubmit)="search(searchForm.value)" #searchForm="ngForm">
+    <fieldset class="form-group input-wrapper">
+      <b2-search-term-input
+        name="searchTerm"
+        [(ngModel)]="searchData.searchTerm">
+      </b2-search-term-input>
+    </fieldset>
+    <hr />
+    <fieldset class="input-wrapper date-picker">
+      <b2-date-picker
+        name="dates"
+        [(ngModel)]="searchData.dates">
+      </b2-date-picker>
+    </fieldset>
+    <hr />
+    <fieldset class="form-group input-wrapper">
+      <b2-number-of-guests-input
+        name="numberOfGuests"
+        [(ngModel)]="searchData.numberOfGuests">
+      </b2-number-of-guests-input>
+    </fieldset>
+    <hr />
+    <fieldset class="form-group input-wrapper">
+      <b2-price-range-input
+        name="priceRange"
+        [(ngModel)]="searchData.priceRange">
+      </b2-price-range-input>
+    </fieldset>
+    <hr />
+    <fieldset class="form-group input-wrapper">
+      <b2-property-type-input
+        name="propertyType"
+        [(ngModel)]="searchData.propertyType">
+      </b2-property-type-input>
+    </fieldset>
+    <hr />
+    <fieldset class="form-group input-wrapper">
+      <b2-rating-input
+        name="propertyRating"
+        [(ngModel)]="searchData.propertyRating">
+      </b2-rating-input>
+    </fieldset>
+    <hr />
+    <fieldset class="form-group input-wrapper">
+      <b2-meals-input
+        name="meals"
+        [(ngModel)]="searchData.meals">
+      </b2-meals-input>
+    </fieldset>
+    <hr />
+    <fieldset class="form-group input-wrapper">
+      <b2-facilities-input
+        name="facilities"
+        [(ngModel)]="searchData.facilities">
+      </b2-facilities-input>
+    </fieldset>
+    <div class="submit-wrapper">
+      <button class="btn btn-primary submit" type="submit">Search</button>
+    </div>
+  </form>
 </div>

@@ -1,43 +1,44 @@
-label, small {
-    display: block;
+label,
+small {
+  display: block;
 }
 
 legend {
-    font-weight: bold;
-    font-size: 1rem;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 .jumbotron {
-    min-width: 85vw;
-    text-align: center; 
-  }
+  min-width: 85vw;
+  text-align: center;
+}
 
 .list-group {
-    width: 20rem;
-    margin: 2rem auto;
+  width: 20rem;
+  margin: 2rem auto;
 }
 
 .input-item {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .search-text-input {
-    max-width: 30rem;
-    margin: 0 auto;
+  max-width: 30rem;
+  margin: 0 auto;
 }
 
 .form-control-file {
-    width: 30rem; 
-    margin: 0 auto; 
-    margin-bottom: 5px;
+  width: 30rem;
+  margin: 0 auto;
+  margin-bottom: 5px;
 }
 
 .number-of-guests-input {
-    width: fit-content; 
-    margin: 0 auto;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .price-input {
-    width: 6rem; 
-    margin: 0 auto;
+  width: 6rem;
+  margin: 0 auto;
 }

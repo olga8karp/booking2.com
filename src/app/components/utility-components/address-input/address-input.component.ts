@@ -1,12 +1,12 @@
-import { Component, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef } from "@angular/core";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 
-import { Address } from 'src/app/data-models/property-data.model';
+import { Address } from "src/app/data-models/property-data.model";
 
 @Component({
-  selector: 'b2-address-input',
-  templateUrl: './address-input.component.html',
-  styleUrls: ['./address-input.component.css'],
+  selector: "b2-address-input",
+  templateUrl: "./address-input.component.html",
+  styleUrls: ["./address-input.component.css"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -15,12 +15,11 @@ import { Address } from 'src/app/data-models/property-data.model';
     }
   ]
 })
-
 export class AddressInputComponent implements ControlValueAccessor {
-  address = '';
+  address = "";
 
   writeValue(value: string): void {
-    if (value && typeof value === 'string') {
+    if (value && typeof value === "string") {
       this.address = value;
     }
   }

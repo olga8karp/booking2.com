@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Injectable } from "@angular/core";
+import { NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DatePickerService {
   createDateFromNgbDate(ngbDate: NgbDateStruct): Date {
@@ -19,7 +19,7 @@ export class DatePickerService {
   }
 
   defaultValue(value: number, valueDefault: number): number {
-    return (typeof value === 'undefined' ? valueDefault : value);
+    return typeof value === "undefined" ? valueDefault : value;
   }
 
   *datesBetween(startDate: Date, endDate: Date): IterableIterator<Date> {

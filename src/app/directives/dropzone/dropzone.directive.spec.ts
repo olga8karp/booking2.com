@@ -1,7 +1,7 @@
-import { DropzoneDirective } from './dropzone.directive';
+import { DropzoneDirective } from "./dropzone.directive";
 
-describe('DropzoneDirective', () => {
-  it('should create an instance', () => {
+describe("DropzoneDirective", () => {
+  it("should create an instance", () => {
     const directive = new DropzoneDirective();
     expect(directive).toBeTruthy();
   });

@@ -1,48 +1,63 @@
-<div class="jumbotron bg-white wrapper" style="min-width: 83vw;" *ngIf="(property$ | async) as property">
+<div class="jumbotron bg-white wrapper" *ngIf="property$ | async as property">
   <h2 class="font-weight-bold">{{ property.name }}</h2>
-  <p><img src="../assets/images/location.png"> {{ property.address }}</p>
+  <p><img src="../assets/images/location.png" /> {{ property.address }}</p>
 
   <h4 class="font-weight-bold text-danger">${{ property.price }}/night</h4>
 
-  <p class="font-weight-bold" style="margin-bottom: 0"> Fits {{ property.numberOfGuests }} people </p>
+  <p class="font-weight-bold mb-0">Fits {{ property.numberOfGuests }} people</p>
 
   <div class="wrapper">
-      <b2-rating [propertyRating]="property.propertyRating"></b2-rating>
+    <b2-rating [propertyRating]="property.propertyRating"></b2-rating>
   </div>
 
   <div class="carousel-container">
     <ngb-carousel>
       <ng-template ngbSlide *ngFor="let imageUrl of property.uploads">
-        <img [src]="imageUrl" alt="one image slide" class="image-slide">
+        <img [src]="imageUrl" alt="one image slide" class="image-slide" />
       </ng-template>
       <ng-template ngbSlide *ngIf="!property.uploads.length">
-        <img src="../assets/images/no-image-available.jpg" alt="one image slide" class="image-slide">
+        <img
+          src="../assets/images/no-image-available.jpg"
+          alt="one image slide"
+          class="image-slide"
+        />
       </ng-template>
     </ngb-carousel>
   </div>
 
   <div class="wrapper">
     <div class="list-group-container">
-      <ul class="list-group">
-        <li class="list-group-item bg-warning" *ngFor="let meal of property.meals"> {{ meal }} </li>
+      <ul class="list-group list-group-horizontal">
+        <li *ngFor="let meal of property.meals">
+          <i class="fa fa-check green-color"></i> {{ meal }}
+        </li>
       </ul>
-      <ul class="list-group">
-        <li class="list-group-item bg-warning" *ngFor="let fac of property.facilities"> {{ fac }} </li>
+      <ul class="list-group list-group-horizontal">
+        <li *ngFor="let fac of property.facilities">
+          <i class="fa fa-check green-color"></i> {{ fac }}
+        </li>
       </ul>
     </div>
   </div>
 
-  <div style="width:100%">
+  <div>
     <p>{{ property.description }}</p>
     <div class="text-center wrapper">
-      <button type="button" class="btn btn-danger font-weight-bold" (click)="open()">
+      <button
+        type="button"
+        class="btn btn-primary font-weight-bold"
+        (click)="open()"
+      >
         Book this property
       </button>
     </div>
-    <br>
     <div class="text-center wrapper">
-      <button type="button" class="btn btn-secondary font-weight-bold"
-        [routerLink]="['/listings', { lastVisited: property.timestamp }]"> Back to all search results
+      <button
+        type="button"
+        class="btn btn-secondary font-weight-bold"
+        [routerLink]="['/listings', { lastVisited: property.timestamp }]"
+      >
+        Back to all search results
       </button>
     </div>
   </div>

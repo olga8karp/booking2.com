@@ -1,10 +1,10 @@
-import { Component, forwardRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, forwardRef } from "@angular/core";
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 
 @Component({
-  selector: 'b2-uploader',
-  templateUrl: './uploader.component.html',
-  styleUrls: ['./uploader.component.css'],
+  selector: "b2-uploader",
+  templateUrl: "./uploader.component.html",
+  styleUrls: ["./uploader.component.css"],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -13,7 +13,6 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     }
   ]
 })
-
 export class UploaderComponent implements ControlValueAccessor {
   isHovering: boolean;
   files: File[] = [];
@@ -30,14 +29,14 @@ export class UploaderComponent implements ControlValueAccessor {
   }
 
   writeValue(value: string[]): void {
-    if (value && typeof value === 'string') {
+    if (value && typeof value === "string") {
       this.fileUrls = value;
     }
   }
 
-  onChanged: (value: string[]) => void = () => { };
+  onChanged: (value: string[]) => void = () => {};
 
-  onTouched: () => void = () => { };
+  onTouched: () => void = () => {};
 
   registerOnChange(fn: any): void {
     this.onChanged = fn;
@@ -46,7 +45,7 @@ export class UploaderComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  removeUpload(fileData: { file: File, url: string }): void {
+  removeUpload(fileData: { file: File; url: string }): void {
     this.files = this.files.filter(f => f !== fileData.file);
     this.fileUrls = this.fileUrls.filter(f => f !== fileData.url);
     this.onChanged(this.fileUrls || []);

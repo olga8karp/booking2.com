@@ -1,50 +1,102 @@
 <div class="wrapper">
-    <div class="modal-header">
-        <h2 class="modal-title text-primary font-weight-bold">Reservation form</h2>
-        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <div class="modal-body">
-        <form (ngSubmit)="bookForSelectedDates(bookingForm)" #bookingForm="ngForm">
-            <div>
-                <input type="text" name="name" class="form-control" style="width: 20rem; margin: 0 auto"
-                    placeholder="Your name" minlength="2" maxlength="30" [(ngModel)]="name" #nameInput="ngModel"
-                    [ngClass]="nameInput.invalid && nameInput.touched ? 'is-invalid' : nameInput.touched && nameInput.valid ? 'is-valid' : ''"
-                    required>
-            </div>
-            <br>
-            <div>
-                <input type="email" name="email" class="form-control" style="width: 20rem; margin: 0 auto"
-                    placeholder="Email"
-                    pattern='^(([^()\[\]\.,;:\s@\"]+(\.[^()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^()[\]\.,;:\s@\"]+\.)+[^()[\]\.,;:\s@\"]{2,})$'
-                    [(ngModel)]="email" #emailInput="ngModel"
-                    [ngClass]="emailInput.invalid && emailInput.touched ? 'is-invalid' : emailInput.touched && emailInput.valid ? 'is-valid' : ''"
-                    required>
-            </div>
-            <br>
-            <div>
-                <input type="text" name="phone" class="form-control" style="width: 20rem; margin: 0 auto"
-                    placeholder="Your phone number" pattern="\+?(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|
+  <div class="modal-header">
+    <h2 class="modal-title text-primary font-weight-bold">Reservation form</h2>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="bookForSelectedDates(bookingForm)" #bookingForm="ngForm">
+      <div>
+        <input
+          type="text"
+          name="name"
+          class="form-control booking-form-input"
+          placeholder="Your name"
+          minlength="2"
+          maxlength="30"
+          [(ngModel)]="name"
+          #nameInput="ngModel"
+          [ngClass]="
+            nameInput.invalid && nameInput.touched
+              ? 'is-invalid'
+              : nameInput.touched && nameInput.valid
+              ? 'is-valid'
+              : ''"
+          required/>
+      </div>
+      <br />
+      <div>
+        <input
+          type="email"
+          name="email"
+          class="form-control booking-form-input"
+          placeholder="Email"
+          pattern='^(([^()\[\]\.,;:\s@\"]+(\.[^()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^()[\]\.,;:\s@\"]+\.)+[^()[\]\.,;:\s@\"]{2,})$'
+          [(ngModel)]="email"
+          #emailInput="ngModel"
+          [ngClass]="
+            emailInput.invalid && emailInput.touched
+              ? 'is-invalid'
+              : emailInput.touched && emailInput.valid
+              ? 'is-valid'
+              : ''
+          "
+          required/>
+      </div>
+      <br />
+      <div>
+        <input
+          type="text"
+          name="phone"
+          class="form-control booking-form-input"
+          placeholder="Your phone number"
+          pattern="\+?(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|
             2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|
-            4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$" [(ngModel)]="phone" #phoneInput="ngModel"
-                    [ngClass]="phoneInput.invalid && phoneInput.touched ? 'is-invalid' : phoneInput.touched && phoneInput.valid ? 'is-valid' : ''"
-                    required>
-            </div>
-            <hr>
-            <ngb-alert *ngIf="alert?.type" [type]="alert.type" (close)="closeAlert()">{{ alert.message }}</ngb-alert>
-            <div style="text-align: center">
-                <b2-date-picker name="bookedDates" [(ngModel)]="bookedDates" #dateInput="ngModel">
-                </b2-date-picker>
-            </div>
-            <div style="text-align: center; margin: 1rem">
-                <button type="submit" class="btn btn-danger font-weight-bold"
-                    [disabled]="!bookingForm.valid || !bookedDates.length"> Book for selected dates
-                </button>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Close</button>
-    </div>
+            4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$"
+          [(ngModel)]="phone"
+          #phoneInput="ngModel"
+          [ngClass]="
+            phoneInput.invalid && phoneInput.touched
+              ? 'is-invalid'
+              : phoneInput.touched && phoneInput.valid
+              ? 'is-valid'
+              : ''"
+          required/>
+      </div>
+      <hr />
+      <ngb-alert
+        *ngIf="alert?.type"
+        [type]="alert.type"
+        (close)="closeAlert()"
+        >{{ alert.message }}</ngb-alert>
+      <div class="text-center">
+        <b2-date-picker
+          name="bookedDates"
+          [(ngModel)]="bookedDates"
+          #dateInput="ngModel">
+        </b2-date-picker>
+      </div>
+      <div class="submit-button text-center mt-3">
+        <button
+          type="submit"
+          class="btn btn-primary font-weight-bold"
+          [disabled]="!bookingForm.valid || !bookedDates.length">
+          Book for selected dates
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="activeModal.close('Close click')">
+      Close
+    </button>
+  </div>
 </div>

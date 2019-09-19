@@ -1,16 +1,23 @@
-<div class="dropzone"
-     b2Dropzone
-     (hovered)="toggleHover($event)"
-     (dropped)="onDrop($event)"
-     [class.hovering]="isHovering">
-
-    <h6>Pictures of your property</h6>
-    <p>Drag and drop files here or press the button to upload </p>
-    <div>
-        <input type="file" class="file-input" (change)="onDrop($event.target.files)">
-    </div>
+<div
+  class="dropzone"
+  b2Dropzone
+  (hovered)="toggleHover($event)"
+  (dropped)="onDrop($event)"
+  [class.hovering]="isHovering">
+  <h6>Pictures of your property</h6>
+  <p>Drag and drop files here or press the button to upload</p>
+  <div>
+    <input
+      type="file"
+      class="file-input"
+      (change)="onDrop($event.target.files)"/>
+  </div>
 </div>
 
 <div *ngFor="let file of files" class="uploaded-items">
-    <b2-upload-task [file]="file" (uploadAdded)="addUpload($event)" (uploadRemoved)="removeUpload($event)"></b2-upload-task>
+  <b2-upload-task
+    [file]="file"
+    (uploadAdded)="addUpload($event)"
+    (uploadRemoved)="removeUpload($event)">
+</b2-upload-task>
 </div>
