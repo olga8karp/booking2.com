@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
 import { Observable } from "rxjs";
 import { PropertyData } from "src/app/data-models/property-data.model";
+import { shareReplay, tap, skip } from 'rxjs/operators';
 
 @Component({
   selector: "b2-search-results",
@@ -10,8 +11,9 @@ import { PropertyData } from "src/app/data-models/property-data.model";
   styleUrls: ["./search-results.component.css"]
 })
 export class SearchResultsComponent implements OnInit {
-  properties$: Observable<PropertyData[]>;
+  properties$: Observable<PropertyData[]> = null;
   visitedPropertyId: number;
+  displayLoadingMessage = true;
 
   constructor(
     private route: ActivatedRoute,

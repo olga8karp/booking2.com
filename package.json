@@ -24,6 +24,7 @@
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "angularfire2": "^5.2.1",
     "bootstrap": "^4.0.0",
+    "cors": "^2.8.5",
     "file-drop-element": "^0.2.0",
     "firebase": "^6.4.0",
     "gijgo": "^1.9.13",

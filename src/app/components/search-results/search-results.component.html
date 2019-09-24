@@ -1,10 +1,11 @@
 <div
   class="card-columns"
-  *ngIf="(properties$ | async).length; else noPropertiesFound">
+  *ngIf="(properties$ | async).length; else displayNoPropertiesFoundMessage">
   <div
     class="card"
     *ngFor="let property of properties$ | async as properties; let i = index">
     <div
+      *ngIf="property"
       class="card"
       [routerLink]="['/property', property.timestamp]"
       [ngStyle]="{
@@ -16,8 +17,7 @@
         [src]="
           property.uploads && property.uploads.length
             ? property.uploads[0]
-            : '../assets/images/no-image-available.jpg'
-        "
+            : '../assets/images/no-image-available.jpg'"
         alt="property picture"/>
       <div class="card-body">
         <h5 class="card-title text-center">{{ property.name }}</h5>
@@ -48,13 +48,7 @@
   </div>
 </div>
 
-<ng-template #noPropertiesFound>
-  <div class="no-props-found">
-    <p>No properties found</p>
-  </div>
-</ng-template>
-
-<div class="text-center pagination-controls-wrapper">
+<div class="text-center pagination-controls-wrapper" *ngIf="(properties$ | async).length > 5">
   <button
     class="btn btn-secondary float-left"
     (click)="prevPage()"
@@ -69,3 +63,10 @@
     Next
   </button>
 </div>
+
+<ng-template #displayNoPropertiesFoundMessage>
+  <img
+    class="no-props-found-picture"
+    alt="No properties found"
+    src="./../../../assets//images//no-props-found.svg"/>
+</ng-template>

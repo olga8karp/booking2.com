@@ -3,9 +3,10 @@ import {
   AngularFirestore,
   QueryDocumentSnapshot
 } from "angularfire2/firestore";
-import { PropertyData } from "../../data-models/property-data.model";
+import { PropertyData, SearchInputPropertyData } from "../../data-models/property-data.model";
 import { Observable, BehaviorSubject } from "rxjs";
 import { map } from "rxjs/operators";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
@@ -21,9 +22,9 @@ export class DataStorageService {
   page = 1;
   visitedPropertyId: number;
 
-  private propertiesSubject = new BehaviorSubject<PropertyData[]>([]);
+  private propertiesSubject = new BehaviorSubject<PropertyData[]>([null]);
 
-  constructor(private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore, private http: HttpClient) {
     this.loadItems();
     this.properties$ = this.propertiesSubject.asObservable();
   }
@@ -175,6 +176,27 @@ export class DataStorageService {
       .collection("properties")
       .doc<PropertyData>(id)
       .valueChanges();
+  }
+
+  getPropertiesBySearchInputParams(searchParams: SearchInputPropertyData) {
+    const url = "https://us-central1-booking2project.cloudfunctions.net/getProperties";
+    const paramsData = JSON.stringify(searchParams);
+    const params: HttpParams = new HttpParams().set('searchData', paramsData);
+    const headers: HttpHeaders = new HttpHeaders({
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*"
+    });
+    params.append("searchData", paramsData);
+
+    return this.http
+      .get(url, { headers, params })
+      .toPromise()
+      .then((res: PropertyData[]) => {
+        this.propertiesSubject.next(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   //getFilteredProperties(searchData: SearchInputPropertyData) {

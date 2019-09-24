@@ -18,9 +18,7 @@ export class PriceRangeInputComponent implements ControlValueAccessor {
   priceRange: PriceRange = null;
 
   writeValue(value: PriceRange): void {
-    if (value) {
       this.priceRange = value;
-    }
   }
 
   onChanged: (value: [number, number]) => void = () => {};
@@ -36,10 +34,8 @@ export class PriceRangeInputComponent implements ControlValueAccessor {
   }
 
   handlePriceRangeSelect(newRange: PriceRange): void {
-    if (newRange) {
       this.priceRange = newRange;
       this.onChanged(this.priceRange);
       this.onTouched();
-    }
   }
 }

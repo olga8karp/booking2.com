@@ -13,14 +13,6 @@ export class SearchPanelComponent {
   constructor(private dataService: DataStorageService) {}
 
   search(searchData: SearchInputPropertyData) {
-    //this.dataService.getFilteredProperties(searchData).then((data) => console.log(data.docs));
-    //.then((querySnapshot) => {
-    //   querySnapshot.forEach((doc) => {
-    //     console.log(searchData, doc.id, ' => ', doc.data());
-    //   });
-    // })
-    //   .catch((error) => {
-    //     console.log('Error getting documents: ', error);
-    //   });
+    this.dataService.getPropertiesBySearchInputParams(searchData);
   }
 }

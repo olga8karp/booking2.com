@@ -4,7 +4,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClientJsonpModule } from "@angular/common/http";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireStorageModule } from "angularfire2/storage";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
@@ -74,7 +74,8 @@ import { SearchTermInputComponent } from "./components/utility-components/search
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpClientJsonpModule
   ],
   providers: [LoginModalComponent, BookingModalComponent],
   bootstrap: [AppComponent],

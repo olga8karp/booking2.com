@@ -36,6 +36,13 @@
   color: #212529;
 }
 
+.no-props-found-picture {
+  padding: 10vw;
+  width: 83vw;
+  height: 85vh;
+  margin: 0 auto;
+}
+
 @media (max-width: 700px) {
   .card-columns {
     height: fit-content;

@@ -17,9 +17,7 @@ export class PropertyTypeInputComponent implements ControlValueAccessor {
   @Input() propertyType: string = null;
 
   writeValue(value: string): void {
-    if (value && typeof value === "string") {
       this.propertyType = value;
-    }
   }
 
   onChanged: (value: string) => void = () => {};
