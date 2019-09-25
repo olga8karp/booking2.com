@@ -32,7 +32,7 @@ export class SearchInputPropertyData {
     public priceRange: PriceRange = null,
     public propertyRating: number = 0,
     public propertyType: string = null,
-    public dates?: NgbDate[],
+    public dates?: any[],
     public searchTerm: string = ""
   ) {}
 }

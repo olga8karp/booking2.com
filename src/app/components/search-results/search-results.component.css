@@ -1,6 +1,5 @@
-.card-columns,
-.no-props-founc {
-  height: 98vh;
+.card-columns {
+  height: 100vh;
 }
 
 .card {
@@ -46,5 +45,6 @@
 @media (max-width: 700px) {
   .card-columns {
     height: fit-content;
+    margin-bottom: 2.5rem;
   }
 }

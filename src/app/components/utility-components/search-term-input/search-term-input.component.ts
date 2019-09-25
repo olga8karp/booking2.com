@@ -26,7 +26,7 @@ export class SearchTermInputComponent
 
   constructor(private dataService: DataStorageService) {
     this.dataServiceSubscription = this.dataService
-      .getAllProperties()
+      .properties$
       .subscribe((properties: PropertyData[]) => {
         this.availablePropertiesNamesAndAddresses = properties.reduce(
           (acc: string[], property: PropertyData): string[] => {

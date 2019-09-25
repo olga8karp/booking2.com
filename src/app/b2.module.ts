@@ -10,6 +10,7 @@ import { AngularFireStorageModule } from "angularfire2/storage";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from "./b2-routing.module";
 import { AppComponent } from "./components/b2.component";
@@ -36,6 +37,7 @@ import { PropertyTypeInputComponent } from "./components/utility-components/prop
 import { RatingInputComponent } from "./components/utility-components/rating-input/rating-input.component";
 import { PriceRangeInputComponent } from "./components/utility-components/price-range-input/price-range-input.component";
 import { SearchTermInputComponent } from "./components/utility-components/search-term-input/search-term-input.component";
+
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { SearchTermInputComponent } from "./components/utility-components/search
     AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    NgxPaginationModule
   ],
   providers: [LoginModalComponent, BookingModalComponent],
   bootstrap: [AppComponent],

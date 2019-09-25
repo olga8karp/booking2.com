@@ -24,12 +24,4 @@ export class SearchResultsComponent implements OnInit {
     this.properties$ = this.dataService.properties$.pipe(shareReplay());
     this.visitedPropertyId = +this.route.snapshot.paramMap.get("lastVisited");
   }
-
-  prevPage() {
-    this.dataService.prevPage();
-  }
-
-  nextPage() {
-    this.dataService.nextPage();
-  }
 }

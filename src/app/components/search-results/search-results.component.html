@@ -1,9 +1,18 @@
+<div class="text-center">
+  <img src="../../../assets/images/hat.png" height="200">
+  <img src="../../../assets/images/deals.png" height="200">
+  <img src="../../../assets/images/parrot.png" height="200">
+</div>
 <div
   class="card-columns"
   *ngIf="(properties$ | async).length; else displayNoPropertiesFoundMessage">
   <div
     class="card"
-    *ngFor="let property of properties$ | async as properties; let i = index">
+    *ngFor="
+      let property of properties$
+        | async
+        | paginate: { itemsPerPage: 6, currentPage: p } as properties;
+      let i = index">
     <div
       *ngIf="property"
       class="card"
@@ -48,25 +57,13 @@
   </div>
 </div>
 
-<div class="text-center pagination-controls-wrapper" *ngIf="(properties$ | async).length > 5">
-  <button
-    class="btn btn-secondary float-left"
-    (click)="prevPage()"
-    [disabled]="dataService.disablePrev || !(dataService.paginationClickedCount > 0)">
-    Previous
-  </button>
-  <b>Page #{{ dataService.paginationClickedCount + 1 }} </b>
-  <button
-    class="btn btn-secondary float-right"
-    (click)="nextPage()"
-    [disabled]="dataService.disableNext">
-    Next
-  </button>
-</div>
-
 <ng-template #displayNoPropertiesFoundMessage>
   <img
     class="no-props-found-picture"
     alt="No properties found"
     src="./../../../assets//images//no-props-found.svg"/>
 </ng-template>
+
+<div class="text-center">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
