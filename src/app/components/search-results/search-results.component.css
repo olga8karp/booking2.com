@@ -1,9 +1,10 @@
 .card-columns {
   height: 100vh;
+  padding: 1rem;
 }
 
 .card {
-  height: 28rem;
+  height: 26rem;
   font-size: 0.8rem;
   cursor: pointer;
 }
@@ -46,5 +47,9 @@
   .card-columns {
     height: fit-content;
     margin-bottom: 2.5rem;
+  }
+
+  .pictures {
+    display: none;
   }
 }
