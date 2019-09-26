@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "angularfire2/firestore";
+import { Observable, BehaviorSubject } from "rxjs";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+
 import {
   PropertyData,
   SearchInputPropertyData
 } from "../../data-models/property-data.model";
-import { Observable, BehaviorSubject } from "rxjs";
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { cloudFunctionsGetPropertiesLink } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -23,7 +25,7 @@ export class DataStorageService {
 
   loadItems(): void {
     this.firestore
-      .collection("properties")
+      .collection("properties", ref => ref.orderBy("timestamp", "desc"))
       .snapshotChanges()
       .subscribe(
         response => {
@@ -60,8 +62,6 @@ export class DataStorageService {
   }
 
   getPropertiesBySearchInputParams(searchParams: SearchInputPropertyData) {
-    const url =
-      "https://us-central1-booking2project.cloudfunctions.net/getProperties";
     const paramsData = JSON.stringify(searchParams);
     const params: HttpParams = new HttpParams().set("searchData", paramsData);
     const headers: HttpHeaders = new HttpHeaders({
@@ -71,7 +71,7 @@ export class DataStorageService {
     params.append("searchData", paramsData);
 
     return this.http
-      .get(url, { headers, params })
+      .get(cloudFunctionsGetPropertiesLink, { headers, params })
       .toPromise()
       .then((res: PropertyData[]) => {
         this.propertiesSubject.next(res);
