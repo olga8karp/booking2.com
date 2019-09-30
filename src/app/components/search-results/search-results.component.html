@@ -5,7 +5,7 @@
 </div>
 <div
   class="card-columns"
-  *ngIf="(properties$ | async).length; else displayNoPropertiesFoundMessage">
+  *ngIf="(properties$ | async).length && (properties$ | async)[0] !== null; else displayNoPropertiesFoundMessage">
   <div
     class="card"
     *ngFor="
@@ -57,7 +57,7 @@
   </div>
 </div>
 
-<ng-template #displayNoPropertiesFoundMessage>
+<ng-template #displayNoPropertiesFoundMessage *ngIf="(properties$ | async)[0] !== null">
   <img
     class="no-props-found-picture"
     alt="No properties found"

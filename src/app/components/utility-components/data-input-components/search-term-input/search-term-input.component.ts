@@ -25,18 +25,20 @@ export class SearchTermInputComponent
   dataServiceSubscription: Subscription;
 
   constructor(private dataService: DataStorageService) {
-    this.dataServiceSubscription = this.dataService
-      .properties$
-      .subscribe((properties: PropertyData[]) => {
+    this.dataServiceSubscription = this.dataService.properties$.subscribe(
+      (properties: PropertyData[]) => {
         this.availablePropertiesNamesAndAddresses = properties.reduce(
           (acc: string[], property: PropertyData): string[] => {
-            acc.push(property.name);
-            acc.push(property.address);
-            return acc;
+            if (property) {
+              acc.push(property.name);
+              acc.push(property.address);
+              return acc;
+            }
           },
           []
         );
-      });
+      }
+    );
   }
 
   search = (text$: Observable<string>) =>
