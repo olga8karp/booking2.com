@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 
 import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
 import { SearchInputPropertyData } from "src/app/data-models/property-data.model";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "b2-search-panel",
@@ -15,6 +16,7 @@ export class SearchPanelComponent implements OnInit {
 
   constructor(
     private dataService: DataStorageService,
+    private router: Router,
     private fb: FormBuilder
   ) {}
 
@@ -32,6 +34,8 @@ export class SearchPanelComponent implements OnInit {
   }
 
   search() {
-    this.dataService.getPropertiesBySearchInputParams(this.searchForm.value);
+    this.router.navigate(["./listings"], {
+      queryParams: this.searchForm.value
+    });
   }
 }

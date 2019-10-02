@@ -17,6 +17,7 @@
       *ngIf="property"
       class="card"
       [routerLink]="['/property', property.timestamp]"
+      queryParamsHandling="preserve"
       [ngStyle]="{
         'background-color':
           property.timestamp === this.visitedPropertyId ? '#ddd' : '#fff'

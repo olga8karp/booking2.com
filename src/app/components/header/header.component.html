@@ -1,11 +1,11 @@
 <nav class="navbar navbar-dark bg-primary">
   <div>
-    <a routerLink="/listings">
+    <a routerLink="./listings">
       <img src="../../assets/images/logo.png" alt="booking2" />
     </a>
   </div>
   <div class="account-management">
-    <a routerLink="auth" *ngIf="authService.user$ | async as user; else login">
+    <a routerLink="./auth" *ngIf="authService.user$ | async as user; else login">
       <span class="text-white font-weight-bold mr-2">
         Logged in as {{ user.displayName || user.email }}
       </span>
@@ -21,7 +21,7 @@
       </button>
     </ng-template>
     <a
-      routerLink="/add"
+      routerLink="./add"
       class="ml-1"
       *ngIf="(authService.user$ | async)?.uid === 'VWqVCnFHnKTNTKVuYYexx4e5mCf2'">
       <button class="btn btn-light font-weight-bold">List new property</button>

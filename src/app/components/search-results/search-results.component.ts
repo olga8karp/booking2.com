@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
 import { Observable } from "rxjs";
-import { PropertyData } from "src/app/data-models/property-data.model";
+import { PropertyData, SearchInputPropertyData, PriceRange } from "src/app/data-models/property-data.model";
 import { shareReplay } from 'rxjs/operators';
 
 @Component({
@@ -21,6 +21,19 @@ export class SearchResultsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.route.queryParamMap.subscribe((paramMap: ParamMap ) => {
+      const searchInputParams = new SearchInputPropertyData(
+        paramMap.getAll('facilities') || [],
+        paramMap.getAll('meals') || [],
+        +paramMap.get('numberOfGuests') || 2,
+        JSON.parse(paramMap.get('priceRange')) as PriceRange || null,
+        +paramMap.get('propertyRating') || 0,
+        paramMap.get('propertyType') || null,
+        paramMap.getAll('dates') || null,
+        paramMap.get('searchTerm') || ''
+      );
+      this.dataService.getPropertiesBySearchInputParams(searchInputParams);
+    });
     this.properties$ = this.dataService.properties$.pipe(shareReplay());
     this.visitedPropertyId = +this.route.snapshot.paramMap.get("lastVisited");
   }

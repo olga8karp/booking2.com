@@ -59,6 +59,6 @@ export class AddNewPropertyDetailsComponent implements OnInit {
   formSubmit(propertyData: PropertyData): void {
     this.isSubmitted = true;
     this.storageService.addProperty(propertyData);
-    this.router.navigateByUrl("listings");
+    this.router.navigate(["./listings"]);
   }
 }

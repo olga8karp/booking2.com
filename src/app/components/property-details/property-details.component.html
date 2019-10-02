@@ -56,7 +56,7 @@
         type="button"
         class="btn btn-secondary font-weight-bold"
         [routerLink]="['/listings', { lastVisited: property.timestamp }]"
-      >
+        queryParamsHandling="preserve">
         Back to all search results
       </button>
     </div>
