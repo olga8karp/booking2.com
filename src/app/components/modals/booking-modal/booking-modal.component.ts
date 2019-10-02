@@ -6,6 +6,7 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { Alert, AlertType } from "src/app/data-models/alert-model";
 import { BookingService } from "src/app/services/booking/booking.service";
 import { Subscription } from "rxjs";
+import { phoneRegEx } from "src/app/constants/regex";
 
 @Component({
   selector: "b2-booking-modal",
@@ -17,7 +18,6 @@ export class BookingModalComponent implements OnInit, OnDestroy {
   bookedDates: Date[] = [];
   alert: Alert = { type: null, message: null };
   setBookedDatesSubscription: Subscription;
-  phoneRegEx = '^(?:[0-9]●?){6,14}[0-9]$';
   @Input() propertyId: string;
 
   constructor(
@@ -28,9 +28,12 @@ export class BookingModalComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.bookingForm = this.fb.group({
-      name: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      name: [
+        "",
+        [Validators.required, Validators.minLength(2), Validators.maxLength(30)]
+      ],
       email: ["", [Validators.required, Validators.email]],
-      phone: ["", [Validators.required, Validators.pattern(this.phoneRegEx)]],
+      phone: ["", [Validators.required, Validators.pattern(phoneRegEx)]],
       bookedDates: [[]]
     });
   }
@@ -55,7 +58,7 @@ export class BookingModalComponent implements OnInit, OnDestroy {
     this.alert = { type: null, message: null };
   }
 
-  showData(){
+  showData() {
     console.log(this.bookedDates);
   }
 
