@@ -11,7 +11,7 @@ export class AddItemCanDeactivateGuardService
   canDeactivate(component: AddNewPropertyDetailsComponent): boolean {
     if (
       component.addPropertyForm.dirty &&
-      !component.addPropertyForm.submitted
+      !component.isSubmitted
     ) {
       return confirm("Are you sure you want to discard yor changes?");
     }

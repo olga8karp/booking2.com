@@ -10,82 +10,68 @@
     </button>
   </div>
   <div class="modal-body">
-    <form (ngSubmit)="bookForSelectedDates(bookingForm)" #bookingForm="ngForm">
+    <form [formGroup]="bookingForm" (ngSubmit)="bookForSelectedDates()">
       <div>
         <input
           type="text"
-          name="name"
           class="form-control booking-form-input"
           placeholder="Your name"
-          minlength="2"
-          maxlength="30"
-          [(ngModel)]="name"
-          #nameInput="ngModel"
+          formControlName="name"
           [ngClass]="
-            nameInput.invalid && nameInput.touched
+            bookingForm.get('name').errors &&
+            (bookingForm.get('name').touched || bookingForm.get('name').dirty)
               ? 'is-invalid'
-              : nameInput.touched && nameInput.valid
+              : bookingForm.get('name').touched && bookingForm.get('name').dirty
               ? 'is-valid'
-              : ''"
-          required/>
+              : ''"/>
       </div>
       <br />
       <div>
         <input
           type="email"
-          name="email"
           class="form-control booking-form-input"
           placeholder="Email"
-          pattern='^(([^()\[\]\.,;:\s@\"]+(\.[^()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^()[\]\.,;:\s@\"]+\.)+[^()[\]\.,;:\s@\"]{2,})$'
-          [(ngModel)]="email"
-          #emailInput="ngModel"
+          formControlName="email"
           [ngClass]="
-            emailInput.invalid && emailInput.touched
+            bookingForm.get('email').errors &&
+            (bookingForm.get('email').touched || bookingForm.get('email').dirty)
               ? 'is-invalid'
-              : emailInput.touched && emailInput.valid
+              : bookingForm.get('email').touched &&
+                bookingForm.get('email').dirty
               ? 'is-valid'
-              : ''
-          "
-          required/>
+              : ''"/>
       </div>
       <br />
       <div>
         <input
           type="text"
-          name="phone"
           class="form-control booking-form-input"
           placeholder="Your phone number"
-          pattern="\+?(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|
-            2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|
-            4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$"
-          [(ngModel)]="phone"
-          #phoneInput="ngModel"
+          formControlName="phone"
           [ngClass]="
-            phoneInput.invalid && phoneInput.touched
+            bookingForm.get('phone').errors &&
+            (bookingForm.get('phone').touched || bookingForm.get('phone').dirty)
               ? 'is-invalid'
-              : phoneInput.touched && phoneInput.valid
+              : bookingForm.get('phone').touched &&
+                bookingForm.get('phone').dirty
               ? 'is-valid'
-              : ''"
-          required/>
+              : ''"/>
       </div>
       <hr />
       <ngb-alert
         *ngIf="alert?.type"
         [type]="alert.type"
-        (close)="closeAlert()"
-        >{{ alert.message }}</ngb-alert>
+        (close)="closeAlert()">
+        {{ alert.message }}</ngb-alert>
       <div class="text-center">
-        <b2-date-picker
-          name="bookedDates"
-          [(ngModel)]="bookedDates"
-          #dateInput="ngModel">
-        </b2-date-picker>
+        <b2-date-picker formControlName="bookedDates"> </b2-date-picker>
       </div>
       <div class="submit-button text-center mt-3">
         <button
           type="submit"
           class="btn btn-primary font-weight-bold"
-          [disabled]="!bookingForm.valid || !bookedDates.length">
+          [disabled]="
+            !bookingForm.valid || !bookingForm.get('bookedDates').value.length">
           Book for selected dates
         </button>
       </div>

@@ -1,5 +1,5 @@
-import { Component, Input, OnDestroy } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
@@ -12,20 +12,32 @@ import { Subscription } from "rxjs";
   templateUrl: "./booking-modal.component.html",
   styleUrls: ["./booking-modal.component.css"]
 })
-export class BookingModalComponent implements OnDestroy {
-  @Input() propertyId: string;
-  alert: Alert = { type: null, message: null };
+export class BookingModalComponent implements OnInit, OnDestroy {
+  bookingForm: FormGroup;
   bookedDates: Date[] = [];
+  alert: Alert = { type: null, message: null };
   setBookedDatesSubscription: Subscription;
+  phoneRegEx = '^(?:[0-9]●?){6,14}[0-9]$';
+  @Input() propertyId: string;
 
   constructor(
     public activeModal: NgbActiveModal,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private fb: FormBuilder
   ) {}
 
-  bookForSelectedDates(form: NgForm): void {
+  ngOnInit() {
+    this.bookingForm = this.fb.group({
+      name: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(30)]],
+      email: ["", [Validators.required, Validators.email]],
+      phone: ["", [Validators.required, Validators.pattern(this.phoneRegEx)]],
+      bookedDates: [[]]
+    });
+  }
+  bookForSelectedDates(): void {
+    this.bookedDates = this.bookingForm.value.bookedDates;
     this.setBookedDatesSubscription = this.bookingService
-      .setBookedDates(this.propertyId, form.value)
+      .setBookedDates(this.propertyId, this.bookingForm.value)
       .subscribe((isBookingSuccessful: boolean) => {
         if (isBookingSuccessful) {
           this.alert.message = this.bookingService.getAlertBookingSuccessMessage(
@@ -43,7 +55,13 @@ export class BookingModalComponent implements OnDestroy {
     this.alert = { type: null, message: null };
   }
 
+  showData(){
+    console.log(this.bookedDates);
+  }
+
   ngOnDestroy() {
-    this.setBookedDatesSubscription.unsubscribe();
+    if (this.setBookedDatesSubscription) {
+      this.setBookedDatesSubscription.unsubscribe();
+    }
   }
 }

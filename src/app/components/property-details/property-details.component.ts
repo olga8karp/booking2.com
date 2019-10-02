@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
 import { PropertyData } from "src/app/data-models/property-data.model";
-import { BookingModalComponent } from "../utility-components/modals/booking-modal/booking-modal.component";
+import { BookingModalComponent } from "../modals/booking-modal/booking-modal.component";
 
 @Component({
   selector: "b2-property-details",

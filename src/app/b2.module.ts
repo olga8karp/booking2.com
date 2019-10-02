@@ -14,7 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from "./b2-routing.module";
 import { AppComponent } from "./components/b2.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { SearchResultsComponent } from "./components/search-results/search-results.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { PropertyDetailsComponent } from "./components/property-details/property-details.component";
@@ -26,8 +26,8 @@ import { UploaderComponent } from "./components/utility-components/data-input-co
 import { UploadTaskComponent } from "./components/utility-components/data-input-components/images-uploader/upload-task/upload-task.component";
 import { AddressInputComponent } from "./components/utility-components/data-input-components/address-input/address-input.component";
 import { DatePickerComponent } from "./components/utility-components/data-input-components/date-picker/date-picker.component";
-import { LoginModalComponent } from "./components/utility-components/modals/login-modal/login-modal.component";
-import { BookingModalComponent } from "./components/utility-components/modals/booking-modal/booking-modal.component";
+import { LoginModalComponent } from "./components/modals/login-modal/login-modal.component";
+import { BookingModalComponent } from "./components/modals/booking-modal/booking-modal.component";
 import { NumberOfGuestsInputComponent } from "./components/utility-components/data-input-components/number-of-guests-input/number-of-guests-input.component";
 import { MealsInputComponent } from "./components/utility-components/data-input-components/meals-input/meals-input.component";
 import { FacilitiesInputComponent } from "./components/utility-components/data-input-components/facilities-input/facilities-input.component";
@@ -68,6 +68,7 @@ import { SearchTermInputComponent } from "./components/utility-components/data-i
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     GooglePlaceModule,
     NgbModule,
     HttpClientModule,

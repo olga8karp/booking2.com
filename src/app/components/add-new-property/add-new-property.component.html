@@ -3,88 +3,66 @@
   <p class="text-primary font-weight-bold">
     Please provide detailed information about your property
   </p>
-  <br/>
+  <br />
 
   <form
-    (ngSubmit)="formSubmit(addPropertyForm.value)"
-    #addPropertyForm="ngForm">
+    [formGroup]="addPropertyForm"
+    (ngSubmit)="formSubmit(addPropertyForm.value)">
     <fieldset class="form-group">
       <label for="name" class="font-weight-bold"> Name </label>
       <small> Please give your property an attractive name </small>
       <input
         placeholder="Enter a name"
-        name="name"
         id="name"
+        formControlName="name"
         class="form-control search-text-input"
-        [(ngModel)]="propertyData.name"
-        #nameInput="ngModel"
         [ngClass]="
-          nameInput.invalid && nameInput.touched
+          addPropertyForm.get('name').errors &&
+          (addPropertyForm.get('name').touched ||
+            addPropertyForm.get('name').dirty)
             ? 'is-invalid'
-            : nameInput.touched && nameInput.valid
+            : addPropertyForm.get('name').touched &&
+              addPropertyForm.get('name').dirty
             ? 'is-valid'
             : ''
-        "
-        minlength="5"
-        maxlength="303"
-        required/>
+        "/>
     </fieldset>
 
     <fieldset class="form-group">
       <legend>Property type</legend>
-      <b2-property-type-input
-        name="propertyType"
-        [(ngModel)]="propertyData.propertyType">
+      <b2-property-type-input formControlName="propertyType">
       </b2-property-type-input>
     </fieldset>
 
     <fieldset class="form-group">
       <legend>Rating (if any)</legend>
-      <b2-rating-input
-        name="propertyRating"
-        [(ngModel)]="propertyData.propertyRating">
-      </b2-rating-input>
+      <b2-rating-input formControlName="propertyRating"> </b2-rating-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <b2-address-input
-        name="address"
-        [(ngModel)]="propertyData.address"
-        required>
-      </b2-address-input>
+      <b2-address-input formControlName="address"> </b2-address-input>
     </fieldset>
 
     <fieldset class="form-group">
       <label class="font-weight-bold">
         How many people can stay?
-        <b2-number-of-guests-input
-          name="numberOfGuests"
-          [(ngModel)]="propertyData.numberOfGuests">
+        <b2-number-of-guests-input formControlName="numberOfGuests">
         </b2-number-of-guests-input>
       </label>
     </fieldset>
 
     <fieldset class="form-group">
       <legend>Do you provide meals for your guests?</legend>
-      <b2-meals-input
-        name="meals"
-        [(ngModel)]="propertyData.meals"
-      ></b2-meals-input>
+      <b2-meals-input formControlName="meals"> </b2-meals-input>
     </fieldset>
 
     <fieldset class="form-group">
       <legend>What else can guests expect at your place?</legend>
-      <b2-facilities-input
-        name="facilities"
-        [(ngModel)]="propertyData.facilities">
-      </b2-facilities-input>
+      <b2-facilities-input formControlName="facilities"> </b2-facilities-input>
     </fieldset>
 
     <fieldset class="form-group">
-      <b2-uploader
-        name="uploads"
-        [(ngModel)]="propertyData.uploads">
-      </b2-uploader>
+      <b2-uploader formControlName="uploads"> </b2-uploader>
     </fieldset>
 
     <fieldset class="form-group">
@@ -94,23 +72,19 @@
       </small>
       <textarea
         type="textarea"
-        name="description"
         id="description"
+        formControlName="description"
         class="form-control search-text-input"
-        minlength="15"
-        maxlength="300"
         rows="6"
-        [(ngModel)]="propertyData.description"
-        #descInput="ngModel"
         [ngClass]="
-          descInput.invalid && descInput.touched
+          addPropertyForm.get('description').errors &&
+          (addPropertyForm.get('description').touched ||
+            addPropertyForm.get('description').dirty)
             ? 'is-invalid'
-            : descInput.touched && descInput.valid
+            : addPropertyForm.get('description').touched &&
+              addPropertyForm.get('description').dirty
             ? 'is-valid'
-            : ''
-        "
-        minlength="5"
-        required>
+            : ''">
       </textarea>
     </fieldset>
 
@@ -120,20 +94,18 @@
       </label>
       <input
         type="number"
-        min="0"
-        name="price"
-        [(ngModel)]="propertyData.price"
         id="price"
+        formControlName="price"
         class="form-control price-input"
-        pattern="^[1-9]+[0-9]*$"
-        #priceInput="ngModel"
         [ngClass]="
-          priceInput.invalid && priceInput.touched
+          addPropertyForm.get('price').errors &&
+          (addPropertyForm.get('price').touched ||
+            addPropertyForm.get('price').dirty)
             ? 'is-invalid'
-            : priceInput.touched && priceInput.valid
+            : addPropertyForm.get('price').touched &&
+              addPropertyForm.get('price').dirty
             ? 'is-valid'
-            : ''"
-        required/>
+            : ''"/>
     </fieldset>
 
     <button
