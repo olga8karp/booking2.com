@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormGroup, FormBuilder } from "@angular/forms";
 
 import {
@@ -6,14 +6,16 @@ import {
   PriceRange
 } from "src/app/data-models/property-data.model";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: "b2-search-panel",
   templateUrl: "./search-panel.component.html",
   styleUrls: ["./search-panel.component.css"]
 })
-export class SearchPanelComponent implements OnInit {
+export class SearchPanelComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
+  routeParamsSubscription: Subscription;
 
   constructor(
     private router: Router,
@@ -22,7 +24,7 @@ export class SearchPanelComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe((paramMap: ParamMap ) => {
+    this.routeParamsSubscription = this.route.queryParamMap.subscribe((paramMap: ParamMap ) => {
       const searchInputParams = new SearchInputPropertyData(
         paramMap.getAll('facilities') || [],
         paramMap.getAll('meals') || [],
@@ -33,7 +35,7 @@ export class SearchPanelComponent implements OnInit {
         paramMap.getAll('dates').map((date: string) => new Date(date)) || [],
         paramMap.get('searchTerm') || ''
       );
-      console.log(searchInputParams);
+
       this.searchForm = this.fb.group({
         searchTerm: [searchInputParams.searchTerm],
         dates: [searchInputParams.dates],
@@ -51,5 +53,9 @@ export class SearchPanelComponent implements OnInit {
     this.router.navigate(["./listings"], {
       queryParams: this.searchForm.value
     });
+  }
+
+  ngOnDestroy() {
+    this.routeParamsSubscription.unsubscribe();
   }
 }

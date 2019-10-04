@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { PropertyData, SearchInputPropertyData, PriceRange } from "src/app/data-models/property-data.model";
 import { shareReplay } from 'rxjs/operators';
 
@@ -10,18 +10,18 @@ import { shareReplay } from 'rxjs/operators';
   templateUrl: "./search-results.component.html",
   styleUrls: ["./search-results.component.css"]
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   properties$: Observable<PropertyData[]> = null;
   visitedPropertyId: number;
   displayLoadingMessage = true;
-
+  routeParamsSubscription: Subscription;
   constructor(
     private route: ActivatedRoute,
     private dataService: DataStorageService
   ) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe((paramMap: ParamMap ) => {
+    this.routeParamsSubscription = this.route.queryParamMap.subscribe((paramMap: ParamMap ) => {
       const searchInputParams = new SearchInputPropertyData(
         paramMap.getAll('facilities') || [],
         paramMap.getAll('meals') || [],
@@ -36,5 +36,9 @@ export class SearchResultsComponent implements OnInit {
     });
     this.properties$ = this.dataService.properties$.pipe(shareReplay());
     this.visitedPropertyId = +this.route.snapshot.paramMap.get("lastVisited");
+  }
+
+  ngOnDestroy() {
+    this.routeParamsSubscription.unsubscribe();
   }
 }
