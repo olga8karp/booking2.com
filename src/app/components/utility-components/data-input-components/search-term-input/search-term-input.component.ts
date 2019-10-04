@@ -20,7 +20,6 @@ import { PropertyData } from "src/app/data-models/property-data.model";
 export class SearchTermInputComponent
   implements ControlValueAccessor, OnDestroy {
   searchTerm: string;
-  model: any;
   availablePropertiesNamesAndAddresses: string[];
   dataServiceSubscription: Subscription;
 
@@ -52,10 +51,11 @@ export class SearchTermInputComponent
               .filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
               .slice(0, 10)
       )
-    );
+    )
 
   writeValue(value: string): void {
     if (value) {
+      console.log(value);
       this.searchTerm = value;
     }
   }

@@ -1,9 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder } from "@angular/forms";
 
-import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
-import { SearchInputPropertyData } from "src/app/data-models/property-data.model";
-import { Router } from '@angular/router';
+import {
+  SearchInputPropertyData,
+  PriceRange
+} from "src/app/data-models/property-data.model";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
   selector: "b2-search-panel",
@@ -11,25 +13,37 @@ import { Router } from '@angular/router';
   styleUrls: ["./search-panel.component.css"]
 })
 export class SearchPanelComponent implements OnInit {
-  searchData = new SearchInputPropertyData();
   searchForm: FormGroup;
 
   constructor(
-    private dataService: DataStorageService,
     private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder
   ) {}
 
   ngOnInit() {
-    this.searchForm = this.fb.group({
-      searchTerm: [this.searchData.searchTerm],
-      dates: [this.searchData.dates],
-      numberOfGuests: [this.searchData.numberOfGuests],
-      priceRange: [this.searchData.priceRange],
-      propertyType: [this.searchData.propertyType],
-      propertyRating: [this.searchData.propertyRating],
-      meals: [this.searchData.meals],
-      facilities: [this.searchData.facilities]
+    this.route.queryParamMap.subscribe((paramMap: ParamMap ) => {
+      const searchInputParams = new SearchInputPropertyData(
+        paramMap.getAll('facilities') || [],
+        paramMap.getAll('meals') || [],
+        +paramMap.get('numberOfGuests') || 2,
+        paramMap.getAll('priceRange').map((num: string): number => +num) as PriceRange || null,
+        +paramMap.get('propertyRating') || 0,
+        paramMap.get('propertyType') || null,
+        paramMap.getAll('dates').map((date: string) => new Date(date)) || [],
+        paramMap.get('searchTerm') || ''
+      );
+      console.log(searchInputParams);
+      this.searchForm = this.fb.group({
+        searchTerm: [searchInputParams.searchTerm],
+        dates: [searchInputParams.dates],
+        numberOfGuests: [searchInputParams.numberOfGuests],
+        priceRange: [searchInputParams.priceRange],
+        propertyType: [searchInputParams.propertyType],
+        propertyRating: [searchInputParams.propertyRating],
+        meals: [searchInputParams.meals],
+        facilities: [searchInputParams.facilities]
+      });
     });
   }
 

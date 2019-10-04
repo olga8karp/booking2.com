@@ -58,10 +58,6 @@ export class BookingModalComponent implements OnInit, OnDestroy {
     this.alert = { type: null, message: null };
   }
 
-  showData() {
-    console.log(this.bookedDates);
-  }
-
   ngOnDestroy() {
     if (this.setBookedDatesSubscription) {
       this.setBookedDatesSubscription.unsubscribe();

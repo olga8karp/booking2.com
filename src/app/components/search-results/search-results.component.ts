@@ -26,10 +26,10 @@ export class SearchResultsComponent implements OnInit {
         paramMap.getAll('facilities') || [],
         paramMap.getAll('meals') || [],
         +paramMap.get('numberOfGuests') || 2,
-        JSON.parse(paramMap.get('priceRange')) as PriceRange || null,
+        paramMap.getAll('priceRange').map((num: string): number => +num) as PriceRange || null,
         +paramMap.get('propertyRating') || 0,
         paramMap.get('propertyType') || null,
-        paramMap.getAll('dates') || null,
+        paramMap.getAll('dates').map((date: string) => new Date(date)) || [],
         paramMap.get('searchTerm') || ''
       );
       this.dataService.getPropertiesBySearchInputParams(searchInputParams);

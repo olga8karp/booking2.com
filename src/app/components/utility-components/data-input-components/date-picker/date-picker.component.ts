@@ -1,5 +1,5 @@
 import { Component, forwardRef, OnInit } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm } from "@angular/forms";
 import {
   NgbDate,
   NgbCalendar,
@@ -85,7 +85,22 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     );
   }
 
-  writeValue(): void {}
+  writeValue(value: Date[]): void {
+    if (value.length) {
+      const fromDate: any = {
+        year: value[0].getFullYear(),
+        month: value[0].getMonth(),
+        day: value[0].getDate(),
+      };
+      const toDate: any = {
+        year: value[value.length - 1].getFullYear(),
+        month: value[value.length - 1].getMonth(),
+        day: value[value.length - 1].getDate()
+      };
+      this.fromDate = this.calendar.getPrev(this.calendar.getNext(fromDate));
+      this.toDate = this.calendar.getPrev(this.calendar.getNext(toDate));
+    }
+  }
 
   onChanged: (value: {}) => void = () => {};
 

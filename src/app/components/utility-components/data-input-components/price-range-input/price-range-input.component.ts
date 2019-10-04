@@ -1,6 +1,7 @@
 import { Component, forwardRef } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { PriceRange } from "src/app/data-models/property-data.model";
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: "b2-price-range-input",
@@ -15,10 +16,11 @@ import { PriceRange } from "src/app/data-models/property-data.model";
   ]
 })
 export class PriceRangeInputComponent implements ControlValueAccessor {
-  priceRange: PriceRange = null;
+  priceRangeSubject = new BehaviorSubject<PriceRange>(null);
+  priceRange = this.priceRangeSubject.asObservable();
 
   writeValue(value: PriceRange): void {
-      this.priceRange = value;
+    this.priceRangeSubject.next(value);
   }
 
   onChanged: (value: [number, number]) => void = () => {};
@@ -34,8 +36,8 @@ export class PriceRangeInputComponent implements ControlValueAccessor {
   }
 
   handlePriceRangeSelect(newRange: PriceRange): void {
-      this.priceRange = newRange;
-      this.onChanged(this.priceRange);
+      this.priceRangeSubject.next(newRange);
+      this.onChanged(newRange);
       this.onTouched();
   }
 }

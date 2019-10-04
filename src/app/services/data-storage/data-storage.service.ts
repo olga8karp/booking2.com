@@ -13,36 +13,13 @@ import { cloudFunctionsGetPropertiesLink } from "../../../environments/environme
   providedIn: "root"
 })
 export class DataStorageService {
-  properties$: Observable<PropertyData[]>;
+  properties$: Observable<PropertyData[]> = null;
   visitedPropertyId: number;
 
   private propertiesSubject = new BehaviorSubject<PropertyData[]>([null]);
 
   constructor(private firestore: AngularFirestore, private http: HttpClient) {
-    this.loadItems();
     this.properties$ = this.propertiesSubject.asObservable();
-  }
-
-  loadItems(): void {
-    this.firestore
-      .collection("properties", ref => ref.orderBy("timestamp", "desc"))
-      .snapshotChanges()
-      .subscribe(
-        response => {
-          if (!response.length) {
-            console.log("No Data Available");
-            return false;
-          }
-          const properties = [];
-          for (const item of response) {
-            properties.push(item.payload.doc.data());
-          }
-          this.propertiesSubject.next(properties);
-        },
-        error => {
-          console.log(error);
-        }
-      );
   }
 
   addProperty(property: PropertyData) {

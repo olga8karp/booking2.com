@@ -1,59 +1,63 @@
-<div class="form-check">
-  <label>
-    <input
-      type="radio"
-      class="form-check-input"
-      (change)="handlePriceRangeSelect(null)"
-      [checked]="!priceRange"/>
-    None (any) 
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input
-      type="radio"
-      class="form-check-input"
-      (change)="handlePriceRangeSelect([0, 56])"
-      [checked]="priceRange && priceRange[0] === 0"/>
-    US$0 - US$56 per 
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input
-      type="radio"
-      class="form-check-input"
-      (change)="handlePriceRangeSelect([56, 110])"
-      [checked]="priceRange && priceRange[0] === 56"/>
-    US$56 - US$110 per night
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input
-      type="radio"
-      class="form-check-input"
-      (change)="handlePriceRangeSelect([110, 160])"
-      [checked]="priceRange && priceRange[0] === 110"/>
-    US$110 - US$160 per night
-  </label>
-</div>
-<div class="form-check">
-  <label>
+<div *ngIf="priceRange | async as pRange">
+  <div class="form-check">
+    <label>
       <input
-      type="radio"
-      class="form-check-input"
-      (change)="handlePriceRangeSelect([160, 220])"
-      [checked]="priceRange && priceRange[0] === 160"/>
-    US$160 - US$220 per night
-  </label>
-</div>
-<div class="form-check">
-  <label>
-    <input
-      type="radio"
-      class="form-check-input"
-      (change)="handlePriceRangeSelect([220, Infinity])"
-      [checked]="priceRange && priceRange[0] === 220"/>
-    US$220 + per night</label>
+        type="radio"
+        class="form-check-input"
+        (change)="handlePriceRangeSelect([])"
+        [checked]="!pRange || !pRange.length"/>
+      None (any)
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      <input
+        type="radio"
+        class="form-check-input"
+        (change)="handlePriceRangeSelect([0, 56])"
+        [checked]="pRange[0] === 0 && pRange[1] === 56"/>
+      US$0 - US$56 per
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      <input
+        type="radio"
+        class="form-check-input"
+        (change)="handlePriceRangeSelect([56, 110])"
+        [checked]="pRange[0] === 56 && pRange[1] === 110"/>
+      US$56 - US$110 per night
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      <input
+        type="radio"
+        class="form-check-input"
+        (change)="handlePriceRangeSelect([110, 160])"
+        [checked]="pRange[0] === 110 && pRange[1] === 160"
+      />
+      US$110 - US$160 per night
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      <input
+        type="radio"
+        class="form-check-input"
+        (change)="handlePriceRangeSelect([160, 220])"
+        [checked]="pRange[0] === 160 && pRange[1] === 220"/>
+      US$160 - US$220 per night
+    </label>
+  </div>
+  <div class="form-check">
+    <label>
+      <input
+        type="radio"
+        class="form-check-input"
+        (change)="handlePriceRangeSelect([220, null])"
+        [checked]="pRange[0] === 220"/>
+      US$220 + per night
+    </label>
+  </div>
 </div>

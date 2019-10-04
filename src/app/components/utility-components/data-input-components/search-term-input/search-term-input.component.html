@@ -3,6 +3,6 @@
   class="form-control text-small"
   name="searchTerm"
   (change)="handleSearchTermInput($event.target.value)"
-  [(ngModel)]="model"
+  [(ngModel)]="searchTerm"
   [ngbTypeahead]="search"
   placeholder="Search"/>
