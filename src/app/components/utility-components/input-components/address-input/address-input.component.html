@@ -12,7 +12,7 @@
   (onAddressChange)="handleAddressSelect($event)"
   [(ngModel)]="address"
   #addressInput="ngModel"
-  pattern="^\d+\s*[a-zA-Z]*\s*$"
+  [pattern]="addressRegEx"
   [ngClass]="
     addressInput.invalid && addressInput.touched
       ? 'is-invalid'
