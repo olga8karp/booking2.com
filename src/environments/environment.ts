@@ -12,5 +12,4 @@ export const environment = {
 };
 
 export const AdminUserId = 'VWqVCnFHnKTNTKVuYYexx4e5mCf2';
-
-export const cloudFunctionsGetPropertiesLink = 'https://us-central1-booking2project.cloudfunctions.net/getProperties';
+export const CloudFunctionsGetPropertiesLink = 'https://us-central1-booking2project.cloudfunctions.net/getProperties';

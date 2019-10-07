@@ -21,6 +21,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   displayLoadingMessage = true;
   isAdmin: Observable<boolean>;
   routeParamsSubscription: Subscription;
+  p: MouseEvent;
   constructor(
     private route: ActivatedRoute,
     private dataService: DataStorageService,

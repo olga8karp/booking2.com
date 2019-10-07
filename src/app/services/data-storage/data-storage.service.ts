@@ -3,7 +3,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { PropertyData, SearchInputPropertyData } from '../../data-models/property-data.model';
-import { cloudFunctionsGetPropertiesLink } from '../../../environments/environment';
+import { CloudFunctionsGetPropertiesLink } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +59,7 @@ export class DataStorageService {
     });
     params.append('searchData', paramsData);
     this.http
-      .get(cloudFunctionsGetPropertiesLink, { headers, params })
+      .get(CloudFunctionsGetPropertiesLink, { headers, params })
       .toPromise()
       .then((res: PropertyData[]) => {
         this.propertiesSubject.next(res);

@@ -1,6 +1,5 @@
 import { Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { addressRegEx } from 'src/app/constants/regex';
 import { Address } from 'src/app/data-models/property-data.model';
 
 @Component({

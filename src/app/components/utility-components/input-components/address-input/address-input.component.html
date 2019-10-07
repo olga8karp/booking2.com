@@ -2,7 +2,6 @@
 <small>Type your building number and street name. Then select the right autocomplete option</small>
 <input
   ngx-google-places-autocomplete
-  [options]="options"
   #placesRef="ngx-places"
   name="address"
   id="address"
@@ -10,7 +9,6 @@
   (onAddressChange)="handleAddressSelect($event)"
   [(ngModel)]="address"
   #addressInput="ngModel"
-  [pattern]="addressRegEx"
   [ngClass]="
     addressInput.invalid && addressInput.touched
       ? 'is-invalid'
@@ -18,6 +16,5 @@
       ? 'is-valid'
       : ''
   "
-  maxlength="70"
   required
 />

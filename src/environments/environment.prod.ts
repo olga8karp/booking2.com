@@ -11,4 +11,5 @@ export const environment = {
   }
 };
 
-export const adminUid = 'VWqVCnFHnKTNTKVuYYexx4e5mCf2';
+export const AdminUserId = 'VWqVCnFHnKTNTKVuYYexx4e5mCf2';
+export const CloudFunctionsGetPropertiesLink = 'https://us-central1-booking2project.cloudfunctions.net/getProperties';
