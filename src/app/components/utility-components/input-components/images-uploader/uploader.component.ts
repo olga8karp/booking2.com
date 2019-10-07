@@ -1,10 +1,10 @@
-import { Component, forwardRef } from "@angular/core";
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
+import { Component, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: "b2-uploader",
-  templateUrl: "./uploader.component.html",
-  styleUrls: ["./uploader.component.css"],
+  selector: 'b2-uploader',
+  templateUrl: './uploader.component.html',
+  styleUrls: ['./uploader.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

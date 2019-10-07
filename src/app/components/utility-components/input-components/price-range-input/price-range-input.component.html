@@ -5,7 +5,8 @@
         type="radio"
         class="form-check-input"
         (change)="handlePriceRangeSelect([])"
-        [checked]="!pRange || !pRange.length"/>
+        [checked]="!pRange || !pRange.length"
+      />
       None (any)
     </label>
   </div>
@@ -15,7 +16,8 @@
         type="radio"
         class="form-check-input"
         (change)="handlePriceRangeSelect([0, 56])"
-        [checked]="pRange[0] === 0 && pRange[1] === 56"/>
+        [checked]="pRange[0] === 0 && pRange[1] === 56"
+      />
       US$0 - US$56 per
     </label>
   </div>
@@ -25,7 +27,8 @@
         type="radio"
         class="form-check-input"
         (change)="handlePriceRangeSelect([56, 110])"
-        [checked]="pRange[0] === 56 && pRange[1] === 110"/>
+        [checked]="pRange[0] === 56 && pRange[1] === 110"
+      />
       US$56 - US$110 per night
     </label>
   </div>
@@ -46,7 +49,8 @@
         type="radio"
         class="form-check-input"
         (change)="handlePriceRangeSelect([160, 220])"
-        [checked]="pRange[0] === 160 && pRange[1] === 220"/>
+        [checked]="pRange[0] === 160 && pRange[1] === 220"
+      />
       US$160 - US$220 per night
     </label>
   </div>
@@ -56,7 +60,8 @@
         type="radio"
         class="form-check-input"
         (change)="handlePriceRangeSelect([220, null])"
-        [checked]="pRange[0] === 220"/>
+        [checked]="pRange[0] === 220"
+      />
       US$220 + per night
     </label>
   </div>

@@ -16,11 +16,7 @@
         <img [src]="imageUrl" alt="one image slide" class="image-slide" />
       </ng-template>
       <ng-template ngbSlide *ngIf="!property.uploads.length">
-        <img
-          src="../assets/images/no-image-available.jpg"
-          alt="one image slide"
-          class="image-slide"
-        />
+        <img src="../assets/images/no-image-available.jpg" alt="one image slide" class="image-slide" />
       </ng-template>
     </ngb-carousel>
   </div>
@@ -28,14 +24,10 @@
   <div class="wrapper">
     <div class="list-group-container">
       <ul class="list-group list-group-horizontal">
-        <li *ngFor="let meal of property.meals">
-          <i class="fa fa-check green-color"></i> {{ meal }}
-        </li>
+        <li *ngFor="let meal of property.meals"><i class="fa fa-check green-color"></i> {{ meal }}</li>
       </ul>
       <ul class="list-group list-group-horizontal">
-        <li *ngFor="let fac of property.facilities">
-          <i class="fa fa-check green-color"></i> {{ fac }}
-        </li>
+        <li *ngFor="let fac of property.facilities"><i class="fa fa-check green-color"></i> {{ fac }}</li>
       </ul>
     </div>
   </div>
@@ -43,10 +35,7 @@
   <div>
     <p>{{ property.description }}</p>
     <div class="text-center wrapper">
-      <button
-        type="button"
-        class="btn btn-primary font-weight-bold"
-        (click)="openBookingModal()">
+      <button type="button" class="btn btn-primary font-weight-bold" (click)="openBookingModal()">
         Book this property
       </button>
     </div>
@@ -55,7 +44,8 @@
         type="button"
         class="btn btn-light font-weight-bold"
         [routerLink]="['/listings', { lastVisited: property.timestamp }]"
-        queryParamsHandling="preserve">
+        queryParamsHandling="preserve"
+      >
         <i class="fas fa-chevron-left"></i>
         Back to search results
       </button>

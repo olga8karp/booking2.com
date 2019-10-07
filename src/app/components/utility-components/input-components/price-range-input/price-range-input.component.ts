@@ -1,12 +1,12 @@
-import { Component, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
-import { PriceRange } from "src/app/data-models/property-data.model";
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { PriceRange } from 'src/app/data-models/property-data.model';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: "b2-price-range-input",
-  templateUrl: "./price-range-input.component.html",
-  styleUrls: ["./price-range-input.component.css"],
+  selector: 'b2-price-range-input',
+  templateUrl: './price-range-input.component.html',
+  styleUrls: ['./price-range-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -36,8 +36,8 @@ export class PriceRangeInputComponent implements ControlValueAccessor {
   }
 
   handlePriceRangeSelect(newRange: PriceRange): void {
-      this.priceRangeSubject.next(newRange);
-      this.onChanged(newRange);
-      this.onTouched();
+    this.priceRangeSubject.next(newRange);
+    this.onChanged(newRange);
+    this.onTouched();
   }
 }

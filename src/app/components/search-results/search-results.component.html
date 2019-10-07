@@ -3,39 +3,28 @@
   <img src="../../../assets/images/deals.png" height="200" />
   <img src="../../../assets/images/parrot.png" height="200" />
 </div>
-<div
-  class="card-columns"
-  *ngIf="
-    properties.length;
-    else displayNoPropertiesFoundMessage">
-  <div
-    class="card"
-    *ngFor="
-      let property of properties
-        | paginate: { itemsPerPage: 6, currentPage: p };
-      let i = index">
+<div class="card-columns" *ngIf="properties.length; else displayNoPropertiesFoundMessage">
+  <div class="card" *ngFor="let property of properties | paginate: { itemsPerPage: 6, currentPage: p }; let i = index">
     <div
       *ngIf="property"
       class="card"
       [ngStyle]="{
-        'background-color':
-          property.timestamp === this.visitedPropertyId ? '#ddd' : '#fff'
-      }">
-      <div
-        [routerLink]="['/property', property.timestamp]"
-        queryParamsHandling="preserve">
+        'background-color': property.timestamp === this.visitedPropertyId ? '#ddd' : '#fff'
+      }"
+    >
+      <div [routerLink]="['/property', property.timestamp]" queryParamsHandling="preserve">
         <img
           class="card-img-top"
           [src]="
             property.uploads && property.uploads.length
               ? property.uploads[0]
-              : '../assets/images/no-image-available.jpg'"
-          alt="property picture"/>
+              : '../assets/images/no-image-available.jpg'
+          "
+          alt="property picture"
+        />
         <div class="card-body">
           <h5 class="card-title text-center">{{ property.name }}</h5>
-          <p class="red-color font-weight-bold">
-            {{ property.price | currency }} per night
-          </p>
+          <p class="red-color font-weight-bold">{{ property.price | currency }} per night</p>
           <p class="mb-0">
             <img src="../assets/images/location.png" />
             <span class="address"> {{ property.address }} </span>
@@ -43,9 +32,7 @@
           <div class="wrapper">
             <div class="list-group-container">
               <ul class="list-group">
-                <li *ngFor="let meal of property.meals">
-                  <i class="fa fa-check green-color"></i> {{ meal }}
-                </li>
+                <li *ngFor="let meal of property.meals"><i class="fa fa-check green-color"></i> {{ meal }}</li>
               </ul>
               <ul class="list-group">
                 <li *ngFor="let fac of property.facilities">
@@ -57,24 +44,19 @@
           </div>
         </div>
       </div>
-      <div
-        *ngIf="isAdmin | async"
-        class="btn-group btn-group-sm btn-group-pos"
-        role="group">
-        <button
-          type="button"
-          class="btn btn-danger mr-1"
-          (click)="deleteProperty(property.timestamp.toString())">
+      <div *ngIf="isAdmin | async" class="btn-group btn-group-sm btn-group-pos" role="group">
+        <button type="button" class="btn btn-danger mr-1" (click)="deleteProperty(property.timestamp.toString())">
           <i class="fa fa-trash" aria-hidden="true"></i>
           Delete
         </button>
-        <button 
-          type="button" 
-          class="btn btn-primary" 
+        <button
+          type="button"
+          class="btn btn-primary"
           [routerLink]="['/edit', property.timestamp]"
-          queryParamsHandling="preserve">
+          queryParamsHandling="preserve"
+        >
           <i class="fas fa-edit" aria-hidden="true"></i>
-          Edit description       
+          Edit description
         </button>
       </div>
     </div>
@@ -82,10 +64,7 @@
 </div>
 
 <ng-template #displayNoPropertiesFoundMessage>
-  <img
-    class="no-props-found-picture"
-    alt="No properties found"
-    src="./../../../assets//images//no-props-found.svg"/>
+  <img class="no-props-found-picture" alt="No properties found" src="./../../../assets//images//no-props-found.svg" />
 </ng-template>
 
 <div class="text-center">

@@ -1,10 +1,10 @@
-import { Component, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "b2-number-of-guests-input",
-  templateUrl: "./number-of-guests-input.component.html",
-  styleUrls: ["./number-of-guests-input.component.css"],
+  selector: 'b2-number-of-guests-input',
+  templateUrl: './number-of-guests-input.component.html',
+  styleUrls: ['./number-of-guests-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,7 +17,7 @@ export class NumberOfGuestsInputComponent implements ControlValueAccessor {
   numberOfGuests = 2;
 
   writeValue(value: number): void {
-    if (value && typeof value === "number") {
+    if (value && typeof value === 'number') {
       this.numberOfGuests = value;
     }
   }

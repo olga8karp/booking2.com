@@ -1,9 +1,5 @@
 <div class="modal-header">
-  <button
-    type="button"
-    class="close"
-    aria-label="Close"
-    (click)="activeModal.dismiss('Cross click')">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
@@ -11,16 +7,10 @@
   <p class="h5">Are you sure you want to delete property #{{ propertyId }}?</p>
 </div>
 <div class="modal-footer">
-  <button
-    type="button"
-    class="btn btn-danger"
-    (click)="deleteProperty()">
+  <button type="button" class="btn btn-danger" (click)="deleteProperty()">
     Yes. I want to delete this item.
   </button>
-  <button
-    type="button"
-    class="btn btn-secondary"
-    (click)="activeModal.close('Close click')">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">
     No. Return to the properties list.
   </button>
 </div>

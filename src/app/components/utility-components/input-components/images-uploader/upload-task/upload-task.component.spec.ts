@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploadTaskComponent } from "./upload-task.component";
+import { UploadTaskComponent } from './upload-task.component';
 
-describe("UploadTaskComponent", () => {
+describe('UploadTaskComponent', () => {
   let component: UploadTaskComponent;
   let fixture: ComponentFixture<UploadTaskComponent>;
 
@@ -18,7 +18,7 @@ describe("UploadTaskComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

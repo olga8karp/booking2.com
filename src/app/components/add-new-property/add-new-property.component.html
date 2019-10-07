@@ -5,9 +5,7 @@
   </p>
   <br />
 
-  <form
-    [formGroup]="addPropertyForm"
-    (ngSubmit)="formSubmit(addPropertyForm.value)">
+  <form [formGroup]="addPropertyForm" (ngSubmit)="formSubmit(addPropertyForm.value)">
     <fieldset class="form-group">
       <label for="name" class="font-weight-bold"> Name </label>
       <small> Please give your property an attractive name </small>
@@ -18,20 +16,18 @@
         class="form-control search-text-input"
         [ngClass]="
           addPropertyForm.get('name').errors &&
-          (addPropertyForm.get('name').touched ||
-            addPropertyForm.get('name').dirty)
+          (addPropertyForm.get('name').touched || addPropertyForm.get('name').dirty)
             ? 'is-invalid'
-            : addPropertyForm.get('name').touched &&
-              addPropertyForm.get('name').dirty
+            : addPropertyForm.get('name').touched && addPropertyForm.get('name').dirty
             ? 'is-valid'
             : ''
-        "/>
+        "
+      />
     </fieldset>
 
     <fieldset class="form-group">
       <legend>Property type</legend>
-      <b2-property-type-input formControlName="propertyType">
-      </b2-property-type-input>
+      <b2-property-type-input formControlName="propertyType"> </b2-property-type-input>
     </fieldset>
 
     <fieldset class="form-group">
@@ -46,8 +42,7 @@
     <fieldset class="form-group">
       <label class="font-weight-bold">
         How many people can stay?
-        <b2-number-of-guests-input formControlName="numberOfGuests">
-        </b2-number-of-guests-input>
+        <b2-number-of-guests-input formControlName="numberOfGuests"> </b2-number-of-guests-input>
       </label>
     </fieldset>
 
@@ -62,7 +57,7 @@
     </fieldset>
 
     <fieldset class="form-group">
-       <b2-uploader formControlName="uploads"> </b2-uploader>
+      <b2-uploader formControlName="uploads"> </b2-uploader>
     </fieldset>
 
     <fieldset class="form-group">
@@ -78,13 +73,13 @@
         rows="6"
         [ngClass]="
           addPropertyForm.get('description').errors &&
-          (addPropertyForm.get('description').touched ||
-            addPropertyForm.get('description').dirty)
+          (addPropertyForm.get('description').touched || addPropertyForm.get('description').dirty)
             ? 'is-invalid'
-            : addPropertyForm.get('description').touched &&
-              addPropertyForm.get('description').dirty
+            : addPropertyForm.get('description').touched && addPropertyForm.get('description').dirty
             ? 'is-valid'
-            : ''">
+            : ''
+        "
+      >
       </textarea>
     </fieldset>
 
@@ -99,19 +94,16 @@
         class="form-control price-input"
         [ngClass]="
           addPropertyForm.get('price').errors &&
-          (addPropertyForm.get('price').touched ||
-            addPropertyForm.get('price').dirty)
+          (addPropertyForm.get('price').touched || addPropertyForm.get('price').dirty)
             ? 'is-invalid'
-            : addPropertyForm.get('price').touched &&
-              addPropertyForm.get('price').dirty
+            : addPropertyForm.get('price').touched && addPropertyForm.get('price').dirty
             ? 'is-valid'
-            : ''"/>
+            : ''
+        "
+      />
     </fieldset>
 
-    <button
-      type="submit"
-      class="btn btn-primary font-weight-bold"
-      [disabled]="!addPropertyForm.valid">
+    <button type="submit" class="btn btn-primary font-weight-bold" [disabled]="!addPropertyForm.valid">
       Submit
     </button>
   </form>

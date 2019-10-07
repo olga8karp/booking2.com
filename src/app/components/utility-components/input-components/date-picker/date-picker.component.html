@@ -7,7 +7,8 @@
   [minDate]="minDate"
   class="bg-white"
   name="date"
-  [(ngModel)]="date">
+  [(ngModel)]="date"
+>
 </ngb-datepicker>
 
 <ng-template #t let-date let-focused="focused">
@@ -17,7 +18,8 @@
     [class.range]="isRange(date)"
     [class.faded]="isHovered(date) || isInside(date)"
     (mouseenter)="hoveredDate = date"
-    (mouseleave)="hoveredDate = null">
+    (mouseleave)="hoveredDate = null"
+  >
     {{ date.day }}
   </span>
 </ng-template>

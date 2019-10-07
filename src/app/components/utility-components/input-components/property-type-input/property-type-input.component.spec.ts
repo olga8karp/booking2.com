@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PropertyTypeInputComponent } from "./property-type-input.component";
+import { PropertyTypeInputComponent } from './property-type-input.component';
 
-describe("PropertyTypeInputComponent", () => {
+describe('PropertyTypeInputComponent', () => {
   let component: PropertyTypeInputComponent;
   let fixture: ComponentFixture<PropertyTypeInputComponent>;
 
@@ -18,7 +18,7 @@ describe("PropertyTypeInputComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

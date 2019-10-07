@@ -1,33 +1,28 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { AuthService } from "src/app/services/auth/auth.service";
-import { Alert, AlertType, SuccessAlertMessage } from "../../../data-models/alert-model";
-import { CurrentModeLabel } from "../../../data-models/login-mode.enum";
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { Alert, AlertType, SuccessAlertMessage } from '../../../data-models/alert-model';
+import { CurrentModeLabel } from '../../../data-models/login-mode.enum';
 import { AuthFormData } from 'src/app/data-models/auth-form-data.model';
 
 @Component({
-  selector: "b2-login-modal",
-  templateUrl: "./login-modal.component.html",
-  styleUrls: ["./login-modal.component.css"]
+  selector: 'b2-login-modal',
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
 })
-
 export class LoginModalComponent implements OnInit {
   loginForm: FormGroup;
   isLoginMode = true;
   isResetPasswordMode = false;
   alert: Alert = { type: null, message: null };
 
-  constructor(
-    public activeModal: NgbActiveModal,
-    private authService: AuthService,
-    private fb: FormBuilder
-  ) {}
+  constructor(public activeModal: NgbActiveModal, private authService: AuthService, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      "email": ["", [Validators.required, Validators.email]],
-      "password": ["", [Validators.required, Validators.minLength(6)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 

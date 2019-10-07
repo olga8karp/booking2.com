@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BookingModalComponent } from "./booking-modal.component";
+import { BookingModalComponent } from './booking-modal.component';
 
-describe("BookingModalComponent", () => {
+describe('BookingModalComponent', () => {
   let component: BookingModalComponent;
   let fixture: ComponentFixture<BookingModalComponent>;
 
@@ -18,7 +18,7 @@ describe("BookingModalComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

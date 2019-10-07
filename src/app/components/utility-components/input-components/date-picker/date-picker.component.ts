@@ -1,12 +1,12 @@
-import { Component, forwardRef, OnInit } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm } from "@angular/forms";
-import { NgbDate, NgbCalendar, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
-import { DatePickerService } from "src/app/services/date-picker/date-picker.service";
+import { Component, forwardRef, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgForm } from '@angular/forms';
+import { NgbDate, NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { DatePickerService } from 'src/app/services/date-picker/date-picker.service';
 
 @Component({
-  selector: "b2-date-picker",
-  templateUrl: "./date-picker.component.html",
-  styleUrls: ["./date-picker.component.css"],
+  selector: 'b2-date-picker',
+  templateUrl: './date-picker.component.html',
+  styleUrls: ['./date-picker.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -21,14 +21,11 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   toDate: NgbDate;
   minDate: NgbDateStruct;
 
-  constructor(
-    private calendar: NgbCalendar,
-    private datePickerService: DatePickerService
-  ) {}
+  constructor(private calendar: NgbCalendar, private datePickerService: DatePickerService) {}
 
   ngOnInit() {
     this.fromDate = this.calendar.getToday();
-    this.toDate = this.calendar.getNext(this.calendar.getToday(), "d", 2);
+    this.toDate = this.calendar.getNext(this.calendar.getToday(), 'd', 2);
     const current = new Date();
     this.minDate = {
       year: current.getFullYear(),
@@ -49,9 +46,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
     if (this.fromDate && this.toDate) {
       const from = this.datePickerService.createDateFromNgbDate(this.fromDate);
       const to = this.datePickerService.createDateFromNgbDate(this.toDate);
-      const bookedDatesArray = Array.from(
-        this.datePickerService.datesBetween(from, to)
-      );
+      const bookedDatesArray = Array.from(this.datePickerService.datesBetween(from, to));
       this.onChanged(bookedDatesArray || []);
       this.onTouched();
     }
@@ -59,11 +54,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
 
   isHovered(date: NgbDate): boolean {
     return (
-      this.fromDate &&
-      !this.toDate &&
-      this.hoveredDate &&
-      date.after(this.fromDate) &&
-      date.before(this.hoveredDate)
+      this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate)
     );
   }
 
@@ -72,12 +63,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
   }
 
   isRange(date: NgbDate): boolean {
-    return (
-      date.equals(this.fromDate) ||
-      date.equals(this.toDate) ||
-      this.isInside(date) ||
-      this.isHovered(date)
-    );
+    return date.equals(this.fromDate) || date.equals(this.toDate) || this.isInside(date) || this.isHovered(date);
   }
 
   writeValue(value: Date[]): void {
@@ -85,7 +71,7 @@ export class DatePickerComponent implements OnInit, ControlValueAccessor {
       const fromDate: any = {
         year: value[0].getFullYear(),
         month: value[0].getMonth(),
-        day: value[0].getDate(),
+        day: value[0].getDate()
       };
       const toDate: any = {
         year: value[value.length - 1].getFullYear(),

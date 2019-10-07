@@ -1,11 +1,7 @@
 <div class="wrapper">
   <div class="modal-header">
     <h2 class="modal-title text-primary font-weight-bold">Reservation form</h2>
-    <button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="activeModal.dismiss('Cross click')">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -18,12 +14,13 @@
           placeholder="Your name"
           formControlName="name"
           [ngClass]="
-            bookingForm.get('name').errors &&
-            (bookingForm.get('name').touched || bookingForm.get('name').dirty)
+            bookingForm.get('name').errors && (bookingForm.get('name').touched || bookingForm.get('name').dirty)
               ? 'is-invalid'
               : bookingForm.get('name').touched && bookingForm.get('name').dirty
               ? 'is-valid'
-              : ''"/>
+              : ''
+          "
+        />
       </div>
       <br />
       <div>
@@ -33,13 +30,13 @@
           placeholder="Email"
           formControlName="email"
           [ngClass]="
-            bookingForm.get('email').errors &&
-            (bookingForm.get('email').touched || bookingForm.get('email').dirty)
+            bookingForm.get('email').errors && (bookingForm.get('email').touched || bookingForm.get('email').dirty)
               ? 'is-invalid'
-              : bookingForm.get('email').touched &&
-                bookingForm.get('email').dirty
+              : bookingForm.get('email').touched && bookingForm.get('email').dirty
               ? 'is-valid'
-              : ''"/>
+              : ''
+          "
+        />
       </div>
       <br />
       <div>
@@ -49,20 +46,16 @@
           placeholder="Your phone number"
           formControlName="phone"
           [ngClass]="
-            bookingForm.get('phone').errors &&
-            (bookingForm.get('phone').touched || bookingForm.get('phone').dirty)
+            bookingForm.get('phone').errors && (bookingForm.get('phone').touched || bookingForm.get('phone').dirty)
               ? 'is-invalid'
-              : bookingForm.get('phone').touched &&
-                bookingForm.get('phone').dirty
+              : bookingForm.get('phone').touched && bookingForm.get('phone').dirty
               ? 'is-valid'
-              : ''"/>
+              : ''
+          "
+        />
       </div>
       <hr />
-      <ngb-alert
-        *ngIf="alert?.type"
-        [type]="alert.type"
-        (close)="closeAlert()">
-        {{ alert.message }}</ngb-alert>
+      <ngb-alert *ngIf="alert?.type" [type]="alert.type" (close)="closeAlert()"> {{ alert.message }}</ngb-alert>
       <div class="text-center">
         <b2-date-picker formControlName="bookedDates"> </b2-date-picker>
       </div>
@@ -70,18 +63,15 @@
         <button
           type="submit"
           class="btn btn-primary font-weight-bold"
-          [disabled]="
-            !bookingForm.valid || !bookingForm.get('bookedDates').value.length">
+          [disabled]="!bookingForm.valid || !bookingForm.get('bookedDates').value.length"
+        >
           Book for selected dates
         </button>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="activeModal.close('Close click')">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">
       Close
     </button>
   </div>

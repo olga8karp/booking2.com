@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DataStorageService } from 'src/app/services/data-storage/data-storage.service';
 
 @Component({
@@ -11,9 +11,9 @@ export class DeleteConfirmModalComponent {
   @Input() propertyId: string;
   @Output() isDeleted: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(public activeModal: NgbActiveModal, private dataService: DataStorageService) { }
+  constructor(public activeModal: NgbActiveModal, private dataService: DataStorageService) {}
 
-  deleteProperty() {
+  deleteProperty(): void {
     this.dataService.deleteProperty(this.propertyId);
     this.isDeleted.emit(true);
   }

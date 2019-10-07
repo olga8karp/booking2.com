@@ -1,10 +1,10 @@
-import { Component, forwardRef, Input } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Component, forwardRef, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "b2-property-type-input",
-  templateUrl: "./property-type-input.component.html",
-  styleUrls: ["./property-type-input.component.css"],
+  selector: 'b2-property-type-input',
+  templateUrl: './property-type-input.component.html',
+  styleUrls: ['./property-type-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,7 +17,7 @@ export class PropertyTypeInputComponent implements ControlValueAccessor {
   @Input() propertyType: string = null;
 
   writeValue(value: string): void {
-      this.propertyType = value;
+    this.propertyType = value;
   }
 
   onChanged: (value: string) => void = () => {};

@@ -1,10 +1,10 @@
-import { Component, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "b2-rating-input",
-  templateUrl: "./rating-input.component.html",
-  styleUrls: ["./rating-input.component.css"],
+  selector: 'b2-rating-input',
+  templateUrl: './rating-input.component.html',
+  styleUrls: ['./rating-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -17,7 +17,7 @@ export class RatingInputComponent implements ControlValueAccessor {
   propertyRating = 0;
 
   writeValue(value: number): void {
-    if (value && typeof value === "number") {
+    if (value && typeof value === 'number') {
       this.propertyRating = value;
     }
   }

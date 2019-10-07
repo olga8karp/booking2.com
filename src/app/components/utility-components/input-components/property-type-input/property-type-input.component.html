@@ -1,11 +1,7 @@
 <div class="form-check form-check-inline">
   <label class="form-check-label">
-    <input
-      type="radio"
-      class="form-check-input"
-      (change)="handlePropertyTypeSelect(null)"
-      [checked]="!propertyType"/>
-      None (any)
+    <input type="radio" class="form-check-input" (change)="handlePropertyTypeSelect(null)" [checked]="!propertyType" />
+    None (any)
   </label>
 </div>
 <div class="form-check form-check-inline">
@@ -14,8 +10,9 @@
       type="radio"
       class="form-check-input"
       (change)="handlePropertyTypeSelect('hotel')"
-      [checked]="propertyType === 'hotel'"/>
-      Hotel
+      [checked]="propertyType === 'hotel'"
+    />
+    Hotel
   </label>
 </div>
 <div class="form-check form-check-inline">
@@ -24,8 +21,9 @@
       type="radio"
       class="form-check-input"
       (change)="handlePropertyTypeSelect('villa')"
-      [checked]="propertyType === 'villa'"/>
-      Villa
+      [checked]="propertyType === 'villa'"
+    />
+    Villa
   </label>
 </div>
 <div class="form-check form-check-inline">
@@ -34,7 +32,8 @@
       type="radio"
       class="form-check-input"
       (change)="handlePropertyTypeSelect('appartment')"
-      [checked]="propertyType === 'appartment'"/>
-      Appartment
+      [checked]="propertyType === 'appartment'"
+    />
+    Appartment
   </label>
 </div>

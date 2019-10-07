@@ -1,9 +1,7 @@
 <div class="jumbotron bg-white" *ngIf="editPropertyForm">
   <h1 class="h-5 font-weight-bold">Edit property #{{ propertyId }}</h1>
   <br />
-  <form
-    [formGroup]="editPropertyForm"
-    (ngSubmit)="formSubmit(editPropertyForm.value)">
+  <form [formGroup]="editPropertyForm" (ngSubmit)="formSubmit(editPropertyForm.value)">
     <fieldset class="form-group">
       <label for="name" class="font-weight-bold"> Name </label>
       <small> Please give your property an attractive name </small>
@@ -14,19 +12,18 @@
         class="form-control search-text-input"
         [ngClass]="
           editPropertyForm.get('name').errors &&
-          (editPropertyForm.get('name').touched ||
-            editPropertyForm.get('name').dirty)
+          (editPropertyForm.get('name').touched || editPropertyForm.get('name').dirty)
             ? 'is-invalid'
-            : editPropertyForm.get('name').touched &&
-              editPropertyForm.get('name').dirty
+            : editPropertyForm.get('name').touched && editPropertyForm.get('name').dirty
             ? 'is-valid'
-            : ''"/>
+            : ''
+        "
+      />
     </fieldset>
 
     <fieldset class="form-group">
       <legend>Property type</legend>
-      <b2-property-type-input formControlName="propertyType">
-      </b2-property-type-input>
+      <b2-property-type-input formControlName="propertyType"> </b2-property-type-input>
     </fieldset>
 
     <fieldset class="form-group">
@@ -41,8 +38,7 @@
     <fieldset class="form-group">
       <label class="font-weight-bold">
         How many people can stay?
-        <b2-number-of-guests-input formControlName="numberOfGuests">
-        </b2-number-of-guests-input>
+        <b2-number-of-guests-input formControlName="numberOfGuests"> </b2-number-of-guests-input>
       </label>
     </fieldset>
 
@@ -60,7 +56,7 @@
       <p class="font-weight-bold">Previously uploaded images:</p>
       <div *ngFor="let fileUrl of previouslySavedUploads">
         <img [src]="fileUrl" alt="property picture" class="mr-2 mb-2" width="200" />
-          <i class="fa fa-times text-danger c-pointer" aria-hidden="true" (click)="deleteImage(fileUrl)"></i>
+        <i class="fa fa-times text-danger c-pointer" aria-hidden="true" (click)="deleteImage(fileUrl)"></i>
       </div>
     </fieldset>
 
@@ -81,13 +77,13 @@
         rows="6"
         [ngClass]="
           editPropertyForm.get('description').errors &&
-          (editPropertyForm.get('description').touched ||
-            editPropertyForm.get('description').dirty)
+          (editPropertyForm.get('description').touched || editPropertyForm.get('description').dirty)
             ? 'is-invalid'
-            : editPropertyForm.get('description').touched &&
-              editPropertyForm.get('description').dirty
+            : editPropertyForm.get('description').touched && editPropertyForm.get('description').dirty
             ? 'is-valid'
-            : ''">
+            : ''
+        "
+      >
       </textarea>
     </fieldset>
 
@@ -102,19 +98,16 @@
         class="form-control price-input"
         [ngClass]="
           editPropertyForm.get('price').errors &&
-          (editPropertyForm.get('price').touched ||
-            editPropertyForm.get('price').dirty)
+          (editPropertyForm.get('price').touched || editPropertyForm.get('price').dirty)
             ? 'is-invalid'
-            : editPropertyForm.get('price').touched &&
-              editPropertyForm.get('price').dirty
+            : editPropertyForm.get('price').touched && editPropertyForm.get('price').dirty
             ? 'is-valid'
-            : ''"/>
+            : ''
+        "
+      />
     </fieldset>
 
-    <button
-      type="submit"
-      class="btn btn-primary font-weight-bold"
-      [disabled]="!editPropertyForm.valid">
+    <button type="submit" class="btn btn-primary font-weight-bold" [disabled]="!editPropertyForm.valid">
       Submit
     </button>
   </form>

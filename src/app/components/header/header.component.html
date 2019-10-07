@@ -6,24 +6,17 @@
   </div>
   <div class="account-management">
     <a routerLink="./auth" *ngIf="authService.user$ | async as user; else login">
-      <span class="text-white font-weight-bold mr-2">
-        Logged in as {{ user.displayName || user.email }}
-      </span>
+      <span class="text-white font-weight-bold mr-2"> Logged in as {{ user.displayName || user.email }} </span>
       <button class="btn btn-light font-weight-bold" (click)="logOut()">
         Log out
       </button>
     </a>
     <ng-template #login>
-      <button
-        class="btn btn-light font-weight-bold mr-2"
-        (click)="openLoginModal()">
+      <button class="btn btn-light font-weight-bold mr-2" (click)="openLoginModal()">
         Log in
       </button>
     </ng-template>
-    <a
-      routerLink="./add"
-      class="ml-1"
-      *ngIf="(authService.user$ | async)?.uid === 'VWqVCnFHnKTNTKVuYYexx4e5mCf2'">
+    <a routerLink="./add" class="ml-1" *ngIf="(authService.user$ | async)?.uid === 'VWqVCnFHnKTNTKVuYYexx4e5mCf2'">
       <button class="btn btn-light font-weight-bold">List new property</button>
     </a>
   </div>

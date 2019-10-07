@@ -1,10 +1,10 @@
-import { Component, forwardRef } from "@angular/core";
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "b2-facilities-input",
-  templateUrl: "./facilities-input.component.html",
-  styleUrls: ["./facilities-input.component.css"],
+  selector: 'b2-facilities-input',
+  templateUrl: './facilities-input.component.html',
+  styleUrls: ['./facilities-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

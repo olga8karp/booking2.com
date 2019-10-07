@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
-import { Router, ActivatedRoute } from "@angular/router";
-import { PropertyData } from "src/app/data-models/property-data.model";
-import { priceRegEx } from "src/app/constants/regex";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { DataStorageService } from 'src/app/services/data-storage/data-storage.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { PropertyData } from 'src/app/data-models/property-data.model';
+import { priceRegEx } from 'src/app/constants/regex';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -27,43 +27,28 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.propertyId = this.route.snapshot.paramMap.get("id");
-    this.getPropertyByIdSubscription = this.dataService.getPropertyById(this.propertyId).subscribe((propertyData: PropertyData) => {
-    this.previouslySavedUploads = propertyData.uploads;
-    propertyData.uploads = [];
-    this.editPropertyForm = this.fb.group({
-      name: [
-        propertyData.name,
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(300)
-        ]
-      ],
-      propertyType: [propertyData.propertyType],
-      propertyRating: [propertyData.propertyRating],
-      address: [propertyData.address, [Validators.required]],
-      numberOfGuests: [
-        +propertyData.numberOfGuests,
-        [Validators.required, Validators.min(1), Validators.max(30)]
-      ],
-      meals: [propertyData.meals],
-      facilities: [propertyData.facilities],
-      uploads: [propertyData.uploads],
-      description: [
-        propertyData.description,
-        [
-          Validators.required,
-          Validators.minLength(20),
-          Validators.maxLength(600)
-        ]
-      ],
-      price: [
-        propertyData.price,
-        [Validators.required, Validators.pattern(priceRegEx)]
-      ]
-    });
-  });
+    this.propertyId = this.route.snapshot.paramMap.get('id');
+    this.getPropertyByIdSubscription = this.dataService
+      .getPropertyById(this.propertyId)
+      .subscribe((propertyData: PropertyData) => {
+        this.previouslySavedUploads = propertyData.uploads;
+        propertyData.uploads = [];
+        this.editPropertyForm = this.fb.group({
+          name: [propertyData.name, [Validators.required, Validators.minLength(5), Validators.maxLength(300)]],
+          propertyType: [propertyData.propertyType],
+          propertyRating: [propertyData.propertyRating],
+          address: [propertyData.address, [Validators.required]],
+          numberOfGuests: [+propertyData.numberOfGuests, [Validators.required, Validators.min(1), Validators.max(30)]],
+          meals: [propertyData.meals],
+          facilities: [propertyData.facilities],
+          uploads: [propertyData.uploads],
+          description: [
+            propertyData.description,
+            [Validators.required, Validators.minLength(20), Validators.maxLength(600)]
+          ],
+          price: [propertyData.price, [Validators.required, Validators.pattern(priceRegEx)]]
+        });
+      });
   }
 
   deleteImage(removedImageUrl: string): void {
@@ -82,7 +67,7 @@ export class EditPropertyComponent implements OnInit, OnDestroy {
       });
     }
     this.dataService.saveProperty(this.propertyId, propertyData);
-    this.router.navigate(["./listings"], { queryParamsHandling: 'preserve' });
+    this.router.navigate(['./listings'], { queryParamsHandling: 'preserve' });
   }
 
   ngOnDestroy() {

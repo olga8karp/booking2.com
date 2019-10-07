@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UploaderComponent } from "./uploader.component";
+import { UploaderComponent } from './uploader.component';
 
-describe("UploaderComponent", () => {
+describe('UploaderComponent', () => {
   let component: UploaderComponent;
   let fixture: ComponentFixture<UploaderComponent>;
 
@@ -18,7 +18,7 @@ describe("UploaderComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

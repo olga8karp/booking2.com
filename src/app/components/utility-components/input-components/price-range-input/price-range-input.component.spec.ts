@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PriceRangeInputComponent } from "./price-range-input.component";
+import { PriceRangeInputComponent } from './price-range-input.component';
 
-describe("PriceRangeInputComponent", () => {
+describe('PriceRangeInputComponent', () => {
   let component: PriceRangeInputComponent;
   let fixture: ComponentFixture<PriceRangeInputComponent>;
 
@@ -18,7 +18,7 @@ describe("PriceRangeInputComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
