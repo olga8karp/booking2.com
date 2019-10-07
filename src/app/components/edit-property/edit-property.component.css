@@ -42,3 +42,7 @@ legend {
   width: 6rem;
   margin: 0 auto;
 }
+
+.c-pointer {
+  cursor: pointer;
+ }

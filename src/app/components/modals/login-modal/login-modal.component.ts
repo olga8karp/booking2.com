@@ -1,14 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-
 import { AuthService } from "src/app/services/auth/auth.service";
-import {
-  Alert,
-  AlertType,
-  SuccessAlertMessage
-} from "../../../data-models/alert-model";
+import { Alert, AlertType, SuccessAlertMessage } from "../../../data-models/alert-model";
 import { CurrentModeLabel } from "../../../data-models/login-mode.enum";
 import { AuthFormData } from 'src/app/data-models/auth-form-data.model';
 

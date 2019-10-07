@@ -1,8 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-
 import { Alert, AlertType } from "src/app/data-models/alert-model";
 import { BookingService } from "src/app/services/booking/booking.service";
 import { Subscription } from "rxjs";

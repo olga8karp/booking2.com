@@ -43,6 +43,12 @@
   margin: 0 auto;
 }
 
+.btn-group-pos {
+  position: absolute;
+  bottom: 5px;
+  right: 1rem;
+}
+
 @media (max-width: 800px) {
   .card-columns {
     height: fit-content !important;

@@ -1,10 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormGroup, FormBuilder } from "@angular/forms";
-
-import {
-  SearchInputPropertyData,
-  PriceRange
-} from "src/app/data-models/property-data.model";
+import { SearchInputPropertyData, PriceRange } from "src/app/data-models/property-data.model";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Subscription } from 'rxjs';
 

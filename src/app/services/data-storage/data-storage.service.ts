@@ -38,6 +38,19 @@ export class DataStorageService {
       .valueChanges();
   }
 
+  saveProperty(propertyId, propertyData: PropertyData) {
+    this.firestore.collection("properties").doc(propertyId)
+      .update(propertyData).catch((error: Error) => console.log(error));
+  }
+
+  deleteProperty(id: string): void {
+    this.firestore
+      .collection("properties")
+      .doc<PropertyData>(id)
+      .delete()
+      .catch((err: Error) => console.log(err));
+  }
+
   getPropertiesBySearchInputParams(searchParams: SearchInputPropertyData) {
     const paramsData = JSON.stringify(searchParams);
     const params: HttpParams = new HttpParams().set("searchData", paramsData);

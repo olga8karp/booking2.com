@@ -46,17 +46,18 @@
       <button
         type="button"
         class="btn btn-primary font-weight-bold"
-        (click)="open()">
+        (click)="openBookingModal()">
         Book this property
       </button>
     </div>
     <div class="text-center wrapper">
       <button
         type="button"
-        class="btn btn-secondary font-weight-bold"
+        class="btn btn-light font-weight-bold"
         [routerLink]="['/listings', { lastVisited: property.timestamp }]"
         queryParamsHandling="preserve">
-        Back to all search results
+        <i class="fas fa-chevron-left"></i>
+        Back to search results
       </button>
     </div>
   </div>

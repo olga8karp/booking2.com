@@ -15,8 +15,8 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 })
 export class UploaderComponent implements ControlValueAccessor {
   isHovering: boolean;
-  files: File[] = [];
   fileUrls: string[] = [];
+  files: File[] = [];
 
   toggleHover(event: boolean): void {
     this.isHovering = event;
@@ -29,9 +29,7 @@ export class UploaderComponent implements ControlValueAccessor {
   }
 
   writeValue(value: string[]): void {
-    if (value && typeof value === "string") {
-      this.fileUrls = value;
-    }
+    this.fileUrls = value;
   }
 
   onChanged: (value: string[]) => void = () => {};

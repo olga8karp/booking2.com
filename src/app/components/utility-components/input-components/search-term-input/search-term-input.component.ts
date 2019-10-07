@@ -55,7 +55,6 @@ export class SearchTermInputComponent
 
   writeValue(value: string): void {
     if (value) {
-      console.log(value);
       this.searchTerm = value;
     }
   }

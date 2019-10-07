@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Observable } from "rxjs";
-
 import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
 import { PropertyData } from "src/app/data-models/property-data.model";
 import { BookingModalComponent } from "../modals/booking-modal/booking-modal.component";
@@ -27,7 +26,7 @@ export class PropertyDetailsComponent implements OnInit {
     this.property$ = this.dataService.getPropertyById(this.id);
   }
 
-  open(): void {
+  openBookingModal(): void {
     const modalRef = this.modalService.open(BookingModalComponent);
     modalRef.componentInstance.propertyId = this.id;
   }

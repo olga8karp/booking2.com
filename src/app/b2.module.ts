@@ -22,20 +22,22 @@ import { PageNotFoundComponent } from "./components/page-not-found/page-not-foun
 import { SearchPanelComponent } from "./components/search-panel/search-panel.component";
 import { AddNewPropertyDetailsComponent } from "./components/add-new-property/add-new-property.component";
 import { DropzoneDirective } from "./directives/dropzone/dropzone.directive";
-import { UploaderComponent } from "./components/utility-components/data-input-components/images-uploader/uploader.component";
-import { UploadTaskComponent } from "./components/utility-components/data-input-components/images-uploader/upload-task/upload-task.component";
-import { AddressInputComponent } from "./components/utility-components/data-input-components/address-input/address-input.component";
-import { DatePickerComponent } from "./components/utility-components/data-input-components/date-picker/date-picker.component";
+import { UploaderComponent } from "./components/utility-components/input-components/images-uploader/uploader.component";
+import { UploadTaskComponent } from "./components/utility-components/input-components/images-uploader/upload-task/upload-task.component";
+import { AddressInputComponent } from "./components/utility-components/input-components/address-input/address-input.component";
+import { DatePickerComponent } from "./components/utility-components/input-components/date-picker/date-picker.component";
 import { LoginModalComponent } from "./components/modals/login-modal/login-modal.component";
 import { BookingModalComponent } from "./components/modals/booking-modal/booking-modal.component";
-import { NumberOfGuestsInputComponent } from "./components/utility-components/data-input-components/number-of-guests-input/number-of-guests-input.component";
-import { MealsInputComponent } from "./components/utility-components/data-input-components/meals-input/meals-input.component";
-import { FacilitiesInputComponent } from "./components/utility-components/data-input-components/facilities-input/facilities-input.component";
-import { RatingComponent } from "./components/utility-components/data-display-components/rating/rating.component";
-import { PropertyTypeInputComponent } from "./components/utility-components/data-input-components/property-type-input/property-type-input.component";
-import { RatingInputComponent } from "./components/utility-components/data-input-components/rating-input/rating-input.component";
-import { PriceRangeInputComponent } from "./components/utility-components/data-input-components/price-range-input/price-range-input.component";
-import { SearchTermInputComponent } from "./components/utility-components/data-input-components/search-term-input/search-term-input.component";
+import { NumberOfGuestsInputComponent } from "./components/utility-components/input-components/number-of-guests-input/number-of-guests-input.component";
+import { MealsInputComponent } from "./components/utility-components/input-components/meals-input/meals-input.component";
+import { FacilitiesInputComponent } from "./components/utility-components/input-components/facilities-input/facilities-input.component";
+import { RatingComponent } from "./components/utility-components/display-components/rating/rating.component";
+import { PropertyTypeInputComponent } from "./components/utility-components/input-components/property-type-input/property-type-input.component";
+import { RatingInputComponent } from "./components/utility-components/input-components/rating-input/rating-input.component";
+import { PriceRangeInputComponent } from "./components/utility-components/input-components/price-range-input/price-range-input.component";
+import { SearchTermInputComponent } from "./components/utility-components/input-components/search-term-input/search-term-input.component";
+import { DeleteConfirmModalComponent } from './components/modals/delete-confirm-modal/delete-confirm-modal.component';
+import { EditPropertyComponent } from './components/edit-property/edit-property.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { SearchTermInputComponent } from "./components/utility-components/data-i
     PropertyTypeInputComponent,
     RatingInputComponent,
     PriceRangeInputComponent,
-    SearchTermInputComponent
+    SearchTermInputComponent,
+    DeleteConfirmModalComponent,
+    EditPropertyComponent
   ],
   imports: [
     BrowserModule,
@@ -82,6 +86,6 @@ import { SearchTermInputComponent } from "./components/utility-components/data-i
   ],
   providers: [LoginModalComponent, BookingModalComponent],
   bootstrap: [AppComponent],
-  entryComponents: [LoginModalComponent, BookingModalComponent]
+  entryComponents: [LoginModalComponent, BookingModalComponent, DeleteConfirmModalComponent]
 })
 export class AppModule {}

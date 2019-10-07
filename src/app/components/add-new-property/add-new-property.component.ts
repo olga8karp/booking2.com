@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-
 import { DataStorageService } from "src/app/services/data-storage/data-storage.service";
 import { Router } from "@angular/router";
 import { PropertyData } from "src/app/data-models/property-data.model";
