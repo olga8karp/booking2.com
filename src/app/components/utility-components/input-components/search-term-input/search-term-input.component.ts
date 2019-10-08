@@ -22,22 +22,7 @@ export class SearchTermInputComponent implements ControlValueAccessor, OnDestroy
   availablePropertiesNamesAndAddresses: string[];
   dataServiceSubscription: Subscription;
 
-  constructor(private dataService: DataStorageService) {
-    this.dataServiceSubscription = this.dataService.properties$.subscribe((properties: PropertyData[]) => {
-      this.availablePropertiesNamesAndAddresses = properties.reduce(
-        (acc: string[], property: PropertyData): string[] => {
-          if (property) {
-            acc.push(property.name);
-            acc.push(property.address);
-            return acc;
-          }
-        },
-        []
-      );
-    });
-  }
-
-  search(text$: Observable<string>): Observable<string[]> {
+  search = (text$: Observable<string>): Observable<string[]> => {
     return text$.pipe(
       debounceTime(200),
       distinctUntilChanged(),
@@ -51,8 +36,25 @@ export class SearchTermInputComponent implements ControlValueAccessor, OnDestroy
     );
   }
 
+
+  constructor(private dataService: DataStorageService) {
+    this.dataServiceSubscription = this.dataService.properties$.subscribe((properties: PropertyData[]) => {
+      this.availablePropertiesNamesAndAddresses = properties.reduce(
+        (acc: string[], property: PropertyData): string[] => {
+          if (property) {
+            acc.push(property.name);
+            acc.push(property.address);
+            return acc;
+          }
+        },
+        []
+      );
+      console.log(this.availablePropertiesNamesAndAddresses);
+    });
+  }
+
   writeValue(value: string): void {
-    if (value) {
+    if (value && typeof value === 'string') {
       this.searchTerm = value;
     }
   }
